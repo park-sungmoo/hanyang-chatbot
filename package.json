@@ -1,0 +1,29 @@
+{
+  "name": "hanyang-chatbot",
+  "version": "0.0.1",
+  "description": "hanyang university chatbot",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/taeuk-gang/hanyang-chatbot.git"
+  },
+  "author": "taeuk.kang",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/taeuk-gang/hanyang-chatbot/issues"
+  },
+  "homepage": "https://github.com/taeuk-gang/hanyang-chatbot#readme",
+  "devDependencies": {
+    "eslint": "^5.3.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jsx-a11y": "^6.1.1",
+    "eslint-plugin-react": "^7.11.0"
+  },
+  "dependencies": {
+    "i18next": "^15.0.6"
+  }
+}
