@@ -1,6 +1,6 @@
 import {html, render} from '../../node_modules/lit-html/lit-html.js'
 
-class BotChatBalloon extends HTMLElement {
+class MyChatBalloon extends HTMLElement {
 	constructor() {
 		super()
 
@@ -39,10 +39,6 @@ class BotChatBalloon extends HTMLElement {
 		return html`
 			${style}
 			<main>
-				<div class='profile'>
-					<div class='profile-img'></div>
-				</div>
-				<div class='name'>${i18next.t(`BOT_NAME`)}</div>
 				<div class='chat-wrap'>
 					<!-- <div class='chat-content'></div> -->
 					<!-- <div class='chat-content-continue'></div> -->
@@ -55,40 +51,16 @@ class BotChatBalloon extends HTMLElement {
 const style = html`
 <style scoped>
 	main {
+		width: 100%;
 		display: grid;
-		grid-template-columns: min-content 1fr;
-		grid-template-rows: min-content 1fr;
-		grid-template-areas: 
-			"a b"
-			"a c";
-		min-height: 70px;
+		grid-template-rows: 1fr;
+		grid-template-columns: 1fr;
+		min-height: 30px;
+		box-sizing: border-box;
+		float: right;
 	}	
 
-	.profile {
-		padding: 15px 10px 15px 15px;
-		grid-area: a;
-		z-index: 10;
-	}
-
-	.profile-img {
-		width: 40px;
-		height: 40px;
-		border-radius: 25px;
-		background-image: url('/hanyang-chatbot/src/images/sad-frog.png');
-		background-repeat: no-repeat;
-    	background-position: center;
-    	background-size: contain;
-	}
-	
-	.name {
-		grid-area: b;
-		font-size: 12px;
-		color: #4A4C4E;
-		padding-top: 12px;
-	}
-
 	.chat-wrap {
-		grid-area: c;
 		padding-top: 5px;
 		padding-bottom: 5px;
 		z-index: 5;
@@ -110,11 +82,13 @@ const style = html`
 		box-sizing: border-box;
 		font-size: 13px;
 		color: #4A4C4E;
+		margin-right: 20px;
+		margin-left: auto;
 		white-space: nowrap;
 	}
 
 	.chat-content:before {
-		left: -10px;
+		right: -10px;
 		top: 5px;
 		content: " ";
 		height: 20px;
@@ -127,7 +101,7 @@ const style = html`
 	}
 
 	.chat-content:after {
-		left: -15px;
+		right: -15px;
 		top: 0px;
 		content: " ";
 		height: 20px;
@@ -141,4 +115,4 @@ const style = html`
 </style>
 `
 
-customElements.define(`bot-chat-balloon`, BotChatBalloon)
+customElements.define(`my-chat-balloon`, MyChatBalloon)

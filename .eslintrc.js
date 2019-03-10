@@ -115,8 +115,8 @@ module.exports = {
         // 일관된 조건 블록 형성
         "curly": 1,
         // default-case, dot-location, dot-notation 사용 필요성 못느낌
-        // !==, === 사용
-        "eqeqeq": 1,
+        // !==, ===만 사용
+        // "eqeqeq": 1,
         // for-in의 엄격한 사용
         "guard-for-in": 1,
         // 파일당 클래스 제한

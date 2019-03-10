@@ -10,6 +10,16 @@ class ChatWindow extends HTMLElement {
 		render(this.render(), this.shadowRoot)
 	}
 
+	connectedCallback() {
+		this.scrollToLast()
+	}
+
+	scrollToLast() {
+		const chatBody = this.shadowRoot.querySelector(`chat-window-body`)
+
+		chatBody.scrollTop = chatBody.scrollHeight
+	}
+
 	render() {
 		return html`
 			${style}
@@ -42,6 +52,7 @@ const style = html`
 	}
 	chat-window-body {
 		background-color: #B2C7D9;
+		overflow: scroll;
 	}
 </style>
 `
