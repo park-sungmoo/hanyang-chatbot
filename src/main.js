@@ -1,4 +1,4 @@
-import ChatWindow from './components/chat-window.js'
+import './components/chat-window.js'
 
 class Main {
 	static init() {

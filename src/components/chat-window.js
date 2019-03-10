@@ -1,6 +1,6 @@
 import {html, render} from '../../node_modules/lit-html/lit-html.js'
 
-export default class ChatWindow extends HTMLElement {
+class ChatWindow extends HTMLElement {
 	constructor() {
 		super()
 

@@ -102,7 +102,7 @@ module.exports = {
 
         // Best Practices
         // getter와 setter는 함께 존재
-        "accessor-pairs": 1,
+        // "accessor-pairs": 1,
         // 배열 메소드의 적절한 리턴값 확인
         "array-callback-return": 1,
         // 변수 선언은 항상 위에서
