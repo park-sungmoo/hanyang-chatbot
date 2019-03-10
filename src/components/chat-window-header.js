@@ -57,11 +57,11 @@ class ChatWindowHeader extends HTMLElement {
 		return html`
 			${style}
 			<main>
-				<div class='listener-profile'>
-					<span class='listener-profile-img'></span>
+				<div class='bot-profile'>
+					<span class='bot-profile-img'></span>
 				</div>
 				<div class='name-submenu'>
-					<div class='name'>${i18next.t(`LISTENER_NAME`)}</div>
+					<div class='name'>${i18next.t(`BOT_NAME`)}</div>
 					<div class='submenu'>
 						<svg class='submenu-picture' height='16' width='16' aria-hidden="true" focusable="false" data-prefix="fas" data-icon="image" class="svg-inline--fa fa-image fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M464 448H48c-26.51 0-48-21.49-48-48V112c0-26.51 21.49-48 48-48h416c26.51 0 48 21.49 48 48v288c0 26.51-21.49 48-48 48zM112 120c-30.928 0-56 25.072-56 56s25.072 56 56 56 56-25.072 56-56-25.072-56-56-56zM64 384h384V272l-87.515-87.515c-4.686-4.686-12.284-4.686-16.971 0L208 320l-55.515-55.515c-4.686-4.686-12.284-4.686-16.971 0L64 336v48z"></path></svg>
 						<svg class='submenu-search' height='14' width='14' aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search" class="svg-inline--fa fa-search fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"></path></svg>
@@ -91,12 +91,12 @@ const style = html`
 		grid-template-rows: 1fr;
 	}
 
-	.listener-profile {
+	.bot-profile {
 		position: relative;
 		padding: 15px;
 	}
 	
-	.listener-profile-img {
+	.bot-profile-img {
 		position: absolute;
 		width: 50px;
 		height: 50px;

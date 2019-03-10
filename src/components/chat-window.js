@@ -1,5 +1,6 @@
 import {html, render} from '../../node_modules/lit-html/lit-html.js'
 import './chat-window-header.js'
+import './chat-window-body.js'
 
 class ChatWindow extends HTMLElement {
 	constructor() {
