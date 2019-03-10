@@ -76,7 +76,7 @@ const style = html`
 		min-height: 28px;
 		min-width: 20px;
 		width: min-content;
-		background: white;
+		background: #FFEB33;
 		border-radius: 5px;
 		padding: 5px 10px 5px 10px;
 		box-sizing: border-box;
@@ -96,7 +96,7 @@ const style = html`
 		position: absolute;
 		pointer-events: none;
 		border-radius: 25px;
-		background: white;
+		background: #FFEB33;
 		z-index: -1;
 	}
 

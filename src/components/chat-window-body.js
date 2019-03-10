@@ -11,31 +11,7 @@ class ChatWindowBody extends HTMLElement {
 	}
 
 	connectedCallback() {
-		this.reply(`ㅎㅇ`)
-		this.reply(`캡스톤은 잘되가니`)
-		this.send(`좃됨`)
-		this.send(`흑흑흑`)
-		this.reply(`ㅎㅎ`)
-		this.reply(`www`)
-		this.reply(`ㅎㅇ`)
-		this.reply(`캡스톤은 잘되가니`)
-		this.send(`좃됨`)
-		this.send(`흑흑흑`)
-		this.reply(`ㅎㅎ`)
-		this.reply(`www`)
-		this.reply(`ㅎㅇ`)
-		this.reply(`캡스톤은 잘되가니`)
-		this.send(`좃됨`)
-		this.send(`흑흑흑`)
-		this.reply(`ㅎㅎ`)
-		this.reply(`www`)
-		this.reply(`ㅎㅇ`)
-		this.reply(`캡스톤은 잘되가니`)
-		this.send(`좃됨`)
-		this.send(`흑흑흑`)
-		this.reply(`ㅎㅎ`)
-		this.reply(`www`)
-		this.reply(`ㅎㅇ`)
+
 	}
 
 	reply(text) {

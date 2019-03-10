@@ -6,20 +6,22 @@ class ChatWindowHeader extends HTMLElement {
 
 		this.attachShadow({ mode: `open` })
 		render(this.render(), this.shadowRoot)
+
+		this.eventClickAlarm = this.onClickAlarm.bind(this)
 	}
 
 	connectedCallback() {
 		this.shadowRoot.querySelector(`.submenu-picture`).addEventListener(`click`, this.onClickSubmenuPicture, true)
 		this.shadowRoot.querySelector(`.submenu-search`).addEventListener(`click`, this.onClickSubmenuSearch, true)
 		this.shadowRoot.querySelector(`.menu-button`).addEventListener(`click`, this.onClickMenu, true)
-		this.shadowRoot.querySelector(`.menu-alarm`).addEventListener(`click`, this.onClickAlarm.bind(this), true)
+		this.shadowRoot.querySelector(`.menu-alarm`).addEventListener(`click`, this.eventClickAlarm, true)
 	}
 
 	disconnectedCallback() {
 		this.shadowRoot.querySelector(`.submenu-picture`).removeEventListener(`click`, this.onClickSubmenuPicture, true)
 		this.shadowRoot.querySelector(`.submenu-search`).removeEventListener(`click`, this.onClickSubmenuSearch, true)
 		this.shadowRoot.querySelector(`.menu-button`).removeEventListener(`click`, this.onClickMenu, true)
-		this.shadowRoot.querySelector(`.menu-alarm`).removeEventListener(`click`, this.onClickAlarm, true)
+		this.shadowRoot.querySelector(`.menu-alarm`).removeEventListener(`click`, this.eventClickAlarm, true)
 	}
 
 	onClickSubmenuPicture() {
