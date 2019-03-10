@@ -108,7 +108,7 @@ module.exports = {
         // 변수 선언은 항상 위에서
         "block-scoped-var": 1,
         // 정적 메소드 아니면, this 사용, 정적 메소드면 static 사용
-        "class-methods-use-this": 1,
+        // "class-methods-use-this": 1,
         // 조건문은 4개 미만까지 사용 가능
         "complexity": [2, 4],
         "consistent-return": 1,
@@ -130,8 +130,8 @@ module.exports = {
         "no-div-regex": 1,
         // else 이후 if내 return 금지
         "no-else-return": 1,
-        // 함수내 빈칸 금지
-        "no-empty-function": 1,
+        // 함수내 빈칸 금지 - 클래스 선언에서 빈칸일때 많음
+        // "no-empty-function": 1,
         // 의미없는 빈 배열 금지
         "no-empty-pattern": 1,
         // ==, != 로 null 비교 금지
@@ -249,7 +249,7 @@ module.exports = {
         "quotes": [1, "backtick"],
         "semi": [1, "never"],
         "max-params": [1, 2],
-        "max-lines-per-function": [1, 30],
+        "max-lines-per-function": [2, 30],
 
         // ECMAScript 6
         "arrow-body-style": 1,
