@@ -104,14 +104,14 @@ const style = html`
 		position: relative;
 		min-height: 28px;
 		min-width: 20px;
-		width: min-content;
+		width: fit-content;
+		max-width: 80vmin;
 		background: white;
 		border-radius: 5px;
 		padding: 5px 10px 5px 10px;
 		box-sizing: border-box;
 		font-size: 13px;
 		color: #4A4C4E;
-		white-space: nowrap;
 	}
 
 	.chat-content:before {

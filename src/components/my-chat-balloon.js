@@ -75,7 +75,8 @@ const style = html`
 		position: relative;
 		min-height: 28px;
 		min-width: 20px;
-		width: min-content;
+		width: fit-content;
+		max-width: 80vmin;
 		background: #FFEB33;
 		border-radius: 5px;
 		padding: 5px 10px 5px 10px;
@@ -84,7 +85,6 @@ const style = html`
 		color: #4A4C4E;
 		margin-right: 20px;
 		margin-left: auto;
-		white-space: nowrap;
 	}
 
 	.chat-content:before {
