@@ -44,7 +44,6 @@ class ChatWindowFooter extends HTMLElement {
 	}
 
 	replyByPingpongAPI(text) {
-		console.log(`http://cors-anywhere.herokuapp.com/https://pingpong.us/api/reaction.php?custom=basic&query=${encodeURIComponent(text)}`)
 		const xhr = new XMLHttpRequest()
 		const COMPLETED = 4, OK = 200, FIRST_TEXT = 0
 		const chatBody = document.querySelector(`chat-window`).shadowRoot.querySelector(`chat-window-body`)

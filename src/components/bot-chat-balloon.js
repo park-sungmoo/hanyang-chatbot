@@ -6,6 +6,7 @@ class BotChatBalloon extends HTMLElement {
 
 		this.attachShadow({ mode: `open` })
 		render(this.render(), this.shadowRoot)
+		this.chatWindow = document.querySelector(`chat-window`)
 	}
 
 	chat(text) {

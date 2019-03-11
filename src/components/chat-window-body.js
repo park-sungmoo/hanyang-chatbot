@@ -8,10 +8,7 @@ class ChatWindowBody extends HTMLElement {
 
 		this.attachShadow({ mode: `open` })
 		render(this.render(), this.shadowRoot)
-	}
-
-	connectedCallback() {
-
+		this.chatWindow = document.querySelector(`chat-window`)
 	}
 
 	reply(text) {
@@ -19,14 +16,17 @@ class ChatWindowBody extends HTMLElement {
 		const ONE = 1, LAST_CHILD_NUM = main.children.length - ONE
 		const lastChat = main.children[LAST_CHILD_NUM]
 		const isBot = main.children.length && main.children[LAST_CHILD_NUM].localName === `bot-chat-balloon`
+		
 
 		if(isBot == false) {
 			const botChatBalloon = document.createElement(`bot-chat-balloon`)
 			main.appendChild(botChatBalloon)
 			botChatBalloon.chat(text)
+			this.chatWindow.scrollToLast()
 			return
 		}
 		lastChat.chat(text)
+		this.chatWindow.scrollToLast()
 	}
 
 	send(text) {
@@ -39,9 +39,11 @@ class ChatWindowBody extends HTMLElement {
 			const myChatBalloon = document.createElement(`my-chat-balloon`)
 			main.appendChild(myChatBalloon)
 			myChatBalloon.chat(text)
+			this.chatWindow.scrollToLast()
 			return
 		}
 		lastChat.chat(text)
+		this.chatWindow.scrollToLast()
 	}
 
 	render() {
