@@ -29,7 +29,8 @@ class ChatWindowFooter extends HTMLElement {
 		if(isEnter) {
 			event.preventDefault()
 			chatBody.send(sendText.value)
-			sendText.value = ``
+			this.replyByPingpongAPI(sendText.value)
+			sendText.value = ``			
 		}
 	}
 
@@ -38,8 +39,34 @@ class ChatWindowFooter extends HTMLElement {
 		const sendText = this.shadowRoot.querySelector(`.send_text`)
 
 		chatBody.send(sendText.value)
-		sendText.value = ``
+		this.replyByPingpongAPI(sendText.value)
+		sendText.value = ``		
 	}
+
+	replyByPingpongAPI(text) {
+		console.log(`http://cors-anywhere.herokuapp.com/https://pingpong.us/api/reaction.php?custom=basic&query=${encodeURIComponent(text)}`)
+		const xhr = new XMLHttpRequest()
+		const COMPLETED = 4, OK = 200, FIRST_TEXT = 0
+		const chatBody = document.querySelector(`chat-window`).shadowRoot.querySelector(`chat-window-body`)
+
+		if(!xhr) {
+			throw new Error(`XHR 호출 불가`)
+		}		
+		xhr.open(`GET`, `http://cors-anywhere.herokuapp.com/https://pingpong.us/api/reaction.php?custom=basic&query=${encodeURIComponent(text)}`)	
+
+		xhr.addEventListener(`readystatechange`, () => {
+			if(xhr.readyState === COMPLETED) {
+				if(xhr.status === OK) {
+					const data = JSON.parse(xhr.responseText)
+					const RAND = Math.floor(Math.random() * data.length)
+					const speack = data[RAND][`message`].split(`(`)[FIRST_TEXT]
+					chatBody.reply(speack)
+				}
+			}
+		})		
+		xhr.send()
+	}
+	
 
 	render() {
 		return html`
