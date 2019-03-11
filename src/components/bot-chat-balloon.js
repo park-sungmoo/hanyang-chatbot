@@ -105,7 +105,7 @@ const style = html`
 		min-height: 28px;
 		min-width: 20px;
 		width: fit-content;
-		max-width: 80vmin;
+		max-width: calc(80vw - 65px);
 		background: white;
 		border-radius: 5px;
 		padding: 5px 10px 5px 10px;
