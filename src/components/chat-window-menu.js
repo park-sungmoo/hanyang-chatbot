@@ -8,7 +8,26 @@ class ChatWindowMenu extends HTMLElement {
 		render(this.render(), this.shadowRoot)
 
 		this.menuState = `hide`
-		this.eventClickMenu = this.onClickMenu.bind(this)
+		this.eventClickBotSetting = this.onClickBotSetting.bind(this)
+	}
+
+	connectedCallback() {
+		this.shadowRoot.querySelector(`.menu .bot-setting`).addEventListener(`click`, this.eventClickBotSetting)
+		this.shadowRoot.querySelector(`.menu`).addEventListener(`click`, event => this.onClickOutOfMenu(event))
+	}
+
+	disconnectedCallback() {
+		this.shadowRoot.querySelector(`.menu .bot-setting`).removeEventListener(`click`, this.eventClickBotSetting)
+	}	
+
+	onClickOutOfMenu(event) {
+		if(event.target.classList.contains(`menu`)) {
+			this.hide()
+		}
+	}
+
+	onClickBotSetting() {
+		this.hide()
 	}
 
 	show() {
@@ -21,23 +40,11 @@ class ChatWindowMenu extends HTMLElement {
 		this.menuState = `hide`
 	}
 
-	connectedCallback() {
-		this.shadowRoot.querySelector(`.main`).addEventListener(`click`, this.eventClickMenu)
-	}
-
-	disconnectedCallback() {
-		this.shadowRoot.querySelector(`.main`).removeEventListener(`click`, this.eventClickMenu)
-	}
-
-	onClickMenu() {
-		this.hide()
-	}
-
 	render() {
 		return html`
 			${style}
-			<ul class='main'>
-				<li>${i18next.t(`MENU_BOT_SETTING`)}</li>
+			<ul class='menu'>
+				<li class='bot-setting'>${i18next.t(`MENU_BOT_SETTING`)}</li>
 			</ul>
 		`
 	}
@@ -45,7 +52,17 @@ class ChatWindowMenu extends HTMLElement {
 
 const style = html`
 <style scoped>
-	.main {
+	.menu::before {
+		content: '';
+		position: absolute;
+		top: -57px;
+		right: -5px;
+		width: 100vw;
+		height: 100vh;
+		z-index: -1;
+	}
+
+	.menu {
 		background-color: white;
 		padding: 0;
 		margin: 0;
@@ -55,7 +72,7 @@ const style = html`
 		border-radius: 2px;
 	}
 
-	.main li {
+	.menu li {
 		padding: 10px 15px 10px 15px;
 		margin: 0 1px 0 1px;
 		box-sizing: border-box;
@@ -67,11 +84,11 @@ const style = html`
 		text-overflow: ellipsis;
 	}
 
-	.main li:not(:last-child) {
+	.menu li:not(:last-child) {
 		border-bottom: 1px solid #F0F0F0;
 	}
 
-	.main li:hover {
+	.menu li:hover {
 		background-color: #F0F0F0;
 	}
 </style>

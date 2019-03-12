@@ -14,7 +14,6 @@ class ChatWindowBody extends HTMLElement {
 		this.chatWindow = document.querySelector(`chat-window`)
 
 		this.bot = new RiveScript()
-		this.test = `test`
 
 		this.bot.loadFile(`/hanyang-chatbot/src/libs/test.rive`).then(this.loading_done.bind(this)).catch(this.loading_error)
 	}

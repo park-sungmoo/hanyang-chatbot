@@ -17,7 +17,7 @@ module.exports = {
     // es6 문법을 쓴다면 ecmaVersion: 6 (기본값은 5)
     // es6 모듈을 쓴다면 sourceType: "module" (기본값은 "script")
     "parserOptions": {
-        "ecmaVersion": 2019,
+        "ecmaVersion": 2018,
         "sourceType": `module`
     },
 

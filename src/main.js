@@ -2,11 +2,11 @@ import './components/chat-window.js'
 
 class Main {
 	static init() {
-		this.empty()
+		this.emptyDOM()
 		this.renderChatWindow()
 	}
 
-	static empty() {
+	static emptyDOM() {
 		document.querySelector(`.app-root`).innerHTML = ``
 	}
 

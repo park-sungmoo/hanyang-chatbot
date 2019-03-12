@@ -36,10 +36,10 @@ class ChatWindowHeader extends HTMLElement {
 
 	onClickMenu() {
 		const chatMenu = this.shadowRoot.querySelector(`chat-window-menu`)
-		if(chatMenu.menuState === `hide`) {		
-			chatMenu.show()			
+		if(chatMenu.menuState === `hide`) {
+			chatMenu.show()
 		} else {
-			chatMenu.hide()			
+			chatMenu.hide()
 		}
 	}
 
