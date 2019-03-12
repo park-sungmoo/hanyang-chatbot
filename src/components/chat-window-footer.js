@@ -60,6 +60,8 @@ class ChatWindowFooter extends HTMLElement {
 					const RAND = Math.floor(Math.random() * data.length)
 					const speack = data[RAND][`message`].split(`(`)[FIRST_TEXT]
 					chatBody.reply(speack)
+				} else {
+					throw new Error(`No XHR`)
 				}
 			}
 		})		

@@ -27,7 +27,7 @@ class ChatWindow extends HTMLElement {
 			<main>
 				<chat-window-header></chat-window-header>
 				<chat-window-body></chat-window-body>
-				<chat-window-footer></chat-window-footer>
+				<chat-window-footer></chat-window-footer>				
 			</main>
 		`
 	}
@@ -45,12 +45,15 @@ const style = html`
 		grid-template-columns: 1fr;
 		grid-template-rows: 80px 1fr 100px;
 	}
+
 	chat-window-header {
 		background-color: #A9BDCE;
 	}
+
 	chat-window-footer {
 		background-color: white;		
 	}
+
 	chat-window-body {
 		background-color: #B2C7D9;
 		overflow: scroll;

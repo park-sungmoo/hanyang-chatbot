@@ -248,7 +248,7 @@ module.exports = {
         //"quote-props": 1,
         "quotes": [1, "backtick"],
         "semi": [1, "never"],
-        "max-params": [1, 2],
+        // "max-params": [1, 2],
         "max-lines-per-function": [2, 30],
 
         // ECMAScript 6
@@ -272,5 +272,6 @@ module.exports = {
         "chrome": true,
 		"whale": true,
 		"i18next": true,
+		"RiveScript": true,
     }
 };

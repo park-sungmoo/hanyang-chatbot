@@ -7,8 +7,32 @@ class ChatWindowBody extends HTMLElement {
 		super()
 
 		this.attachShadow({ mode: `open` })
-		render(this.render(), this.shadowRoot)
+		render(this.render(), this.shadowRoot)		
+	}
+
+	connectedCallback() {
 		this.chatWindow = document.querySelector(`chat-window`)
+
+		this.bot = new RiveScript()
+		this.test = `test`
+
+		this.bot.loadFile(`/hanyang-chatbot/src/libs/test.rive`).then(this.loading_done.bind(this)).catch(this.loading_error)
+	}
+
+	loading_done() {
+		const username = `hy-lion`
+		const sendText = `hello`
+
+		this.bot.sortReplies()		
+
+		this.send(sendText)
+		this.bot.reply(username, sendText).then(reply => {
+			this.reply(reply)
+		})
+	}
+
+	loading_error(error) {
+		throw new Error(`Error when loading files: ${error}`)
 	}
 
 	reply(text) {

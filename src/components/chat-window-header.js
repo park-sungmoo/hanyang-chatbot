@@ -1,4 +1,5 @@
 import {html, render} from '../../node_modules/lit-html/lit-html.js'
+import './chat-window-menu.js'
 
 class ChatWindowHeader extends HTMLElement {
 	constructor() {
@@ -6,14 +7,15 @@ class ChatWindowHeader extends HTMLElement {
 
 		this.attachShadow({ mode: `open` })
 		render(this.render(), this.shadowRoot)
-
+		
 		this.eventClickAlarm = this.onClickAlarm.bind(this)
+		this.eventClickMenu = this.onClickMenu.bind(this)
 	}
 
 	connectedCallback() {
 		this.shadowRoot.querySelector(`.submenu-picture`).addEventListener(`click`, this.onClickSubmenuPicture, true)
 		this.shadowRoot.querySelector(`.submenu-search`).addEventListener(`click`, this.onClickSubmenuSearch, true)
-		this.shadowRoot.querySelector(`.menu-button`).addEventListener(`click`, this.onClickMenu, true)
+		this.shadowRoot.querySelector(`.menu-button`).addEventListener(`click`, this.eventClickMenu, true)
 		this.shadowRoot.querySelector(`.menu-alarm`).addEventListener(`click`, this.eventClickAlarm, true)
 	}
 
@@ -33,7 +35,12 @@ class ChatWindowHeader extends HTMLElement {
 	}
 
 	onClickMenu() {
-		alert(i18next.t(`NO_IMPLEMENT`))
+		const chatMenu = this.shadowRoot.querySelector(`chat-window-menu`)
+		if(chatMenu.menuState === `hide`) {		
+			chatMenu.show()			
+		} else {
+			chatMenu.hide()			
+		}
 	}
 
 	onClickAlarm() {
@@ -71,7 +78,10 @@ class ChatWindowHeader extends HTMLElement {
 				</div>
 				<div class='menu'>		
 					<svg class='menu-alarm on' height='20' width='32' aria-hidden="true" focusable="false" data-prefix="fas" data-icon="bell" class="svg-inline--fa fa-bell fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M224 512c35.32 0 63.97-28.65 63.97-64H160.03c0 35.35 28.65 64 63.97 64zm215.39-149.71c-19.32-20.76-55.47-51.99-55.47-154.29 0-77.7-54.48-139.9-127.94-155.16V32c0-17.67-14.32-32-31.98-32s-31.98 14.33-31.98 32v20.84C118.56 68.1 64.08 130.3 64.08 208c0 102.3-36.15 133.53-55.47 154.29-6 6.45-8.66 14.16-8.61 21.71.11 16.4 12.98 32 32.1 32h383.8c19.12 0 32-15.6 32.1-32 .05-7.55-2.61-15.27-8.61-21.71z"></path></svg>
-					<svg class='menu-button' height='20' width='32' aria-hidden="true" focusable="false" data-prefix="fas" data-icon="bars" class="svg-inline--fa fa-bars fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z"></path></svg>
+					<span class='menu-button-wrap'>
+						<svg class='menu-button' height='20' width='32' aria-hidden="true" focusable="false" data-prefix="fas" data-icon="bars" class="svg-inline--fa fa-bars fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z"></path></svg>
+						<chat-window-menu></chat-window-menu>
+					</span>
 				</div>
 			</main>
 		`
@@ -128,7 +138,7 @@ const style = html`
 		color: #65717C;
 	}
 
-	.submenu > svg:hover, .menu > svg:hover {
+	.submenu > svg:hover, .menu svg:hover {
 		color: black;
 	}
 
@@ -143,10 +153,32 @@ const style = html`
 		top: 50%;
 		transform: translateY(-50%);
 		color: #65717C;
-	}
+	}	
 
 	.menu-alarm:not(.on) {
 		left: -3px;
+	}
+
+	.menu-button-wrap {
+		display: inline-block;
+		vertical-align: middle;				
+		position:relative;
+		height: 20px;
+		top: 50%;
+		transform: translateY(-50%);
+		z-index: 20;
+	}
+
+	.menu-button-wrap > svg {
+		color: #65717C;
+		cursor: pointer;
+	}
+
+	chat-window-menu {
+		display: none;			
+		position: absolute;
+		top: 24px;
+		right: -10px;
 	}
 </style>
 `
