@@ -1,7 +1,7 @@
 import {html, render} from '../../node_modules/lit-html/lit-html.js'
 import Main from '../main.js'
 
-class ChatWindowMenu extends HTMLElement {
+class BotSettingMenu extends HTMLElement {
 	constructor() {
 		super()
 
@@ -9,16 +9,16 @@ class ChatWindowMenu extends HTMLElement {
 		render(this.render(), this.shadowRoot)
 
 		this.menuState = `hide`
-		this.eventClickBotSetting = this.onClickBotSetting.bind(this)
+		this.eventClickChatWindow = this.onClickChatWindow.bind(this)
 	}
 
 	connectedCallback() {
-		this.shadowRoot.querySelector(`.menu .bot-setting`).addEventListener(`click`, this.eventClickBotSetting)
+		this.shadowRoot.querySelector(`.menu .chat-window`).addEventListener(`click`, this.eventClickChatWindow)
 		this.shadowRoot.querySelector(`.menu`).addEventListener(`click`, event => this.onClickOutOfMenu(event))
 	}
 
 	disconnectedCallback() {
-		this.shadowRoot.querySelector(`.menu .bot-setting`).removeEventListener(`click`, this.eventClickBotSetting)
+		this.shadowRoot.querySelector(`.menu .chat-window`).removeEventListener(`click`, this.eventClickChatWindow)
 	}	
 
 	onClickOutOfMenu(event) {
@@ -27,14 +27,14 @@ class ChatWindowMenu extends HTMLElement {
 		}
 	}
 
-	onClickBotSetting() {
+	onClickChatWindow() {
 		this.hide()
-		this.openBotSetting()
+		this.openChatWindow()
 	}
 
-	openBotSetting() {
+	openChatWindow() {
 		Main.loadingDOM()
-		Main.renderBotSettingWindow()
+		Main.renderChatWindow()
 	}
 
 	show() {
@@ -51,7 +51,7 @@ class ChatWindowMenu extends HTMLElement {
 		return html`
 			${style}
 			<ul class='menu'>
-				<li class='bot-setting' title='${i18next.t(`MENU_BOT_SETTING`)}'>${i18next.t(`MENU_BOT_SETTING`)}</li>
+				<li class='chat-window' title='${i18next.t(`MENU_CHAT_WINDOW`)}'>${i18next.t(`MENU_CHAT_WINDOW`)}</li>
 			</ul>
 		`
 	}
@@ -101,4 +101,4 @@ const style = html`
 </style>
 `
 
-customElements.define(`chat-window-menu`, ChatWindowMenu)
+customElements.define(`bot-setting-menu`, BotSettingMenu)

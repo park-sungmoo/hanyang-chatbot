@@ -1,18 +1,39 @@
-import './components/chat-window.js'
+import './chat-window.js'
+import './bot-setting-window.js'
 
-class Main {
+export default class Main {
 	static init() {
-		this.emptyDOM()
+		this.loadingDOM()
 		this.renderChatWindow()
+	}
+
+	static loadingDOM() {
+		const root = document.querySelector(`.app-root`)
+		const loading = document.createElement(`div`)
+		const FIVE = 5
+				
+		this.emptyDOM()
+		loading.classList.add(`loading`)
+		for (let i=0; i < FIVE; i++) {
+			loading.appendChild(document.createElement(`span`))
+		}
+		root.appendChild(loading)
+	}
+
+	static renderChatWindow() {
+		this.emptyDOM()
+		const chatWindow = document.createElement(`chat-window`)
+		document.querySelector(`.app-root`).appendChild(chatWindow)
+	}
+
+	static renderBotSettingWindow() {
+		this.emptyDOM()
+		const botSettingWIndow = document.createElement(`bot-setting-window`)
+		document.querySelector(`.app-root`).appendChild(botSettingWIndow)
 	}
 
 	static emptyDOM() {
 		document.querySelector(`.app-root`).innerHTML = ``
-	}
-
-	static renderChatWindow() {
-		const chatWindow = document.createElement(`chat-window`)
-		document.querySelector(`.app-root`).appendChild(chatWindow)
 	}
 }
 

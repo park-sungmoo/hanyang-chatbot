@@ -1,7 +1,7 @@
-import {html, render} from '../../node_modules/lit-html/lit-html.js'
-import './chat-window-header.js'
-import './chat-window-body.js'
-import './chat-window-footer.js'
+import {html, render} from '../node_modules/lit-html/lit-html.js'
+import './components/chat-window-header.js'
+import './components/chat-window-body.js'
+import './components/chat-window-footer.js'
 
 class ChatWindow extends HTMLElement {
 	constructor() {
