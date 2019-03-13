@@ -15,7 +15,8 @@ class ChatWindowBody extends HTMLElement {
 
 		this.bot = new RiveScript()
 
-		this.bot.loadFile(`/hanyang-chatbot/src/libs/test.rive`).then(this.loading_done.bind(this)).catch(this.loading_error)
+		// 라이브 스크립트 테스트 코드
+		// this.bot.loadFile(`/hanyang-chatbot/src/libs/hy-lion.rive`).then(this.loading_done.bind(this)).catch(this.loading_error)
 	}
 
 	loading_done() {

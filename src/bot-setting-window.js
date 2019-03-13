@@ -37,6 +37,11 @@ const style = html`
 	bot-setting-header {
 		background-color: #A9BDCE;
 	}
+
+	bot-setting-body {		
+		white-space: pre;
+		padding-left: 10px;
+	}
 </style>
 `
 

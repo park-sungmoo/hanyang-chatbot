@@ -8,6 +8,7 @@ export default {
 	BOT_SETTING_TITLE: `하이리온 봇 설정`,	
 	MENU_BOT_SETTING: `봇 커스텀 설정`,	
 	MENU_CHAT_WINDOW: `채팅창으로 이동`,
+	CONVERT_RIVESCRIPT: `RiveScript로 전환`,
 
 	NO_IMPLEMENT: `현재는 지원하지 않는 기능입니다.`,
 

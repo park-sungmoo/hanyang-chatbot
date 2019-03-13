@@ -4,19 +4,21 @@ import './bot-setting-menu.js'
 class BotSettingHeader extends HTMLElement {
 	constructor() {
 		super()
-
 		this.attachShadow({ mode: `open` })
 		render(this.render(), this.shadowRoot)
 
 		this.eventClickMenu = this.onClickMenu.bind(this)
+		this.eventClickRivescript = this.onClickRivescript.bind(this)
 	}
 
 	connectedCallback() {
 		this.shadowRoot.querySelector(`.menu-button`).addEventListener(`click`, this.eventClickMenu, true)
+		this.shadowRoot.querySelector(`.button-rivescript`).addEventListener(`click`, this.eventClickRivescript, true)
 	}
 
 	disconnectedCallback() {
 		this.shadowRoot.querySelector(`.menu-button`).removeEventListener(`click`, this.eventClickMenu, true)
+		this.shadowRoot.querySelector(`.button-rivescript`).removeEventListener(`click`, this.eventClickRivescript, true)
 	}
 
 	onClickMenu() {
@@ -28,6 +30,46 @@ class BotSettingHeader extends HTMLElement {
 		}
 	}
 
+	onClickRivescript() {
+		const body = document.querySelector(`bot-setting-window`).shadowRoot.querySelector(`bot-setting-body`)
+		const buttonRivescript = this.shadowRoot.querySelector(`.button-rivescript`)
+
+		this.emptyBody()
+		if (buttonRivescript.classList.contains(`on`)) {
+			buttonRivescript.classList.remove(`on`)
+		} else {
+			buttonRivescript.classList.add(`on`)
+			this.readRivescript().then(script => {			
+				body.textContent = script
+			}).catch(error => {
+				throw new Error(`No read Rivescript: ${error}`)
+			})
+		}				
+	}
+
+	emptyBody() {
+		document.querySelector(`bot-setting-window`).shadowRoot.querySelector(`bot-setting-body`).innerHTML = ``		
+	}
+
+	readRivescript() {
+		return new Promise((resolve, reject) => {
+			const xhr = new XMLHttpRequest()
+			const COMPLETE = 200
+
+			xhr.open(`GET`, `/hanyang-chatbot/src/libs/hy-lion.rive`)
+			xhr.send()
+			xhr.addEventListener(`readystatechange`, () => {
+				if (xhr.readyState === XMLHttpRequest.DONE) {
+					if (xhr.status === COMPLETE) {
+						resolve(xhr.response)
+					} else {
+						reject(xhr.statusText)
+					}
+				}
+			})
+		})
+	}
+
 	render() {
 		return html`
 			${style}
@@ -35,8 +77,11 @@ class BotSettingHeader extends HTMLElement {
 				<div class='setting-img-wrap'>
 					<span class='setting-img'></span>
 				</div>
-				<div class='title-wrap'>
+				<div class='title-submenu'>
 					<div class='title'>${i18next.t(`BOT_SETTING_TITLE`)}</div>
+					<div class='submenu'>
+						<button class='button-rivescript' title='${i18next.t(`CONVERT_RIVESCRIPT`)}'>${i18next.t(`CONVERT_RIVESCRIPT`)}</button>
+					</div>
 				</div>
 				<div class='menu'>		
 					<button class='menu-button' title='메뉴'>
@@ -80,7 +125,7 @@ const style = html`
     	background-size: contain;
 	}
 
-	.title-wrap {
+	.title-submenu {
 		display:grid;
 		grid-template-rows: 1fr 1fr;
 	}
@@ -90,6 +135,23 @@ const style = html`
 		font-size: 12px;
 		font-weight: bold;
 		color: #4A4C4E;
+	}
+
+	.button-rivescript {
+		border: 0;
+		background-color: hsl(162, 100%, 0%);
+		color: white;
+		box-sizing: border-box;
+		height: 20px;
+		border-radius: 2px;
+	}
+
+	.button-rivescript:not(.on):hover, .button-rivescript.on {
+		background-color: hsl(162, 100%, 43%);
+	}
+
+	.button-rivescript.on:hover {
+		background-color: hsl(162, 100%, 0%);
 	}
 
 	.menu svg:hover {
