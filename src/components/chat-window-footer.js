@@ -51,7 +51,7 @@ class ChatWindowFooter extends HTMLElement {
 		if(!xhr) {
 			throw new Error(`XHR 호출 불가`)
 		}		
-		xhr.open(`GET`, `http://cors-anywhere.herokuapp.com/https://pingpong.us/api/reaction.php?custom=basic&query=${encodeURIComponent(text)}`)	
+		xhr.open(`GET`, `https://cors-anywhere.herokuapp.com/https://pingpong.us/api/reaction.php?custom=basic&query=${encodeURIComponent(text)}`)	
 
 		xhr.addEventListener(`readystatechange`, () => {
 			if(xhr.readyState === COMPLETED) {

@@ -114,7 +114,7 @@ const style = html`
 		width: 50px;
 		height: 50px;
 		border-radius: 25px;
-		background-image: url('/hanyang-chatbot/src/images/hi-lion.png');
+		background-image: url('/src/images/hi-lion.png');
 		background-repeat: no-repeat;
     	background-position: center;
     	background-size: contain;
