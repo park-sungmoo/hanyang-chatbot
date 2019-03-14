@@ -75,7 +75,7 @@ const style = html`
 		width: 40px;
 		height: 40px;
 		border-radius: 25px;
-		background-image: url('/src/images/hi-lion.png');
+		background-image: url('/images/hi-lion.png');
 		background-repeat: no-repeat;
     	background-position: center;
     	background-size: contain;

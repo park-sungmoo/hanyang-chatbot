@@ -1,0 +1,14 @@
+extends layout
+
+block content
+  div.app-root
+    div.loading
+      span
+      span
+      span
+      span
+      span
+  script(type='text/javascript', src='https://unpkg.com/i18next/i18next.js')
+  script(type='text/javascript', src='https://unpkg.com/rivescript@latest/dist/rivescript.min.js')
+  script(type='module', src='/javascripts/i18n-contents.js')
+  script(type='module', src='/javascripts/main-bundle.js')

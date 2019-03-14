@@ -44,7 +44,7 @@ module.exports = {
         // 비교 연산자(==)를 할당 연산자(=)로 쓰지마라
         "no-cond-assign": 2,
         // console문은 디버깅 이후 제거할 것
-        "no-console": 1,
+        "no-console": [1, { allow: ["warn", "error"] }],
         // 적절치 못한 조건문
         "no-constant-condition": 2,
         // 적절치 못한 정규표현식
@@ -163,7 +163,7 @@ module.exports = {
         // 루프 안의 외부 변수 참조 금지(클로저)
         "no-loop-func": 1,
         // 의미없는 숫자 사용 금지
-        "no-magic-numbers": 1,
+        // "no-magic-numbers": 1,
         // 의미없는 빈칸 금지
         "no-multi-spaces": 1,
         // \ 로 띄어쓰기 금지, 표준이 아닌데 관행으로 남음

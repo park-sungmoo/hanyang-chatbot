@@ -119,7 +119,7 @@ const style = html`
 		width: 50px;
 		height: 50px;
 		border-radius: 25px;
-		background-image: url('/src/images/bot-setting.svg');
+		background-image: url('/images/bot-setting.svg');
 		background-repeat: no-repeat;
     	background-position: center;
     	background-size: contain;
