@@ -1,6 +1,6 @@
 const path = require(`path`)
 const UglifyJsPlugin = require(`uglifyjs-webpack-plugin`)
-// 
+
 module.exports = {
 	entry: {
 		"main-bundle": `./src/main.js`,
@@ -13,6 +13,21 @@ module.exports = {
 	},
 	module: {
 		rules: [
+			{
+				test: /\.m?js$/,
+				exclude: /(node_modules|bower_components)/,
+				use: {
+					loader: `babel-loader`,
+					options: {
+						presets: [`@babel/preset-env`],
+					},
+				},
+			},
+			{
+				test: /\.js$/,
+				exclude: /node_modules/,
+				use: [`eslint-loader`],
+			},
 			{
 				test: /\.css$/,
 				use: [

@@ -93,25 +93,24 @@
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _locales_ko_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(23);
 
-
 i18next.init({
-	lng: `ko`,
-	debug: true,
-	resources: {
-		ko: {
-			translation: _locales_ko_js__WEBPACK_IMPORTED_MODULE_0__["default"],
-		},
-	},
-}).then(() => {
-	const content = document.querySelectorAll(`[i18n-content]`)
-	if (content) {
-		content.forEach(node => {
-			const key = node.getAttribute(`i18n-content`)
-			node.innerHTML = i18next.t(key)
-		})
-	}
-})
+  lng: "ko",
+  debug: true,
+  resources: {
+    ko: {
+      translation: _locales_ko_js__WEBPACK_IMPORTED_MODULE_0__["default"]
+    }
+  }
+}).then(function () {
+  var content = document.querySelectorAll("[i18n-content]");
 
+  if (content) {
+    content.forEach(function (node) {
+      var key = node.getAttribute("i18n-content");
+      node.innerHTML = i18next.t(key);
+    });
+  }
+});
 
 /***/ }),
 
@@ -121,22 +120,17 @@ i18next.init({
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
-	APP_NAME: `한양 챗봇`,
-
-	BOT_NAME: `하이리온 봇`,
-	MENU_ALARM_TITLE: `알람`,
-	MENU_TITLE: `메뉴`,
-
-	BOT_SETTING_TITLE: `하이리온 봇 설정`,	
-	MENU_BOT_SETTING: `봇 커스텀 설정`,	
-	MENU_CHAT_WINDOW: `채팅창으로 이동`,
-	CONVERT_RIVESCRIPT: `RiveScript로 전환`,
-
-	NO_IMPLEMENT: `현재는 지원하지 않는 기능입니다.`,
-
-	SEND_MESSAGE: `전송`,
+  APP_NAME: "\uD55C\uC591 \uCC57\uBD07",
+  BOT_NAME: "\uD558\uC774\uB9AC\uC628 \uBD07",
+  MENU_ALARM_TITLE: "\uC54C\uB78C",
+  MENU_TITLE: "\uBA54\uB274",
+  BOT_SETTING_TITLE: "\uD558\uC774\uB9AC\uC628 \uBD07 \uC124\uC815",
+  MENU_BOT_SETTING: "\uBD07 \uCEE4\uC2A4\uD140 \uC124\uC815",
+  MENU_CHAT_WINDOW: "\uCC44\uD305\uCC3D\uC73C\uB85C \uC774\uB3D9",
+  CONVERT_RIVESCRIPT: "RiveScript\uB85C \uC804\uD658",
+  NO_IMPLEMENT: "\uD604\uC7AC\uB294 \uC9C0\uC6D0\uD558\uC9C0 \uC54A\uB294 \uAE30\uB2A5\uC785\uB2C8\uB2E4.",
+  SEND_MESSAGE: "\uC804\uC1A1"
 });
-
 
 /***/ })
 

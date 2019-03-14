@@ -2,3 +2,4 @@ node_modules
 .vscode
 goorm.manifest
 *.log
+server/public/javascripts/*

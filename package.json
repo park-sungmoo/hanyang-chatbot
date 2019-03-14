@@ -4,11 +4,13 @@
   "description": "hanyang university chatbot",
   "main": "index.js",
   "scripts": {
-	"test": "npm test",
-	"copy:images": "cp -rf ./src/images ./server/public/",
-	"copy:assets": "cp -rf ./src/assets ./server/public/",
-	"copy": "npm run copy:images && npm run copy:assets",
-    "build": "npm run copy && webpack --hide-modules --colors --mode=none"
+    "test": "npm test",
+    "copy:images": "cp -rf ./src/images ./server/public/",
+    "copy:assets": "cp -rf ./src/assets ./server/public/",
+    "copy": "npm run copy:images && npm run copy:assets",
+    "bundle": "webpack --hide-modules --colors --mode=none",
+	"build": "npm run copy && npm run bundle",
+	"server": "npm run build && cd server && npm start"
   },
   "repository": {
     "type": "git",
@@ -21,9 +23,14 @@
   },
   "homepage": "https://github.com/taeuk-gang/hanyang-chatbot#readme",
   "devDependencies": {
+    "@babel/core": "^7.3.4",
+    "@babel/preset-env": "^7.3.4",
+    "babel": "^6.23.0",
+    "babel-loader": "^8.0.5",
     "css-loader": "^2.1.1",
-    "eslint": "^5.3.0",
+    "eslint": "^5.15.1",
     "eslint-config-airbnb": "^17.1.0",
+    "eslint-loader": "^2.1.2",
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-jsx-a11y": "^6.1.1",
     "eslint-plugin-react": "^7.11.0",
@@ -36,6 +43,7 @@
   },
   "dependencies": {
     "express": "^4.16.4",
+    "fs": "0.0.1-security",
     "i18next": "^15.0.6",
     "lit-html": "^1.0.0"
   }

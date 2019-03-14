@@ -93,47 +93,69 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Main; });
 /* harmony import */ var _chat_window_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
 /* harmony import */ var _bot_setting_window_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(19);
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
 
 
-class Main {
-	static init() {
-		this.loadingDOM()
-		this.renderChatWindow()
-	}
 
-	static loadingDOM() {
-		const root = document.querySelector(`.app-root`)
-		const loading = document.createElement(`div`)
-		const FIVE = 5
-				
-		this.emptyDOM()
-		loading.classList.add(`loading`)
-		for (let i=0; i < FIVE; i++) {
-			loading.appendChild(document.createElement(`span`))
-		}
-		root.appendChild(loading)
-	}
+var Main =
+/*#__PURE__*/
+function () {
+  function Main() {
+    _classCallCheck(this, Main);
+  }
 
-	static renderChatWindow() {
-		this.emptyDOM()
-		const chatWindow = document.createElement(`chat-window`)
-		document.querySelector(`.app-root`).appendChild(chatWindow)
-	}
+  _createClass(Main, null, [{
+    key: "init",
+    value: function init() {
+      this.loadingDOM();
+      this.renderChatWindow();
+    }
+  }, {
+    key: "loadingDOM",
+    value: function loadingDOM() {
+      var root = document.querySelector(".app-root");
+      var loading = document.createElement("div");
+      var FIVE = 5;
+      this.emptyDOM();
+      loading.classList.add("loading");
 
-	static renderBotSettingWindow() {
-		this.emptyDOM()
-		const botSettingWIndow = document.createElement(`bot-setting-window`)
-		document.querySelector(`.app-root`).appendChild(botSettingWIndow)
-	}
+      for (var i = 0; i < FIVE; i++) {
+        loading.appendChild(document.createElement("span"));
+      }
 
-	static emptyDOM() {
-		document.querySelector(`.app-root`).innerHTML = ``
-	}
-}
+      root.appendChild(loading);
+    }
+  }, {
+    key: "renderChatWindow",
+    value: function renderChatWindow() {
+      this.emptyDOM();
+      var chatWindow = document.createElement("chat-window");
+      document.querySelector(".app-root").appendChild(chatWindow);
+    }
+  }, {
+    key: "renderBotSettingWindow",
+    value: function renderBotSettingWindow() {
+      this.emptyDOM();
+      var botSettingWIndow = document.createElement("bot-setting-window");
+      document.querySelector(".app-root").appendChild(botSettingWIndow);
+    }
+  }, {
+    key: "emptyDOM",
+    value: function emptyDOM() {
+      document.querySelector(".app-root").innerHTML = "";
+    }
+  }]);
 
-Main.init()
+  return Main;
+}();
 
+
+Main.init();
 
 /***/ }),
 /* 1 */
@@ -145,71 +167,102 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_chat_window_header_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(13);
 /* harmony import */ var _components_chat_window_body_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(15);
 /* harmony import */ var _components_chat_window_footer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(18);
+function _templateObject2() {
+  var data = _taggedTemplateLiteral(["\n<style scoped>\n\tmain {\n\t\tposition: absolute;\t\t\n\t\ttop: 0;\n\t\tleft: 0;\t\t\n\t\twidth: 100vw;\n\t\theight: 100vh;\n\t\tdisplay: grid;\n\t\tgrid-template-columns: 1fr;\n\t\tgrid-template-rows: 80px 1fr 100px;\n\t}\n\n\tchat-window-header {\n\t\tbackground-color: #A9BDCE;\n\t}\n\n\tchat-window-footer {\n\t\tbackground-color: white;\t\t\n\t}\n\n\tchat-window-body {\n\t\tbackground-color: #B2C7D9;\n\t\toverflow: scroll;\n\t}\n</style>\n"]);
 
+  _templateObject2 = function _templateObject2() {
+    return data;
+  };
 
-
-
-
-class ChatWindow extends HTMLElement {
-	constructor() {
-		super()
-
-		this.attachShadow({ mode: `open` })
-		Object(_node_modules_lit_html_lit_html_js__WEBPACK_IMPORTED_MODULE_0__["render"])(this.render(), this.shadowRoot)
-	}
-
-	connectedCallback() {
-		this.scrollToLast()
-	}
-
-	scrollToLast() {
-		const chatBody = this.shadowRoot.querySelector(`chat-window-body`)
-
-		chatBody.scrollTop = chatBody.scrollHeight
-	}
-
-	render() {
-		return _node_modules_lit_html_lit_html_js__WEBPACK_IMPORTED_MODULE_0__["html"]`
-			${style}
-			<main>
-				<chat-window-header></chat-window-header>
-				<chat-window-body></chat-window-body>
-				<chat-window-footer></chat-window-footer>				
-			</main>
-		`
-	}
+  return data;
 }
 
-const style = _node_modules_lit_html_lit_html_js__WEBPACK_IMPORTED_MODULE_0__["html"]`
-<style scoped>
-	main {
-		position: absolute;		
-		top: 0;
-		left: 0;		
-		width: 100vw;
-		height: 100vh;
-		display: grid;
-		grid-template-columns: 1fr;
-		grid-template-rows: 80px 1fr 100px;
-	}
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
-	chat-window-header {
-		background-color: #A9BDCE;
-	}
+function _templateObject() {
+  var data = _taggedTemplateLiteral(["\n\t\t\t", "\n\t\t\t<main>\n\t\t\t\t<chat-window-header></chat-window-header>\n\t\t\t\t<chat-window-body></chat-window-body>\n\t\t\t\t<chat-window-footer></chat-window-footer>\t\t\t\t\n\t\t\t</main>\n\t\t"]);
 
-	chat-window-footer {
-		background-color: white;		
-	}
+  _templateObject = function _templateObject() {
+    return data;
+  };
 
-	chat-window-body {
-		background-color: #B2C7D9;
-		overflow: scroll;
-	}
-</style>
-`
+  return data;
+}
 
-customElements.define(`chat-window`, ChatWindow)
+function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _wrapNativeSuper(Class) { var _cache = typeof Map === "function" ? new Map() : undefined; _wrapNativeSuper = function _wrapNativeSuper(Class) { if (Class === null || !_isNativeFunction(Class)) return Class; if (typeof Class !== "function") { throw new TypeError("Super expression must either be null or a function"); } if (typeof _cache !== "undefined") { if (_cache.has(Class)) return _cache.get(Class); _cache.set(Class, Wrapper); } function Wrapper() { return _construct(Class, arguments, _getPrototypeOf(this).constructor); } Wrapper.prototype = Object.create(Class.prototype, { constructor: { value: Wrapper, enumerable: false, writable: true, configurable: true } }); return _setPrototypeOf(Wrapper, Class); }; return _wrapNativeSuper(Class); }
+
+function isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+function _construct(Parent, args, Class) { if (isNativeReflectConstruct()) { _construct = Reflect.construct; } else { _construct = function _construct(Parent, args, Class) { var a = [null]; a.push.apply(a, args); var Constructor = Function.bind.apply(Parent, a); var instance = new Constructor(); if (Class) _setPrototypeOf(instance, Class.prototype); return instance; }; } return _construct.apply(null, arguments); }
+
+function _isNativeFunction(fn) { return Function.toString.call(fn).indexOf("[native code]") !== -1; }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+
+
+
+
+
+var ChatWindow =
+/*#__PURE__*/
+function (_HTMLElement) {
+  _inherits(ChatWindow, _HTMLElement);
+
+  function ChatWindow() {
+    var _this;
+
+    _classCallCheck(this, ChatWindow);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(ChatWindow).call(this));
+
+    _this.attachShadow({
+      mode: "open"
+    });
+
+    Object(_node_modules_lit_html_lit_html_js__WEBPACK_IMPORTED_MODULE_0__["render"])(_this.render(), _this.shadowRoot);
+    return _this;
+  }
+
+  _createClass(ChatWindow, [{
+    key: "connectedCallback",
+    value: function connectedCallback() {
+      this.scrollToLast();
+    }
+  }, {
+    key: "scrollToLast",
+    value: function scrollToLast() {
+      var chatBody = this.shadowRoot.querySelector("chat-window-body");
+      chatBody.scrollTop = chatBody.scrollHeight;
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      return Object(_node_modules_lit_html_lit_html_js__WEBPACK_IMPORTED_MODULE_0__["html"])(_templateObject(), style);
+    }
+  }]);
+
+  return ChatWindow;
+}(_wrapNativeSuper(HTMLElement));
+
+var style = Object(_node_modules_lit_html_lit_html_js__WEBPACK_IMPORTED_MODULE_0__["html"])(_templateObject2());
+customElements.define("chat-window", ChatWindow);
 
 /***/ }),
 /* 2 */
@@ -1537,208 +1590,145 @@ const templateCaches = new Map();
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_lit_html_lit_html_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(2);
 /* harmony import */ var _chat_window_menu_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(14);
+function _templateObject2() {
+  var data = _taggedTemplateLiteral(["\n<style scoped>\n\t* {\n\t\tuser-select: none;\n\t}\n\n\tmain {\n\t\twidth: 100%;\n\t\theight: 100%;\n\t\tbox-sizing: border-box;\t\t\n\t\tdisplay: grid;\n\t\tgrid-template-columns: 80px 1fr 100px;\n\t\tgrid-template-rows: 1fr;\n\t}\n\n\t.bot-profile {\n\t\tposition: relative;\n\t\tpadding: 15px;\n\t}\n\t\n\t.bot-profile-img {\n\t\tposition: absolute;\n\t\twidth: 50px;\n\t\theight: 50px;\n\t\tborder-radius: 25px;\n\t\tbackground-image: url('/images/hi-lion.png');\n\t\tbackground-repeat: no-repeat;\n    \tbackground-position: center;\n    \tbackground-size: contain;\n\t}\n\n\t.name-submenu {\n\t\tdisplay:grid;\n\t\tgrid-template-rows: 1fr 1fr;\n\t}\n\n\t.name {\n\t\tpadding-top: 20px;\n\t\tfont-size: 12px;\n\t\tfont-weight: bold;\n\t\tcolor: #4A4C4E;\n\t}\n\n\t.submenu > button {\n\t\tvertical-align: middle;\t\n\t\tpadding-left: 2px;\n\t\tcursor: pointer;\n\t\tborder: 0;\n\t\tbackground-color: transparent;\n\t\tpadding: 10px;\n\t}\n\n\t.submenu > button:first-child {\n\t\tpadding-left: 0;\n\t}\n\n\t.submenu-search svg {\n\t\tcolor: #65717C;\n\t}\n\n\t.submenu svg:hover, .menu svg:hover {\n\t\tcolor: black;\n\t}\n\n\t.menu {\n\t\ttext-align: center;\n\t}\n\n\t.menu > * {\n\t\tvertical-align: middle;\t\n\t\tcursor: pointer;\t\t\n\t\tposition:relative;\n\t\ttop: 50%;\n\t\ttransform: translateY(-50%);\t\t\n\t}\n\n\t.menu-alarm:not(.on) {\n\t\tleft: -4px;\n\t}\n\n\t.menu-alarm svg {\n\t\tcolor: #65717C;\n\t}\n\n\t.menu-alarm, .menu-button {\n\t\tvertical-align: middle;\t\t\t\t\n\t\tposition:relative;\n\t\ttop: 50%;\n\t\ttransform: translateY(-50%);\n\t\tz-index: 20;\n\t\tborder: 0;\n\t\tbackground-color: transparent;\n\t\tpadding: 0;\n\t}\n\n\t.menu-button > svg {\n\t\tcolor: #65717C;\n\t\tcursor: pointer;\n\t}\n\n\tchat-window-menu {\n\t\tdisplay: none;\t\t\t\n\t\tposition: absolute;\n\t\ttop: 24px;\n\t\tright: -10px;\n\t}\n</style>\n"]);
 
+  _templateObject2 = function _templateObject2() {
+    return data;
+  };
 
-
-class ChatWindowHeader extends HTMLElement {
-	constructor() {
-		super()
-
-		this.attachShadow({ mode: `open` })
-		Object(_node_modules_lit_html_lit_html_js__WEBPACK_IMPORTED_MODULE_0__["render"])(this.render(), this.shadowRoot)
-		
-		this.eventClickAlarm = this.onClickAlarm.bind(this)
-		this.eventClickMenu = this.onClickMenu.bind(this)
-	}
-
-	connectedCallback() {
-		this.shadowRoot.querySelector(`.submenu-search`).addEventListener(`click`, this.onClickSubmenuSearch, true)
-		this.shadowRoot.querySelector(`.menu-button`).addEventListener(`click`, this.eventClickMenu, true)
-		this.shadowRoot.querySelector(`.menu-alarm`).addEventListener(`click`, this.eventClickAlarm, true)
-	}
-
-	disconnectedCallback() {
-		this.shadowRoot.querySelector(`.submenu-search`).removeEventListener(`click`, this.onClickSubmenuSearch, true)
-		this.shadowRoot.querySelector(`.menu-button`).removeEventListener(`click`, this.eventClickMenu, true)
-		this.shadowRoot.querySelector(`.menu-alarm`).removeEventListener(`click`, this.eventClickAlarm, true)
-	}
-
-	onClickSubmenuPicture() {
-		alert(i18next.t(`NO_IMPLEMENT`))
-	}
-
-	onClickSubmenuSearch() {
-		alert(i18next.t(`NO_IMPLEMENT`))
-	}
-
-	onClickMenu() {
-		const chatMenu = this.shadowRoot.querySelector(`chat-window-menu`)
-		if(chatMenu.menuState === `hide`) {
-			chatMenu.show()
-		} else {
-			chatMenu.hide()
-		}
-	}
-
-	onClickAlarm() {
-		this.toggleAlarmIcon()
-	}
-
-	toggleAlarmIcon() {
-		const alarmButton = this.shadowRoot.querySelector(`.menu-alarm`)
-		if(alarmButton.classList.contains(`on`)) {
-			alarmButton.classList.remove(`on`)
-			alarmButton.innerHTML = `
-			<svg height='20' width='32' aria-hidden="true" focusable="false" data-prefix="fas" data-icon="bell" class="svg-inline--fa fa-bell fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M633.82 458.1l-90.62-70.05c.19-1.38.8-2.66.8-4.06.05-7.55-2.61-15.27-8.61-21.71-19.32-20.76-55.47-51.99-55.47-154.29 0-77.7-54.48-139.9-127.94-155.16V32c0-17.67-14.32-32-31.98-32s-31.98 14.33-31.98 32v20.84c-40.33 8.38-74.66 31.07-97.59 62.57L45.47 3.37C38.49-2.05 28.43-.8 23.01 6.18L3.37 31.45C-2.05 38.42-.8 48.47 6.18 53.9l588.35 454.73c6.98 5.43 17.03 4.17 22.46-2.81l19.64-25.27c5.42-6.97 4.17-17.02-2.81-22.45zM157.23 251.54c-8.61 67.96-36.41 93.33-52.62 110.75-6 6.45-8.66 14.16-8.61 21.71.11 16.4 12.98 32 32.1 32h241.92L157.23 251.54zM320 512c35.32 0 63.97-28.65 63.97-64H256.03c0 35.35 28.65 64 63.97 64z"></path></svg>
-			`
-			return
-		}
-		alarmButton.classList.add(`on`)
-		alarmButton.innerHTML = `
-		<svg height='20' width='32' aria-hidden="true" focusable="false" data-prefix="fas" data-icon="bell" class="svg-inline--fa fa-bell fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M224 512c35.32 0 63.97-28.65 63.97-64H160.03c0 35.35 28.65 64 63.97 64zm215.39-149.71c-19.32-20.76-55.47-51.99-55.47-154.29 0-77.7-54.48-139.9-127.94-155.16V32c0-17.67-14.32-32-31.98-32s-31.98 14.33-31.98 32v20.84C118.56 68.1 64.08 130.3 64.08 208c0 102.3-36.15 133.53-55.47 154.29-6 6.45-8.66 14.16-8.61 21.71.11 16.4 12.98 32 32.1 32h383.8c19.12 0 32-15.6 32.1-32 .05-7.55-2.61-15.27-8.61-21.71z"></path></svg>
-		`
-	}
-
-	render() {
-		return _node_modules_lit_html_lit_html_js__WEBPACK_IMPORTED_MODULE_0__["html"]`
-			${style}
-			<main>
-				<div class='bot-profile'>
-					<span class='bot-profile-img'></span>
-				</div>
-				<div class='name-submenu'>
-					<div class='name'>${i18next.t(`BOT_NAME`)}</div>
-					<div class='submenu'>
-						<button class='submenu-search'>
-							<svg height='14' width='14' aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search" class="svg-inline--fa fa-search fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"></path></svg>
-						</button>						
-					</div>
-				</div>
-				<div class='menu'>
-					<button class='menu-alarm on' title='${i18next.t(`MENU_ALARM_TITLE`)}'>
-						<svg height='20' width='32' aria-hidden="true" focusable="false" data-prefix="fas" data-icon="bell" class="svg-inline--fa fa-bell fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M224 512c35.32 0 63.97-28.65 63.97-64H160.03c0 35.35 28.65 64 63.97 64zm215.39-149.71c-19.32-20.76-55.47-51.99-55.47-154.29 0-77.7-54.48-139.9-127.94-155.16V32c0-17.67-14.32-32-31.98-32s-31.98 14.33-31.98 32v20.84C118.56 68.1 64.08 130.3 64.08 208c0 102.3-36.15 133.53-55.47 154.29-6 6.45-8.66 14.16-8.61 21.71.11 16.4 12.98 32 32.1 32h383.8c19.12 0 32-15.6 32.1-32 .05-7.55-2.61-15.27-8.61-21.71z"></path></svg>
-					</button>					
-					<button class='menu-button' title='${i18next.t(`MENU_TITLE`)}'>
-						<svg height='20' width='32' aria-hidden="true" focusable="false" data-prefix="fas" data-icon="bars" class="svg-inline--fa fa-bars fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z"></path></svg>
-						<chat-window-menu></chat-window-menu>
-					</button>
-				</div>
-			</main>
-		`
-	}
+  return data;
 }
 
-const style = _node_modules_lit_html_lit_html_js__WEBPACK_IMPORTED_MODULE_0__["html"]`
-<style scoped>
-	* {
-		user-select: none;
-	}
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
-	main {
-		width: 100%;
-		height: 100%;
-		box-sizing: border-box;		
-		display: grid;
-		grid-template-columns: 80px 1fr 100px;
-		grid-template-rows: 1fr;
-	}
+function _templateObject() {
+  var data = _taggedTemplateLiteral(["\n\t\t\t", "\n\t\t\t<main>\n\t\t\t\t<div class='bot-profile'>\n\t\t\t\t\t<span class='bot-profile-img'></span>\n\t\t\t\t</div>\n\t\t\t\t<div class='name-submenu'>\n\t\t\t\t\t<div class='name'>", "</div>\n\t\t\t\t\t<div class='submenu'>\n\t\t\t\t\t\t<button class='submenu-search'>\n\t\t\t\t\t\t\t<svg height='14' width='14' aria-hidden=\"true\" focusable=\"false\" data-prefix=\"fas\" data-icon=\"search\" class=\"svg-inline--fa fa-search fa-w-16\" role=\"img\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 512 512\"><path fill=\"currentColor\" d=\"M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z\"></path></svg>\n\t\t\t\t\t\t</button>\t\t\t\t\t\t\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t\t<div class='menu'>\n\t\t\t\t\t<button class='menu-alarm on' title='", "'>\n\t\t\t\t\t\t<svg height='20' width='32' aria-hidden=\"true\" focusable=\"false\" data-prefix=\"fas\" data-icon=\"bell\" class=\"svg-inline--fa fa-bell fa-w-14\" role=\"img\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 448 512\"><path fill=\"currentColor\" d=\"M224 512c35.32 0 63.97-28.65 63.97-64H160.03c0 35.35 28.65 64 63.97 64zm215.39-149.71c-19.32-20.76-55.47-51.99-55.47-154.29 0-77.7-54.48-139.9-127.94-155.16V32c0-17.67-14.32-32-31.98-32s-31.98 14.33-31.98 32v20.84C118.56 68.1 64.08 130.3 64.08 208c0 102.3-36.15 133.53-55.47 154.29-6 6.45-8.66 14.16-8.61 21.71.11 16.4 12.98 32 32.1 32h383.8c19.12 0 32-15.6 32.1-32 .05-7.55-2.61-15.27-8.61-21.71z\"></path></svg>\n\t\t\t\t\t</button>\t\t\t\t\t\n\t\t\t\t\t<button class='menu-button' title='", "'>\n\t\t\t\t\t\t<svg height='20' width='32' aria-hidden=\"true\" focusable=\"false\" data-prefix=\"fas\" data-icon=\"bars\" class=\"svg-inline--fa fa-bars fa-w-14\" role=\"img\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 448 512\"><path fill=\"currentColor\" d=\"M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z\"></path></svg>\n\t\t\t\t\t\t<chat-window-menu></chat-window-menu>\n\t\t\t\t\t</button>\n\t\t\t\t</div>\n\t\t\t</main>\n\t\t"]);
 
-	.bot-profile {
-		position: relative;
-		padding: 15px;
-	}
-	
-	.bot-profile-img {
-		position: absolute;
-		width: 50px;
-		height: 50px;
-		border-radius: 25px;
-		background-image: url('/images/hi-lion.png');
-		background-repeat: no-repeat;
-    	background-position: center;
-    	background-size: contain;
-	}
+  _templateObject = function _templateObject() {
+    return data;
+  };
 
-	.name-submenu {
-		display:grid;
-		grid-template-rows: 1fr 1fr;
-	}
+  return data;
+}
 
-	.name {
-		padding-top: 20px;
-		font-size: 12px;
-		font-weight: bold;
-		color: #4A4C4E;
-	}
+function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
-	.submenu > button {
-		vertical-align: middle;	
-		padding-left: 2px;
-		cursor: pointer;
-		border: 0;
-		background-color: transparent;
-		padding: 10px;
-	}
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-	.submenu > button:first-child {
-		padding-left: 0;
-	}
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
-	.submenu-search svg {
-		color: #65717C;
-	}
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
-	.submenu svg:hover, .menu svg:hover {
-		color: black;
-	}
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-	.menu {
-		text-align: center;
-	}
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
-	.menu > * {
-		vertical-align: middle;	
-		cursor: pointer;		
-		position:relative;
-		top: 50%;
-		transform: translateY(-50%);		
-	}
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
-	.menu-alarm:not(.on) {
-		left: -4px;
-	}
+function _wrapNativeSuper(Class) { var _cache = typeof Map === "function" ? new Map() : undefined; _wrapNativeSuper = function _wrapNativeSuper(Class) { if (Class === null || !_isNativeFunction(Class)) return Class; if (typeof Class !== "function") { throw new TypeError("Super expression must either be null or a function"); } if (typeof _cache !== "undefined") { if (_cache.has(Class)) return _cache.get(Class); _cache.set(Class, Wrapper); } function Wrapper() { return _construct(Class, arguments, _getPrototypeOf(this).constructor); } Wrapper.prototype = Object.create(Class.prototype, { constructor: { value: Wrapper, enumerable: false, writable: true, configurable: true } }); return _setPrototypeOf(Wrapper, Class); }; return _wrapNativeSuper(Class); }
 
-	.menu-alarm svg {
-		color: #65717C;
-	}
+function isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
 
-	.menu-alarm, .menu-button {
-		vertical-align: middle;				
-		position:relative;
-		top: 50%;
-		transform: translateY(-50%);
-		z-index: 20;
-		border: 0;
-		background-color: transparent;
-		padding: 0;
-	}
+function _construct(Parent, args, Class) { if (isNativeReflectConstruct()) { _construct = Reflect.construct; } else { _construct = function _construct(Parent, args, Class) { var a = [null]; a.push.apply(a, args); var Constructor = Function.bind.apply(Parent, a); var instance = new Constructor(); if (Class) _setPrototypeOf(instance, Class.prototype); return instance; }; } return _construct.apply(null, arguments); }
 
-	.menu-button > svg {
-		color: #65717C;
-		cursor: pointer;
-	}
+function _isNativeFunction(fn) { return Function.toString.call(fn).indexOf("[native code]") !== -1; }
 
-	chat-window-menu {
-		display: none;			
-		position: absolute;
-		top: 24px;
-		right: -10px;
-	}
-</style>
-`
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
-customElements.define(`chat-window-header`, ChatWindowHeader)
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
+
+
+
+var ChatWindowHeader =
+/*#__PURE__*/
+function (_HTMLElement) {
+  _inherits(ChatWindowHeader, _HTMLElement);
+
+  function ChatWindowHeader() {
+    var _this;
+
+    _classCallCheck(this, ChatWindowHeader);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(ChatWindowHeader).call(this));
+
+    _this.attachShadow({
+      mode: "open"
+    });
+
+    Object(_node_modules_lit_html_lit_html_js__WEBPACK_IMPORTED_MODULE_0__["render"])(_this.render(), _this.shadowRoot);
+    _this.eventClickAlarm = _this.onClickAlarm.bind(_assertThisInitialized(_this));
+    _this.eventClickMenu = _this.onClickMenu.bind(_assertThisInitialized(_this));
+    return _this;
+  }
+
+  _createClass(ChatWindowHeader, [{
+    key: "connectedCallback",
+    value: function connectedCallback() {
+      this.shadowRoot.querySelector(".submenu-search").addEventListener("click", this.onClickSubmenuSearch, true);
+      this.shadowRoot.querySelector(".menu-button").addEventListener("click", this.eventClickMenu, true);
+      this.shadowRoot.querySelector(".menu-alarm").addEventListener("click", this.eventClickAlarm, true);
+    }
+  }, {
+    key: "disconnectedCallback",
+    value: function disconnectedCallback() {
+      this.shadowRoot.querySelector(".submenu-search").removeEventListener("click", this.onClickSubmenuSearch, true);
+      this.shadowRoot.querySelector(".menu-button").removeEventListener("click", this.eventClickMenu, true);
+      this.shadowRoot.querySelector(".menu-alarm").removeEventListener("click", this.eventClickAlarm, true);
+    }
+  }, {
+    key: "onClickSubmenuPicture",
+    value: function onClickSubmenuPicture() {
+      alert(i18next.t("NO_IMPLEMENT"));
+    }
+  }, {
+    key: "onClickSubmenuSearch",
+    value: function onClickSubmenuSearch() {
+      alert(i18next.t("NO_IMPLEMENT"));
+    }
+  }, {
+    key: "onClickMenu",
+    value: function onClickMenu() {
+      var chatMenu = this.shadowRoot.querySelector("chat-window-menu");
+
+      if (chatMenu.menuState === "hide") {
+        chatMenu.show();
+      } else {
+        chatMenu.hide();
+      }
+    }
+  }, {
+    key: "onClickAlarm",
+    value: function onClickAlarm() {
+      this.toggleAlarmIcon();
+    }
+  }, {
+    key: "toggleAlarmIcon",
+    value: function toggleAlarmIcon() {
+      var alarmButton = this.shadowRoot.querySelector(".menu-alarm");
+
+      if (alarmButton.classList.contains("on")) {
+        alarmButton.classList.remove("on");
+        alarmButton.innerHTML = "\n\t\t\t<svg height='20' width='32' aria-hidden=\"true\" focusable=\"false\" data-prefix=\"fas\" data-icon=\"bell\" class=\"svg-inline--fa fa-bell fa-w-14\" role=\"img\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 448 512\"><path fill=\"currentColor\" d=\"M633.82 458.1l-90.62-70.05c.19-1.38.8-2.66.8-4.06.05-7.55-2.61-15.27-8.61-21.71-19.32-20.76-55.47-51.99-55.47-154.29 0-77.7-54.48-139.9-127.94-155.16V32c0-17.67-14.32-32-31.98-32s-31.98 14.33-31.98 32v20.84c-40.33 8.38-74.66 31.07-97.59 62.57L45.47 3.37C38.49-2.05 28.43-.8 23.01 6.18L3.37 31.45C-2.05 38.42-.8 48.47 6.18 53.9l588.35 454.73c6.98 5.43 17.03 4.17 22.46-2.81l19.64-25.27c5.42-6.97 4.17-17.02-2.81-22.45zM157.23 251.54c-8.61 67.96-36.41 93.33-52.62 110.75-6 6.45-8.66 14.16-8.61 21.71.11 16.4 12.98 32 32.1 32h241.92L157.23 251.54zM320 512c35.32 0 63.97-28.65 63.97-64H256.03c0 35.35 28.65 64 63.97 64z\"></path></svg>\n\t\t\t";
+        return;
+      }
+
+      alarmButton.classList.add("on");
+      alarmButton.innerHTML = "\n\t\t<svg height='20' width='32' aria-hidden=\"true\" focusable=\"false\" data-prefix=\"fas\" data-icon=\"bell\" class=\"svg-inline--fa fa-bell fa-w-14\" role=\"img\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 448 512\"><path fill=\"currentColor\" d=\"M224 512c35.32 0 63.97-28.65 63.97-64H160.03c0 35.35 28.65 64 63.97 64zm215.39-149.71c-19.32-20.76-55.47-51.99-55.47-154.29 0-77.7-54.48-139.9-127.94-155.16V32c0-17.67-14.32-32-31.98-32s-31.98 14.33-31.98 32v20.84C118.56 68.1 64.08 130.3 64.08 208c0 102.3-36.15 133.53-55.47 154.29-6 6.45-8.66 14.16-8.61 21.71.11 16.4 12.98 32 32.1 32h383.8c19.12 0 32-15.6 32.1-32 .05-7.55-2.61-15.27-8.61-21.71z\"></path></svg>\n\t\t";
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      return Object(_node_modules_lit_html_lit_html_js__WEBPACK_IMPORTED_MODULE_0__["html"])(_templateObject(), style, i18next.t("BOT_NAME"), i18next.t("MENU_ALARM_TITLE"), i18next.t("MENU_TITLE"));
+    }
+  }]);
+
+  return ChatWindowHeader;
+}(_wrapNativeSuper(HTMLElement));
+
+var style = Object(_node_modules_lit_html_lit_html_js__WEBPACK_IMPORTED_MODULE_0__["html"])(_templateObject2());
+customElements.define("chat-window-header", ChatWindowHeader);
 
 /***/ }),
 /* 14 */
@@ -1748,111 +1738,137 @@ customElements.define(`chat-window-header`, ChatWindowHeader)
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_lit_html_lit_html_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(2);
 /* harmony import */ var _main_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(0);
+function _templateObject2() {
+  var data = _taggedTemplateLiteral(["\n<style scoped>\n\t.menu::before {\n\t\tcontent: '';\n\t\tposition: absolute;\n\t\ttop: -57px;\n\t\tright: -5px;\n\t\twidth: 100vw;\n\t\theight: 100vh;\n\t\tz-index: -1;\n\t}\n\n\t.menu {\n\t\tbackground-color: white;\n\t\tpadding: 0;\n\t\tmargin: 0;\n\t\tdisplay: grid;\n\t\tgrid-template-columns: max-content;\n\t\tlist-style: none;\n\t\tborder-radius: 2px;\n\t}\n\n\t.menu li {\n\t\tpadding: 10px 15px 10px 15px;\n\t\tmargin: 0 1px 0 1px;\n\t\tbox-sizing: border-box;\n\t\tmax-width: 200px;\n\t\tfont-size: 12px;\n\t\ttext-align: left;\n\t\twhite-space: nowrap;\n\t\toverflow: hidden;\n\t\ttext-overflow: ellipsis;\n\t}\n\n\t.menu li:not(:last-child) {\n\t\tborder-bottom: 1px solid #F0F0F0;\n\t}\n\n\t.menu li:hover {\n\t\tbackground-color: #F0F0F0;\n\t}\n</style>\n"]);
 
+  _templateObject2 = function _templateObject2() {
+    return data;
+  };
 
-
-class ChatWindowMenu extends HTMLElement {
-	constructor() {
-		super()
-
-		this.attachShadow({ mode: `open` })
-		Object(_node_modules_lit_html_lit_html_js__WEBPACK_IMPORTED_MODULE_0__["render"])(this.render(), this.shadowRoot)
-
-		this.menuState = `hide`
-		this.eventClickBotSetting = this.onClickBotSetting.bind(this)
-	}
-
-	connectedCallback() {
-		this.shadowRoot.querySelector(`.menu .bot-setting`).addEventListener(`click`, this.eventClickBotSetting)
-		this.shadowRoot.querySelector(`.menu`).addEventListener(`click`, event => this.onClickOutOfMenu(event))
-	}
-
-	disconnectedCallback() {
-		this.shadowRoot.querySelector(`.menu .bot-setting`).removeEventListener(`click`, this.eventClickBotSetting)
-	}	
-
-	onClickOutOfMenu(event) {
-		if(event.target.classList.contains(`menu`)) {
-			this.hide()
-		}
-	}
-
-	onClickBotSetting() {
-		this.hide()
-		this.openBotSetting()
-	}
-
-	openBotSetting() {
-		_main_js__WEBPACK_IMPORTED_MODULE_1__["default"].loadingDOM()
-		_main_js__WEBPACK_IMPORTED_MODULE_1__["default"].renderBotSettingWindow()
-	}
-
-	show() {
-		this.style.display = `block`
-		this.menuState = `show`
-	}
-
-	hide() {
-		this.style.display = `none`
-		this.menuState = `hide`
-	}
-
-	render() {
-		return _node_modules_lit_html_lit_html_js__WEBPACK_IMPORTED_MODULE_0__["html"]`
-			${style}
-			<ul class='menu'>
-				<li class='bot-setting' title='${i18next.t(`MENU_BOT_SETTING`)}'>${i18next.t(`MENU_BOT_SETTING`)}</li>
-			</ul>
-		`
-	}
+  return data;
 }
 
-const style = _node_modules_lit_html_lit_html_js__WEBPACK_IMPORTED_MODULE_0__["html"]`
-<style scoped>
-	.menu::before {
-		content: '';
-		position: absolute;
-		top: -57px;
-		right: -5px;
-		width: 100vw;
-		height: 100vh;
-		z-index: -1;
-	}
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
-	.menu {
-		background-color: white;
-		padding: 0;
-		margin: 0;
-		display: grid;
-		grid-template-columns: max-content;
-		list-style: none;
-		border-radius: 2px;
-	}
+function _templateObject() {
+  var data = _taggedTemplateLiteral(["\n\t\t\t", "\n\t\t\t<ul class='menu'>\n\t\t\t\t<li class='bot-setting' title='", "'>", "</li>\n\t\t\t</ul>\n\t\t"]);
 
-	.menu li {
-		padding: 10px 15px 10px 15px;
-		margin: 0 1px 0 1px;
-		box-sizing: border-box;
-		max-width: 200px;
-		font-size: 12px;
-		text-align: left;
-		white-space: nowrap;
-		overflow: hidden;
-		text-overflow: ellipsis;
-	}
+  _templateObject = function _templateObject() {
+    return data;
+  };
 
-	.menu li:not(:last-child) {
-		border-bottom: 1px solid #F0F0F0;
-	}
+  return data;
+}
 
-	.menu li:hover {
-		background-color: #F0F0F0;
-	}
-</style>
-`
+function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
-customElements.define(`chat-window-menu`, ChatWindowMenu)
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _wrapNativeSuper(Class) { var _cache = typeof Map === "function" ? new Map() : undefined; _wrapNativeSuper = function _wrapNativeSuper(Class) { if (Class === null || !_isNativeFunction(Class)) return Class; if (typeof Class !== "function") { throw new TypeError("Super expression must either be null or a function"); } if (typeof _cache !== "undefined") { if (_cache.has(Class)) return _cache.get(Class); _cache.set(Class, Wrapper); } function Wrapper() { return _construct(Class, arguments, _getPrototypeOf(this).constructor); } Wrapper.prototype = Object.create(Class.prototype, { constructor: { value: Wrapper, enumerable: false, writable: true, configurable: true } }); return _setPrototypeOf(Wrapper, Class); }; return _wrapNativeSuper(Class); }
+
+function isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+function _construct(Parent, args, Class) { if (isNativeReflectConstruct()) { _construct = Reflect.construct; } else { _construct = function _construct(Parent, args, Class) { var a = [null]; a.push.apply(a, args); var Constructor = Function.bind.apply(Parent, a); var instance = new Constructor(); if (Class) _setPrototypeOf(instance, Class.prototype); return instance; }; } return _construct.apply(null, arguments); }
+
+function _isNativeFunction(fn) { return Function.toString.call(fn).indexOf("[native code]") !== -1; }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+
+
+
+var ChatWindowMenu =
+/*#__PURE__*/
+function (_HTMLElement) {
+  _inherits(ChatWindowMenu, _HTMLElement);
+
+  function ChatWindowMenu() {
+    var _this;
+
+    _classCallCheck(this, ChatWindowMenu);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(ChatWindowMenu).call(this));
+
+    _this.attachShadow({
+      mode: "open"
+    });
+
+    Object(_node_modules_lit_html_lit_html_js__WEBPACK_IMPORTED_MODULE_0__["render"])(_this.render(), _this.shadowRoot);
+    _this.menuState = "hide";
+    _this.eventClickBotSetting = _this.onClickBotSetting.bind(_assertThisInitialized(_this));
+    return _this;
+  }
+
+  _createClass(ChatWindowMenu, [{
+    key: "connectedCallback",
+    value: function connectedCallback() {
+      var _this2 = this;
+
+      this.shadowRoot.querySelector(".menu .bot-setting").addEventListener("click", this.eventClickBotSetting);
+      this.shadowRoot.querySelector(".menu").addEventListener("click", function (event) {
+        return _this2.onClickOutOfMenu(event);
+      });
+    }
+  }, {
+    key: "disconnectedCallback",
+    value: function disconnectedCallback() {
+      this.shadowRoot.querySelector(".menu .bot-setting").removeEventListener("click", this.eventClickBotSetting);
+    }
+  }, {
+    key: "onClickOutOfMenu",
+    value: function onClickOutOfMenu(event) {
+      if (event.target.classList.contains("menu")) {
+        this.hide();
+      }
+    }
+  }, {
+    key: "onClickBotSetting",
+    value: function onClickBotSetting() {
+      this.hide();
+      this.openBotSetting();
+    }
+  }, {
+    key: "openBotSetting",
+    value: function openBotSetting() {
+      _main_js__WEBPACK_IMPORTED_MODULE_1__["default"].loadingDOM();
+      _main_js__WEBPACK_IMPORTED_MODULE_1__["default"].renderBotSettingWindow();
+    }
+  }, {
+    key: "show",
+    value: function show() {
+      this.style.display = "block";
+      this.menuState = "show";
+    }
+  }, {
+    key: "hide",
+    value: function hide() {
+      this.style.display = "none";
+      this.menuState = "hide";
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      return Object(_node_modules_lit_html_lit_html_js__WEBPACK_IMPORTED_MODULE_0__["html"])(_templateObject(), style, i18next.t("MENU_BOT_SETTING"), i18next.t("MENU_BOT_SETTING"));
+    }
+  }]);
+
+  return ChatWindowMenu;
+}(_wrapNativeSuper(HTMLElement));
+
+var style = Object(_node_modules_lit_html_lit_html_js__WEBPACK_IMPORTED_MODULE_0__["html"])(_templateObject2());
+customElements.define("chat-window-menu", ChatWindowMenu);
 
 /***/ }),
 /* 15 */
@@ -1863,108 +1879,155 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_lit_html_lit_html_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(2);
 /* harmony import */ var _bot_chat_balloon_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(16);
 /* harmony import */ var _my_chat_balloon_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(17);
+function _templateObject2() {
+  var data = _taggedTemplateLiteral(["\n<style scoped>\n\tmain {\n\t\tdisplay: grid;\n\t\tgrid-template-columns: 1fr;\n\t\tgrid-auto-rows: min-content;\n\t\twidth: 100%;\n\t\theight: 100%;\t\t\n\t}\n\n\tbot-chat-balloon, my-chat-balloon {\n\t\twidth: 100%;\n\t\tmin-height: min-content;\n\t}\n</style>\n"]);
 
+  _templateObject2 = function _templateObject2() {
+    return data;
+  };
 
-
-
-class ChatWindowBody extends HTMLElement {
-	constructor() {
-		super()
-
-		this.attachShadow({ mode: `open` })
-		Object(_node_modules_lit_html_lit_html_js__WEBPACK_IMPORTED_MODULE_0__["render"])(this.render(), this.shadowRoot)		
-	}
-
-	connectedCallback() {
-		this.chatWindow = document.querySelector(`chat-window`)
-
-		this.bot = new RiveScript()
-
-		// 라이브 스크립트 테스트 코드
-		// this.bot.loadFile(`/assets/hy-lion.rive`).then(this.loading_done.bind(this)).catch(this.loading_error)
-	}
-
-	loading_done() {
-		const username = `hy-lion`
-		const sendText = `hello`
-
-		this.bot.sortReplies()		
-
-		this.send(sendText)
-		this.bot.reply(username, sendText).then(reply => {
-			this.reply(reply)
-		})
-	}
-
-	loading_error(error) {
-		throw new Error(`Error when loading files: ${error}`)
-	}
-
-	reply(text) {
-		const main = this.shadowRoot.querySelector(`main`)
-		const ONE = 1, LAST_CHILD_NUM = main.children.length - ONE
-		const lastChat = main.children[LAST_CHILD_NUM]
-		const isBot = main.children.length && main.children[LAST_CHILD_NUM].localName === `bot-chat-balloon`
-		
-
-		if(isBot == false) {
-			const botChatBalloon = document.createElement(`bot-chat-balloon`)
-			main.appendChild(botChatBalloon)
-			botChatBalloon.chat(text)
-			this.chatWindow.scrollToLast()
-			return
-		}
-		lastChat.chat(text)
-		this.chatWindow.scrollToLast()
-	}
-
-	send(text) {
-		const main = this.shadowRoot.querySelector(`main`)
-		const ONE = 1, LAST_CHILD_NUM = main.children.length - ONE
-		const lastChat = main.children[LAST_CHILD_NUM]
-		const isMe = main.children.length && main.children[LAST_CHILD_NUM].localName === `my-chat-balloon`
-
-		if(isMe == false) {
-			const myChatBalloon = document.createElement(`my-chat-balloon`)
-			main.appendChild(myChatBalloon)
-			myChatBalloon.chat(text)
-			this.chatWindow.scrollToLast()
-			return
-		}
-		lastChat.chat(text)
-		this.chatWindow.scrollToLast()
-	}
-
-	render() {
-		return _node_modules_lit_html_lit_html_js__WEBPACK_IMPORTED_MODULE_0__["html"]`
-			${style}
-			<main>				
-				<!-- <my-chat-balloon></my-chat-balloon>
-				<bot-chat-balloon></bot-chat-balloon> -->
-			</main>
-		`
-	}
+  return data;
 }
 
-const style = _node_modules_lit_html_lit_html_js__WEBPACK_IMPORTED_MODULE_0__["html"]`
-<style scoped>
-	main {
-		display: grid;
-		grid-template-columns: 1fr;
-		grid-auto-rows: min-content;
-		width: 100%;
-		height: 100%;		
-	}
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
-	bot-chat-balloon, my-chat-balloon {
-		width: 100%;
-		min-height: min-content;
-	}
-</style>
-`
+function _templateObject() {
+  var data = _taggedTemplateLiteral(["\n\t\t\t", "\n\t\t\t<main>\t\t\t\t\n\t\t\t\t<!-- <my-chat-balloon></my-chat-balloon>\n\t\t\t\t<bot-chat-balloon></bot-chat-balloon> -->\n\t\t\t</main>\n\t\t"]);
 
-customElements.define(`chat-window-body`, ChatWindowBody)
+  _templateObject = function _templateObject() {
+    return data;
+  };
 
+  return data;
+}
+
+function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _wrapNativeSuper(Class) { var _cache = typeof Map === "function" ? new Map() : undefined; _wrapNativeSuper = function _wrapNativeSuper(Class) { if (Class === null || !_isNativeFunction(Class)) return Class; if (typeof Class !== "function") { throw new TypeError("Super expression must either be null or a function"); } if (typeof _cache !== "undefined") { if (_cache.has(Class)) return _cache.get(Class); _cache.set(Class, Wrapper); } function Wrapper() { return _construct(Class, arguments, _getPrototypeOf(this).constructor); } Wrapper.prototype = Object.create(Class.prototype, { constructor: { value: Wrapper, enumerable: false, writable: true, configurable: true } }); return _setPrototypeOf(Wrapper, Class); }; return _wrapNativeSuper(Class); }
+
+function isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+function _construct(Parent, args, Class) { if (isNativeReflectConstruct()) { _construct = Reflect.construct; } else { _construct = function _construct(Parent, args, Class) { var a = [null]; a.push.apply(a, args); var Constructor = Function.bind.apply(Parent, a); var instance = new Constructor(); if (Class) _setPrototypeOf(instance, Class.prototype); return instance; }; } return _construct.apply(null, arguments); }
+
+function _isNativeFunction(fn) { return Function.toString.call(fn).indexOf("[native code]") !== -1; }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+
+
+
+
+var ChatWindowBody =
+/*#__PURE__*/
+function (_HTMLElement) {
+  _inherits(ChatWindowBody, _HTMLElement);
+
+  function ChatWindowBody() {
+    var _this;
+
+    _classCallCheck(this, ChatWindowBody);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(ChatWindowBody).call(this));
+
+    _this.attachShadow({
+      mode: "open"
+    });
+
+    Object(_node_modules_lit_html_lit_html_js__WEBPACK_IMPORTED_MODULE_0__["render"])(_this.render(), _this.shadowRoot);
+    return _this;
+  }
+
+  _createClass(ChatWindowBody, [{
+    key: "connectedCallback",
+    value: function connectedCallback() {
+      this.chatWindow = document.querySelector("chat-window");
+      this.bot = new RiveScript(); // 라이브 스크립트 테스트 코드
+      // this.bot.loadFile(`/assets/hy-lion.rive`).then(this.loading_done.bind(this)).catch(this.loading_error)
+    }
+  }, {
+    key: "loading_done",
+    value: function loading_done() {
+      var _this2 = this;
+
+      var username = "hy-lion";
+      var sendText = "hello";
+      this.bot.sortReplies();
+      this.send(sendText);
+      this.bot.reply(username, sendText).then(function (reply) {
+        _this2.reply(reply);
+      });
+    }
+  }, {
+    key: "loading_error",
+    value: function loading_error(error) {
+      throw new Error("Error when loading files: ".concat(error));
+    }
+  }, {
+    key: "reply",
+    value: function reply(text) {
+      var main = this.shadowRoot.querySelector("main");
+      var ONE = 1,
+          LAST_CHILD_NUM = main.children.length - ONE;
+      var lastChat = main.children[LAST_CHILD_NUM];
+      var isBot = main.children.length && main.children[LAST_CHILD_NUM].localName === "bot-chat-balloon";
+
+      if (isBot == false) {
+        var botChatBalloon = document.createElement("bot-chat-balloon");
+        main.appendChild(botChatBalloon);
+        botChatBalloon.chat(text);
+        this.chatWindow.scrollToLast();
+        return;
+      }
+
+      lastChat.chat(text);
+      this.chatWindow.scrollToLast();
+    }
+  }, {
+    key: "send",
+    value: function send(text) {
+      var main = this.shadowRoot.querySelector("main");
+      var ONE = 1,
+          LAST_CHILD_NUM = main.children.length - ONE;
+      var lastChat = main.children[LAST_CHILD_NUM];
+      var isMe = main.children.length && main.children[LAST_CHILD_NUM].localName === "my-chat-balloon";
+
+      if (isMe == false) {
+        var myChatBalloon = document.createElement("my-chat-balloon");
+        main.appendChild(myChatBalloon);
+        myChatBalloon.chat(text);
+        this.chatWindow.scrollToLast();
+        return;
+      }
+
+      lastChat.chat(text);
+      this.chatWindow.scrollToLast();
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      return Object(_node_modules_lit_html_lit_html_js__WEBPACK_IMPORTED_MODULE_0__["html"])(_templateObject(), style);
+    }
+  }]);
+
+  return ChatWindowBody;
+}(_wrapNativeSuper(HTMLElement));
+
+var style = Object(_node_modules_lit_html_lit_html_js__WEBPACK_IMPORTED_MODULE_0__["html"])(_templateObject2());
+customElements.define("chat-window-body", ChatWindowBody);
 
 /***/ }),
 /* 16 */
@@ -1973,152 +2036,119 @@ customElements.define(`chat-window-body`, ChatWindowBody)
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_lit_html_lit_html_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(2);
+function _templateObject2() {
+  var data = _taggedTemplateLiteral(["\n<style scoped>\n\tmain {\n\t\tdisplay: grid;\n\t\tgrid-template-columns: min-content 1fr;\n\t\tgrid-template-rows: min-content 1fr;\n\t\tgrid-template-areas: \n\t\t\t\"a b\"\n\t\t\t\"a c\";\n\t\tmin-height: 70px;\n\t}\t\n\n\t.profile {\n\t\tpadding: 15px 10px 15px 15px;\n\t\tgrid-area: a;\n\t\tz-index: 10;\n\t}\n\n\t.profile-img {\n\t\twidth: 40px;\n\t\theight: 40px;\n\t\tborder-radius: 25px;\n\t\tbackground-image: url('/images/hi-lion.png');\n\t\tbackground-repeat: no-repeat;\n    \tbackground-position: center;\n    \tbackground-size: contain;\n\t}\n\t\n\t.name {\n\t\tgrid-area: b;\n\t\tfont-size: 12px;\n\t\tcolor: #4A4C4E;\n\t\tpadding-top: 12px;\n\t}\n\n\t.chat-wrap {\n\t\tgrid-area: c;\n\t\tpadding-top: 5px;\n\t\tpadding-bottom: 5px;\n\t\tz-index: 5;\n\n\t\tdisplay: grid;\n\t\tgrid-template-rows: 1fr;\n\t\tgrid-row-gap: 5px;\n\t}\n\n\t.chat-content, .chat-content-continue {\n\t\tdisplay: inline-block;\n\t\tposition: relative;\n\t\tmin-height: 28px;\n\t\tmin-width: 20px;\n\t\twidth: fit-content;\n\t\tmax-width: calc(80vw - 65px);\n\t\tbackground: white;\n\t\tborder-radius: 5px;\n\t\tpadding: 5px 10px 5px 10px;\n\t\tbox-sizing: border-box;\n\t\tfont-size: 13px;\n\t\tcolor: #4A4C4E;\n\t}\n\n\t.chat-content:before {\n\t\tleft: -10px;\n\t\ttop: 5px;\n\t\tcontent: \" \";\n\t\theight: 20px;\n\t\twidth: 20px;\n\t\tposition: absolute;\n\t\tpointer-events: none;\n\t\tborder-radius: 25px;\n\t\tbackground: white;\n\t\tz-index: -1;\n\t}\n\n\t.chat-content:after {\n\t\tleft: -15px;\n\t\ttop: 0px;\n\t\tcontent: \" \";\n\t\theight: 20px;\n\t\twidth: 20px;\n\t\tposition: absolute;\n\t\tpointer-events: none;\n\t\tborder-radius: 25px;\n\t\tbackground: #B2C7D9;\n\t\tz-index: -1;\n\t}\t\n</style>\n"]);
 
+  _templateObject2 = function _templateObject2() {
+    return data;
+  };
 
-class BotChatBalloon extends HTMLElement {
-	constructor() {
-		super()
-
-		this.attachShadow({ mode: `open` })
-		Object(_node_modules_lit_html_lit_html_js__WEBPACK_IMPORTED_MODULE_0__["render"])(this.render(), this.shadowRoot)
-		this.chatWindow = document.querySelector(`chat-window`)
-	}
-
-	chat(text) {
-		const NO_CHAT = 0
-		const isNoChat = this.shadowRoot.querySelector(`.chat-wrap`).childElementCount === NO_CHAT
-
-		if(isNoChat) {
-			this.newChat(text)
-			this.shadowRoot.querySelector(`.chat-content`).textContent = text
-			return
-		}
-
-		this.continueChat(text)
-	}
-
-	newChat(text) {
-		const div = document.createElement(`div`)
-		div.classList.add(`chat-content`)
-		div.textContent = text
-		this.shadowRoot.querySelector(`.chat-wrap`).appendChild(div)
-	}
-
-	continueChat(text) {
-		const div = document.createElement(`div`)
-		div.classList.add(`chat-content-continue`)
-		div.textContent = text
-		this.shadowRoot.querySelector(`.chat-wrap`).appendChild(div)
-	}
-
-	render() {
-		return _node_modules_lit_html_lit_html_js__WEBPACK_IMPORTED_MODULE_0__["html"]`
-			${style}
-			<main>
-				<div class='profile'>
-					<div class='profile-img'></div>
-				</div>
-				<div class='name'>${i18next.t(`BOT_NAME`)}</div>
-				<div class='chat-wrap'>
-					<!-- <div class='chat-content'></div> -->
-					<!-- <div class='chat-content-continue'></div> -->
-				</div>
-			</main>
-		`
-	}
+  return data;
 }
 
-const style = _node_modules_lit_html_lit_html_js__WEBPACK_IMPORTED_MODULE_0__["html"]`
-<style scoped>
-	main {
-		display: grid;
-		grid-template-columns: min-content 1fr;
-		grid-template-rows: min-content 1fr;
-		grid-template-areas: 
-			"a b"
-			"a c";
-		min-height: 70px;
-	}	
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
-	.profile {
-		padding: 15px 10px 15px 15px;
-		grid-area: a;
-		z-index: 10;
-	}
+function _templateObject() {
+  var data = _taggedTemplateLiteral(["\n\t\t\t", "\n\t\t\t<main>\n\t\t\t\t<div class='profile'>\n\t\t\t\t\t<div class='profile-img'></div>\n\t\t\t\t</div>\n\t\t\t\t<div class='name'>", "</div>\n\t\t\t\t<div class='chat-wrap'>\n\t\t\t\t\t<!-- <div class='chat-content'></div> -->\n\t\t\t\t\t<!-- <div class='chat-content-continue'></div> -->\n\t\t\t\t</div>\n\t\t\t</main>\n\t\t"]);
 
-	.profile-img {
-		width: 40px;
-		height: 40px;
-		border-radius: 25px;
-		background-image: url('/images/hi-lion.png');
-		background-repeat: no-repeat;
-    	background-position: center;
-    	background-size: contain;
-	}
-	
-	.name {
-		grid-area: b;
-		font-size: 12px;
-		color: #4A4C4E;
-		padding-top: 12px;
-	}
+  _templateObject = function _templateObject() {
+    return data;
+  };
 
-	.chat-wrap {
-		grid-area: c;
-		padding-top: 5px;
-		padding-bottom: 5px;
-		z-index: 5;
+  return data;
+}
 
-		display: grid;
-		grid-template-rows: 1fr;
-		grid-row-gap: 5px;
-	}
+function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
-	.chat-content, .chat-content-continue {
-		display: inline-block;
-		position: relative;
-		min-height: 28px;
-		min-width: 20px;
-		width: fit-content;
-		max-width: calc(80vw - 65px);
-		background: white;
-		border-radius: 5px;
-		padding: 5px 10px 5px 10px;
-		box-sizing: border-box;
-		font-size: 13px;
-		color: #4A4C4E;
-	}
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-	.chat-content:before {
-		left: -10px;
-		top: 5px;
-		content: " ";
-		height: 20px;
-		width: 20px;
-		position: absolute;
-		pointer-events: none;
-		border-radius: 25px;
-		background: white;
-		z-index: -1;
-	}
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
-	.chat-content:after {
-		left: -15px;
-		top: 0px;
-		content: " ";
-		height: 20px;
-		width: 20px;
-		position: absolute;
-		pointer-events: none;
-		border-radius: 25px;
-		background: #B2C7D9;
-		z-index: -1;
-	}	
-</style>
-`
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
-customElements.define(`bot-chat-balloon`, BotChatBalloon)
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _wrapNativeSuper(Class) { var _cache = typeof Map === "function" ? new Map() : undefined; _wrapNativeSuper = function _wrapNativeSuper(Class) { if (Class === null || !_isNativeFunction(Class)) return Class; if (typeof Class !== "function") { throw new TypeError("Super expression must either be null or a function"); } if (typeof _cache !== "undefined") { if (_cache.has(Class)) return _cache.get(Class); _cache.set(Class, Wrapper); } function Wrapper() { return _construct(Class, arguments, _getPrototypeOf(this).constructor); } Wrapper.prototype = Object.create(Class.prototype, { constructor: { value: Wrapper, enumerable: false, writable: true, configurable: true } }); return _setPrototypeOf(Wrapper, Class); }; return _wrapNativeSuper(Class); }
+
+function isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+function _construct(Parent, args, Class) { if (isNativeReflectConstruct()) { _construct = Reflect.construct; } else { _construct = function _construct(Parent, args, Class) { var a = [null]; a.push.apply(a, args); var Constructor = Function.bind.apply(Parent, a); var instance = new Constructor(); if (Class) _setPrototypeOf(instance, Class.prototype); return instance; }; } return _construct.apply(null, arguments); }
+
+function _isNativeFunction(fn) { return Function.toString.call(fn).indexOf("[native code]") !== -1; }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+
+
+var BotChatBalloon =
+/*#__PURE__*/
+function (_HTMLElement) {
+  _inherits(BotChatBalloon, _HTMLElement);
+
+  function BotChatBalloon() {
+    var _this;
+
+    _classCallCheck(this, BotChatBalloon);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(BotChatBalloon).call(this));
+
+    _this.attachShadow({
+      mode: "open"
+    });
+
+    Object(_node_modules_lit_html_lit_html_js__WEBPACK_IMPORTED_MODULE_0__["render"])(_this.render(), _this.shadowRoot);
+    _this.chatWindow = document.querySelector("chat-window");
+    return _this;
+  }
+
+  _createClass(BotChatBalloon, [{
+    key: "chat",
+    value: function chat(text) {
+      var NO_CHAT = 0;
+      var isNoChat = this.shadowRoot.querySelector(".chat-wrap").childElementCount === NO_CHAT;
+
+      if (isNoChat) {
+        this.newChat(text);
+        this.shadowRoot.querySelector(".chat-content").textContent = text;
+        return;
+      }
+
+      this.continueChat(text);
+    }
+  }, {
+    key: "newChat",
+    value: function newChat(text) {
+      var div = document.createElement("div");
+      div.classList.add("chat-content");
+      div.textContent = text;
+      this.shadowRoot.querySelector(".chat-wrap").appendChild(div);
+    }
+  }, {
+    key: "continueChat",
+    value: function continueChat(text) {
+      var div = document.createElement("div");
+      div.classList.add("chat-content-continue");
+      div.textContent = text;
+      this.shadowRoot.querySelector(".chat-wrap").appendChild(div);
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      return Object(_node_modules_lit_html_lit_html_js__WEBPACK_IMPORTED_MODULE_0__["html"])(_templateObject(), style, i18next.t("BOT_NAME"));
+    }
+  }]);
+
+  return BotChatBalloon;
+}(_wrapNativeSuper(HTMLElement));
+
+var style = Object(_node_modules_lit_html_lit_html_js__WEBPACK_IMPORTED_MODULE_0__["html"])(_templateObject2());
+customElements.define("bot-chat-balloon", BotChatBalloon);
 
 /***/ }),
 /* 17 */
@@ -2127,125 +2157,118 @@ customElements.define(`bot-chat-balloon`, BotChatBalloon)
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_lit_html_lit_html_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(2);
+function _templateObject2() {
+  var data = _taggedTemplateLiteral(["\n<style scoped>\n\tmain {\n\t\twidth: 100%;\n\t\tdisplay: grid;\n\t\tgrid-template-rows: 1fr;\n\t\tgrid-template-columns: 1fr;\n\t\tmin-height: 30px;\n\t\tbox-sizing: border-box;\n\t\tfloat: right;\n\t}\t\n\n\t.chat-wrap {\n\t\tpadding-top: 5px;\n\t\tpadding-bottom: 5px;\n\t\tz-index: 5;\n\n\t\tdisplay: grid;\n\t\tgrid-template-rows: 1fr;\n\t\tgrid-row-gap: 5px;\n\t}\n\n\t.chat-content, .chat-content-continue {\n\t\tdisplay: inline-block;\n\t\tposition: relative;\n\t\tmin-height: 28px;\n\t\tmin-width: 20px;\n\t\twidth: fit-content;\n\t\tmax-width: calc(80vw - 65px);\n\t\tbackground: #FFEB33;\n\t\tborder-radius: 5px;\n\t\tpadding: 5px 10px 5px 10px;\n\t\tbox-sizing: border-box;\n\t\tfont-size: 13px;\n\t\tcolor: #4A4C4E;\n\t\tmargin-right: 20px;\n\t\tmargin-left: auto;\n\t}\n\n\t.chat-content:before {\n\t\tright: -10px;\n\t\ttop: 5px;\n\t\tcontent: \" \";\n\t\theight: 20px;\n\t\twidth: 20px;\n\t\tposition: absolute;\n\t\tpointer-events: none;\n\t\tborder-radius: 25px;\n\t\tbackground: #FFEB33;\n\t\tz-index: -1;\n\t}\n\n\t.chat-content:after {\n\t\tright: -15px;\n\t\ttop: 0px;\n\t\tcontent: \" \";\n\t\theight: 20px;\n\t\twidth: 20px;\n\t\tposition: absolute;\n\t\tpointer-events: none;\n\t\tborder-radius: 25px;\n\t\tbackground: #B2C7D9;\n\t\tz-index: -1;\n\t}\t\n</style>\n"]);
 
+  _templateObject2 = function _templateObject2() {
+    return data;
+  };
 
-class MyChatBalloon extends HTMLElement {
-	constructor() {
-		super()
-
-		this.attachShadow({ mode: `open` })
-		Object(_node_modules_lit_html_lit_html_js__WEBPACK_IMPORTED_MODULE_0__["render"])(this.render(), this.shadowRoot)
-	}
-
-	chat(text) {
-		const NO_CHAT = 0
-		const isNoChat = this.shadowRoot.querySelector(`.chat-wrap`).childElementCount === NO_CHAT
-
-		if(isNoChat) {
-			this.newChat(text)
-			this.shadowRoot.querySelector(`.chat-content`).textContent = text
-			return
-		}
-
-		this.continueChat(text)
-	}
-
-	newChat(text) {
-		const div = document.createElement(`div`)
-		div.classList.add(`chat-content`)
-		div.textContent = text
-		this.shadowRoot.querySelector(`.chat-wrap`).appendChild(div)
-	}
-
-	continueChat(text) {
-		const div = document.createElement(`div`)
-		div.classList.add(`chat-content-continue`)
-		div.textContent = text
-		this.shadowRoot.querySelector(`.chat-wrap`).appendChild(div)
-	}
-
-	render() {
-		return _node_modules_lit_html_lit_html_js__WEBPACK_IMPORTED_MODULE_0__["html"]`
-			${style}
-			<main>
-				<div class='chat-wrap'>
-					<!-- <div class='chat-content'></div> -->
-					<!-- <div class='chat-content-continue'></div> -->
-				</div>
-			</main>
-		`
-	}
+  return data;
 }
 
-const style = _node_modules_lit_html_lit_html_js__WEBPACK_IMPORTED_MODULE_0__["html"]`
-<style scoped>
-	main {
-		width: 100%;
-		display: grid;
-		grid-template-rows: 1fr;
-		grid-template-columns: 1fr;
-		min-height: 30px;
-		box-sizing: border-box;
-		float: right;
-	}	
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
-	.chat-wrap {
-		padding-top: 5px;
-		padding-bottom: 5px;
-		z-index: 5;
+function _templateObject() {
+  var data = _taggedTemplateLiteral(["\n\t\t\t", "\n\t\t\t<main>\n\t\t\t\t<div class='chat-wrap'>\n\t\t\t\t\t<!-- <div class='chat-content'></div> -->\n\t\t\t\t\t<!-- <div class='chat-content-continue'></div> -->\n\t\t\t\t</div>\n\t\t\t</main>\n\t\t"]);
 
-		display: grid;
-		grid-template-rows: 1fr;
-		grid-row-gap: 5px;
-	}
+  _templateObject = function _templateObject() {
+    return data;
+  };
 
-	.chat-content, .chat-content-continue {
-		display: inline-block;
-		position: relative;
-		min-height: 28px;
-		min-width: 20px;
-		width: fit-content;
-		max-width: calc(80vw - 65px);
-		background: #FFEB33;
-		border-radius: 5px;
-		padding: 5px 10px 5px 10px;
-		box-sizing: border-box;
-		font-size: 13px;
-		color: #4A4C4E;
-		margin-right: 20px;
-		margin-left: auto;
-	}
+  return data;
+}
 
-	.chat-content:before {
-		right: -10px;
-		top: 5px;
-		content: " ";
-		height: 20px;
-		width: 20px;
-		position: absolute;
-		pointer-events: none;
-		border-radius: 25px;
-		background: #FFEB33;
-		z-index: -1;
-	}
+function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
-	.chat-content:after {
-		right: -15px;
-		top: 0px;
-		content: " ";
-		height: 20px;
-		width: 20px;
-		position: absolute;
-		pointer-events: none;
-		border-radius: 25px;
-		background: #B2C7D9;
-		z-index: -1;
-	}	
-</style>
-`
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-customElements.define(`my-chat-balloon`, MyChatBalloon)
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _wrapNativeSuper(Class) { var _cache = typeof Map === "function" ? new Map() : undefined; _wrapNativeSuper = function _wrapNativeSuper(Class) { if (Class === null || !_isNativeFunction(Class)) return Class; if (typeof Class !== "function") { throw new TypeError("Super expression must either be null or a function"); } if (typeof _cache !== "undefined") { if (_cache.has(Class)) return _cache.get(Class); _cache.set(Class, Wrapper); } function Wrapper() { return _construct(Class, arguments, _getPrototypeOf(this).constructor); } Wrapper.prototype = Object.create(Class.prototype, { constructor: { value: Wrapper, enumerable: false, writable: true, configurable: true } }); return _setPrototypeOf(Wrapper, Class); }; return _wrapNativeSuper(Class); }
+
+function isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+function _construct(Parent, args, Class) { if (isNativeReflectConstruct()) { _construct = Reflect.construct; } else { _construct = function _construct(Parent, args, Class) { var a = [null]; a.push.apply(a, args); var Constructor = Function.bind.apply(Parent, a); var instance = new Constructor(); if (Class) _setPrototypeOf(instance, Class.prototype); return instance; }; } return _construct.apply(null, arguments); }
+
+function _isNativeFunction(fn) { return Function.toString.call(fn).indexOf("[native code]") !== -1; }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+
+
+var MyChatBalloon =
+/*#__PURE__*/
+function (_HTMLElement) {
+  _inherits(MyChatBalloon, _HTMLElement);
+
+  function MyChatBalloon() {
+    var _this;
+
+    _classCallCheck(this, MyChatBalloon);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(MyChatBalloon).call(this));
+
+    _this.attachShadow({
+      mode: "open"
+    });
+
+    Object(_node_modules_lit_html_lit_html_js__WEBPACK_IMPORTED_MODULE_0__["render"])(_this.render(), _this.shadowRoot);
+    return _this;
+  }
+
+  _createClass(MyChatBalloon, [{
+    key: "chat",
+    value: function chat(text) {
+      var NO_CHAT = 0;
+      var isNoChat = this.shadowRoot.querySelector(".chat-wrap").childElementCount === NO_CHAT;
+
+      if (isNoChat) {
+        this.newChat(text);
+        this.shadowRoot.querySelector(".chat-content").textContent = text;
+        return;
+      }
+
+      this.continueChat(text);
+    }
+  }, {
+    key: "newChat",
+    value: function newChat(text) {
+      var div = document.createElement("div");
+      div.classList.add("chat-content");
+      div.textContent = text;
+      this.shadowRoot.querySelector(".chat-wrap").appendChild(div);
+    }
+  }, {
+    key: "continueChat",
+    value: function continueChat(text) {
+      var div = document.createElement("div");
+      div.classList.add("chat-content-continue");
+      div.textContent = text;
+      this.shadowRoot.querySelector(".chat-wrap").appendChild(div);
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      return Object(_node_modules_lit_html_lit_html_js__WEBPACK_IMPORTED_MODULE_0__["html"])(_templateObject(), style);
+    }
+  }]);
+
+  return MyChatBalloon;
+}(_wrapNativeSuper(HTMLElement));
+
+var style = Object(_node_modules_lit_html_lit_html_js__WEBPACK_IMPORTED_MODULE_0__["html"])(_templateObject2());
+customElements.define("my-chat-balloon", MyChatBalloon);
 
 /***/ }),
 /* 18 */
@@ -2254,138 +2277,153 @@ customElements.define(`my-chat-balloon`, MyChatBalloon)
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_lit_html_lit_html_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(2);
+function _templateObject2() {
+  var data = _taggedTemplateLiteral(["\n<style scoped>\n\tmain {\n\t\tdisplay: grid;\n\t\tgrid-template-columns: 1fr 70px;\n\t\tgrid-template-rows: 1fr;\n\t\twidth: 100%;\n\t\theight: 100%;\n\t}\n\n\t.send_text {\n\t\tborder: 0;\n\t\tresize: none;\n\t\tmargin: 10px;\n\t\tfont-size: 14px;\n\t}\n\n\t.send_text:focus {\n\t\toutline: none;\n\t}\n\n\t.send_button {\n\t\tbackground-color: #FFEC42;\n\t\tborder: 0.5px solid #DFCE3D;\n\t\tbox-sizing: border-box;\n\t\tpadding-top: 5px;\n\t\tpadding-bottom: 5px;\n\t\twidth: 50px;\n\t\tmargin-left: auto;\n\t\tmargin-right: auto;\n\t\tborder-radius: 2px;\n\t\tfont-size: 12px;\n\t\tposition: relative;\n\t\ttop: 10%;\n\t\tleft: 50%;\n\t\ttransform: translateX(-50%);\n\t\tcolor: rgba(0, 0, 0, 0.4);\n\t}\n\n\t.send_button:hover {\n\t\tbackground-color: #F5E340;\n\t\tcolor: rgba(0, 0, 0, 0.8);\n\t}\n</style>\n"]);
 
+  _templateObject2 = function _templateObject2() {
+    return data;
+  };
 
-class ChatWindowFooter extends HTMLElement {	
-	constructor() {
-		super()
-
-		this.attachShadow({ mode: `open` })
-		Object(_node_modules_lit_html_lit_html_js__WEBPACK_IMPORTED_MODULE_0__["render"])(this.render(), this.shadowRoot)
-
-		this.eventKeydownTextarea = this.onkeydownTextarea.bind(this)
-		this.eventClickSendButton = this.onClickSendButton.bind(this)
-	}
-
-	connectedCallback() {
-		this.shadowRoot.querySelector(`.send_text`).addEventListener(`keypress`, this.eventKeydownTextarea)
-		this.shadowRoot.querySelector(`.send_button`).addEventListener(`click`, this.eventClickSendButton)
-	}
-
-	disconnectedCallback() {
-		this.shadowRoot.querySelector(`.send_text`).removeEventListener(`keypress`, this.eventKeydownTextarea)
-		this.shadowRoot.querySelector(`.send_button`).removeEventListener(`click`, this.eventClickSendButton)
-	}
-
-	onkeydownTextarea(event) {
-		const isEnter = event.code === `Enter`
-		const chatBody = document.querySelector(`chat-window`).shadowRoot.querySelector(`chat-window-body`)
-		const sendText = this.shadowRoot.querySelector(`.send_text`)
-
-		if(isEnter) {
-			event.preventDefault()
-			chatBody.send(sendText.value)
-			this.replyByPingpongAPI(sendText.value)
-			sendText.value = ``			
-		}
-	}
-
-	onClickSendButton() {
-		const chatBody = document.querySelector(`chat-window`).shadowRoot.querySelector(`chat-window-body`)
-		const sendText = this.shadowRoot.querySelector(`.send_text`)
-
-		chatBody.send(sendText.value)
-		this.replyByPingpongAPI(sendText.value)
-		sendText.value = ``		
-	}
-
-	replyByPingpongAPI(text) {
-		const xhr = new XMLHttpRequest()
-		const COMPLETED = 4, OK = 200, FIRST_TEXT = 0
-		const chatBody = document.querySelector(`chat-window`).shadowRoot.querySelector(`chat-window-body`)
-
-		if(!xhr) {
-			throw new Error(`XHR 호출 불가`)
-		}		
-		xhr.open(`GET`, `https://cors-anywhere.herokuapp.com/https://pingpong.us/api/reaction.php?custom=basic&query=${encodeURIComponent(text)}`)	
-
-		xhr.addEventListener(`readystatechange`, () => {
-			if(xhr.readyState === COMPLETED) {
-				if(xhr.status === OK) {
-					const data = JSON.parse(xhr.responseText)
-					const RAND = Math.floor(Math.random() * data.length)
-					const speack = data[RAND][`message`].split(`(`)[FIRST_TEXT]
-					chatBody.reply(speack)
-				} else {
-					throw new Error(`No XHR`)
-				}
-			}
-		})		
-		xhr.send()
-	}
-	
-
-	render() {
-		return _node_modules_lit_html_lit_html_js__WEBPACK_IMPORTED_MODULE_0__["html"]`
-			${style}
-			<main>
-				<textarea class='send_text'></textarea>
-				<div class='send_button_wrap'>
-					<button class='send_button' type='button'>${i18next.t(`SEND_MESSAGE`)}</button>
-				</div>
-			</main>
-		`
-	}
+  return data;
 }
 
-const style = _node_modules_lit_html_lit_html_js__WEBPACK_IMPORTED_MODULE_0__["html"]`
-<style scoped>
-	main {
-		display: grid;
-		grid-template-columns: 1fr 70px;
-		grid-template-rows: 1fr;
-		width: 100%;
-		height: 100%;
-	}
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
-	.send_text {
-		border: 0;
-		resize: none;
-		margin: 10px;
-		font-size: 14px;
-	}
+function _templateObject() {
+  var data = _taggedTemplateLiteral(["\n\t\t\t", "\n\t\t\t<main>\n\t\t\t\t<textarea class='send_text'></textarea>\n\t\t\t\t<div class='send_button_wrap'>\n\t\t\t\t\t<button class='send_button' type='button'>", "</button>\n\t\t\t\t</div>\n\t\t\t</main>\n\t\t"]);
 
-	.send_text:focus {
-		outline: none;
-	}
+  _templateObject = function _templateObject() {
+    return data;
+  };
 
-	.send_button {
-		background-color: #FFEC42;
-		border: 0.5px solid #DFCE3D;
-		box-sizing: border-box;
-		padding-top: 5px;
-		padding-bottom: 5px;
-		width: 50px;
-		margin-left: auto;
-		margin-right: auto;
-		border-radius: 2px;
-		font-size: 12px;
-		position: relative;
-		top: 10%;
-		left: 50%;
-		transform: translateX(-50%);
-		color: rgba(0, 0, 0, 0.4);
-	}
+  return data;
+}
 
-	.send_button:hover {
-		background-color: #F5E340;
-		color: rgba(0, 0, 0, 0.8);
-	}
-</style>
-`
+function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
-customElements.define(`chat-window-footer`, ChatWindowFooter)
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _wrapNativeSuper(Class) { var _cache = typeof Map === "function" ? new Map() : undefined; _wrapNativeSuper = function _wrapNativeSuper(Class) { if (Class === null || !_isNativeFunction(Class)) return Class; if (typeof Class !== "function") { throw new TypeError("Super expression must either be null or a function"); } if (typeof _cache !== "undefined") { if (_cache.has(Class)) return _cache.get(Class); _cache.set(Class, Wrapper); } function Wrapper() { return _construct(Class, arguments, _getPrototypeOf(this).constructor); } Wrapper.prototype = Object.create(Class.prototype, { constructor: { value: Wrapper, enumerable: false, writable: true, configurable: true } }); return _setPrototypeOf(Wrapper, Class); }; return _wrapNativeSuper(Class); }
+
+function isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+function _construct(Parent, args, Class) { if (isNativeReflectConstruct()) { _construct = Reflect.construct; } else { _construct = function _construct(Parent, args, Class) { var a = [null]; a.push.apply(a, args); var Constructor = Function.bind.apply(Parent, a); var instance = new Constructor(); if (Class) _setPrototypeOf(instance, Class.prototype); return instance; }; } return _construct.apply(null, arguments); }
+
+function _isNativeFunction(fn) { return Function.toString.call(fn).indexOf("[native code]") !== -1; }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+
+
+var ChatWindowFooter =
+/*#__PURE__*/
+function (_HTMLElement) {
+  _inherits(ChatWindowFooter, _HTMLElement);
+
+  function ChatWindowFooter() {
+    var _this;
+
+    _classCallCheck(this, ChatWindowFooter);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(ChatWindowFooter).call(this));
+
+    _this.attachShadow({
+      mode: "open"
+    });
+
+    Object(_node_modules_lit_html_lit_html_js__WEBPACK_IMPORTED_MODULE_0__["render"])(_this.render(), _this.shadowRoot);
+    _this.eventKeydownTextarea = _this.onkeydownTextarea.bind(_assertThisInitialized(_this));
+    _this.eventClickSendButton = _this.onClickSendButton.bind(_assertThisInitialized(_this));
+    return _this;
+  }
+
+  _createClass(ChatWindowFooter, [{
+    key: "connectedCallback",
+    value: function connectedCallback() {
+      this.shadowRoot.querySelector(".send_text").addEventListener("keypress", this.eventKeydownTextarea);
+      this.shadowRoot.querySelector(".send_button").addEventListener("click", this.eventClickSendButton);
+    }
+  }, {
+    key: "disconnectedCallback",
+    value: function disconnectedCallback() {
+      this.shadowRoot.querySelector(".send_text").removeEventListener("keypress", this.eventKeydownTextarea);
+      this.shadowRoot.querySelector(".send_button").removeEventListener("click", this.eventClickSendButton);
+    }
+  }, {
+    key: "onkeydownTextarea",
+    value: function onkeydownTextarea(event) {
+      var isEnter = event.code === "Enter";
+      var chatBody = document.querySelector("chat-window").shadowRoot.querySelector("chat-window-body");
+      var sendText = this.shadowRoot.querySelector(".send_text");
+
+      if (isEnter) {
+        event.preventDefault();
+        chatBody.send(sendText.value);
+        this.replyByPingpongAPI(sendText.value);
+        sendText.value = "";
+      }
+    }
+  }, {
+    key: "onClickSendButton",
+    value: function onClickSendButton() {
+      var chatBody = document.querySelector("chat-window").shadowRoot.querySelector("chat-window-body");
+      var sendText = this.shadowRoot.querySelector(".send_text");
+      chatBody.send(sendText.value);
+      this.replyByPingpongAPI(sendText.value);
+      sendText.value = "";
+    }
+  }, {
+    key: "replyByPingpongAPI",
+    value: function replyByPingpongAPI(text) {
+      var xhr = new XMLHttpRequest();
+      var COMPLETED = 4,
+          OK = 200,
+          FIRST_TEXT = 0;
+      var chatBody = document.querySelector("chat-window").shadowRoot.querySelector("chat-window-body");
+
+      if (!xhr) {
+        throw new Error("XHR \uD638\uCD9C \uBD88\uAC00");
+      }
+
+      xhr.open("GET", "https://cors-anywhere.herokuapp.com/https://pingpong.us/api/reaction.php?custom=basic&query=".concat(encodeURIComponent(text)));
+      xhr.addEventListener("readystatechange", function () {
+        if (xhr.readyState === COMPLETED) {
+          if (xhr.status === OK) {
+            var data = JSON.parse(xhr.responseText);
+            var RAND = Math.floor(Math.random() * data.length);
+            var speack = data[RAND]["message"].split("(")[FIRST_TEXT];
+            chatBody.reply(speack);
+          } else {
+            throw new Error("No XHR");
+          }
+        }
+      });
+      xhr.send();
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      return Object(_node_modules_lit_html_lit_html_js__WEBPACK_IMPORTED_MODULE_0__["html"])(_templateObject(), style, i18next.t("SEND_MESSAGE"));
+    }
+  }]);
+
+  return ChatWindowFooter;
+}(_wrapNativeSuper(HTMLElement));
+
+var style = Object(_node_modules_lit_html_lit_html_js__WEBPACK_IMPORTED_MODULE_0__["html"])(_templateObject2());
+customElements.define("chat-window-footer", ChatWindowFooter);
 
 /***/ }),
 /* 19 */
@@ -2395,55 +2433,89 @@ customElements.define(`chat-window-footer`, ChatWindowFooter)
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_lit_html_lit_html_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(2);
 /* harmony import */ var _components_bot_setting_window_header_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(20);
+function _templateObject2() {
+  var data = _taggedTemplateLiteral(["\n<style scoped>\n\tmain {\n\t\tposition: absolute;\t\t\n\t\ttop: 0;\n\t\tleft: 0;\t\t\n\t\twidth: 100vw;\n\t\theight: 100vh;\n\t\tdisplay: grid;\n\t\tgrid-template-columns: 1fr;\n\t\tgrid-template-rows: 80px 1fr 100px;\n\t}\n\n\tbot-setting-header {\n\t\tbackground-color: #A9BDCE;\n\t}\n\n\tbot-setting-body {\t\t\n\t\twhite-space: pre;\n\t\tpadding-left: 10px;\n\t}\n</style>\n"]);
 
+  _templateObject2 = function _templateObject2() {
+    return data;
+  };
 
-
-class BotSettingWindow extends HTMLElement {
-	constructor() {
-		super()
-
-		this.attachShadow({ mode: `open` })
-		Object(_node_modules_lit_html_lit_html_js__WEBPACK_IMPORTED_MODULE_0__["render"])(this.render(), this.shadowRoot)
-	}
-
-	render() {
-		return _node_modules_lit_html_lit_html_js__WEBPACK_IMPORTED_MODULE_0__["html"]`
-			${style}
-			<main>
-				<bot-setting-header></bot-setting-header>
-				<bot-setting-body></bot-setting-body>
-				<bot-setting-footer></bot-setting-footer>
-			</main>
-		`
-	}
+  return data;
 }
 
-const style = _node_modules_lit_html_lit_html_js__WEBPACK_IMPORTED_MODULE_0__["html"]`
-<style scoped>
-	main {
-		position: absolute;		
-		top: 0;
-		left: 0;		
-		width: 100vw;
-		height: 100vh;
-		display: grid;
-		grid-template-columns: 1fr;
-		grid-template-rows: 80px 1fr 100px;
-	}
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
-	bot-setting-header {
-		background-color: #A9BDCE;
-	}
+function _templateObject() {
+  var data = _taggedTemplateLiteral(["\n\t\t\t", "\n\t\t\t<main>\n\t\t\t\t<bot-setting-header></bot-setting-header>\n\t\t\t\t<bot-setting-body></bot-setting-body>\n\t\t\t\t<bot-setting-footer></bot-setting-footer>\n\t\t\t</main>\n\t\t"]);
 
-	bot-setting-body {		
-		white-space: pre;
-		padding-left: 10px;
-	}
-</style>
-`
+  _templateObject = function _templateObject() {
+    return data;
+  };
 
-customElements.define(`bot-setting-window`, BotSettingWindow)
+  return data;
+}
 
+function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _wrapNativeSuper(Class) { var _cache = typeof Map === "function" ? new Map() : undefined; _wrapNativeSuper = function _wrapNativeSuper(Class) { if (Class === null || !_isNativeFunction(Class)) return Class; if (typeof Class !== "function") { throw new TypeError("Super expression must either be null or a function"); } if (typeof _cache !== "undefined") { if (_cache.has(Class)) return _cache.get(Class); _cache.set(Class, Wrapper); } function Wrapper() { return _construct(Class, arguments, _getPrototypeOf(this).constructor); } Wrapper.prototype = Object.create(Class.prototype, { constructor: { value: Wrapper, enumerable: false, writable: true, configurable: true } }); return _setPrototypeOf(Wrapper, Class); }; return _wrapNativeSuper(Class); }
+
+function isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+function _construct(Parent, args, Class) { if (isNativeReflectConstruct()) { _construct = Reflect.construct; } else { _construct = function _construct(Parent, args, Class) { var a = [null]; a.push.apply(a, args); var Constructor = Function.bind.apply(Parent, a); var instance = new Constructor(); if (Class) _setPrototypeOf(instance, Class.prototype); return instance; }; } return _construct.apply(null, arguments); }
+
+function _isNativeFunction(fn) { return Function.toString.call(fn).indexOf("[native code]") !== -1; }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+
+
+
+var BotSettingWindow =
+/*#__PURE__*/
+function (_HTMLElement) {
+  _inherits(BotSettingWindow, _HTMLElement);
+
+  function BotSettingWindow() {
+    var _this;
+
+    _classCallCheck(this, BotSettingWindow);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(BotSettingWindow).call(this));
+
+    _this.attachShadow({
+      mode: "open"
+    });
+
+    Object(_node_modules_lit_html_lit_html_js__WEBPACK_IMPORTED_MODULE_0__["render"])(_this.render(), _this.shadowRoot);
+    return _this;
+  }
+
+  _createClass(BotSettingWindow, [{
+    key: "render",
+    value: function render() {
+      return Object(_node_modules_lit_html_lit_html_js__WEBPACK_IMPORTED_MODULE_0__["html"])(_templateObject(), style);
+    }
+  }]);
+
+  return BotSettingWindow;
+}(_wrapNativeSuper(HTMLElement));
+
+var style = Object(_node_modules_lit_html_lit_html_js__WEBPACK_IMPORTED_MODULE_0__["html"])(_templateObject2());
+customElements.define("bot-setting-window", BotSettingWindow);
 
 /***/ }),
 /* 20 */
@@ -2453,207 +2525,156 @@ customElements.define(`bot-setting-window`, BotSettingWindow)
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_lit_html_lit_html_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(2);
 /* harmony import */ var _bot_setting_menu_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(21);
+function _templateObject2() {
+  var data = _taggedTemplateLiteral(["\n<style scoped>\n\t* {\n\t\tuser-select: none;\n\t}\n\n\tmain {\n\t\twidth: 100%;\n\t\theight: 100%;\n\t\tbox-sizing: border-box;\t\t\n\t\tdisplay: grid;\n\t\tgrid-template-columns: 80px 1fr 100px;\n\t\tgrid-template-rows: 1fr;\n\t}\n\n\t.setting-img-wrap {\n\t\tposition: relative;\n\t\tpadding: 15px;\t\n\t}\n\t\n\t.setting-img {\n\t\tposition: absolute;\n\t\twidth: 50px;\n\t\theight: 50px;\n\t\tborder-radius: 25px;\n\t\tbackground-image: url('/images/bot-setting.svg');\n\t\tbackground-repeat: no-repeat;\n    \tbackground-position: center;\n    \tbackground-size: contain;\n\t}\n\n\t.title-submenu {\n\t\tdisplay:grid;\n\t\tgrid-template-rows: 1fr 1fr;\n\t}\n\n\t.title {\n\t\tpadding-top: 20px;\n\t\tfont-size: 12px;\n\t\tfont-weight: bold;\n\t\tcolor: #4A4C4E;\n\t}\n\n\t.button-rivescript {\n\t\tborder: 0;\n\t\tbackground-color: hsl(162, 100%, 0%);\n\t\tcolor: white;\n\t\tbox-sizing: border-box;\n\t\theight: 20px;\n\t\tborder-radius: 2px;\n\t}\n\n\t.button-rivescript:not(.on):hover, .button-rivescript.on {\n\t\tbackground-color: hsl(162, 100%, 43%);\n\t}\n\n\t.button-rivescript.on:hover {\n\t\tbackground-color: hsl(162, 100%, 0%);\n\t}\n\n\t.menu svg:hover {\n\t\tcolor: black;\n\t}\n\n\t.menu {\n\t\ttext-align: right;\n    \tpadding-right: 15px;\n\t}\n\n\t.menu > svg {\n\t\tvertical-align: middle;\t\n\t\tcursor: pointer;\t\t\n\t\tposition:relative;\n\t\ttop: 50%;\n\t\ttransform: translateY(-50%);\n\t\tcolor: #65717C;\n\t}\t\n\n\t.menu-button {\n\t\tvertical-align: middle;\n\t\tposition:relative;\n\t\ttop: 50%;\n\t\ttransform: translateY(-50%);\n\t\tz-index: 20;\n\t\tpadding: 0;\n\t\tborder: 0;\n\t\tbackground-color: transparent;\n\t}\n\n\t.menu-button svg {\n\t\tcolor: #65717C;\n\t\tcursor: pointer;\n\t}\n\n\tbot-setting-menu {\n\t\tdisplay: none;\t\t\t\n\t\tposition: absolute;\n\t\ttop: 24px;\n\t\tright: -10px;\n\t}\n</style>\n"]);
 
+  _templateObject2 = function _templateObject2() {
+    return data;
+  };
 
-
-class BotSettingHeader extends HTMLElement {
-	constructor() {
-		super()
-		this.attachShadow({ mode: `open` })
-		Object(_node_modules_lit_html_lit_html_js__WEBPACK_IMPORTED_MODULE_0__["render"])(this.render(), this.shadowRoot)
-
-		this.eventClickMenu = this.onClickMenu.bind(this)
-		this.eventClickRivescript = this.onClickRivescript.bind(this)
-	}
-
-	connectedCallback() {
-		this.shadowRoot.querySelector(`.menu-button`).addEventListener(`click`, this.eventClickMenu, true)
-		this.shadowRoot.querySelector(`.button-rivescript`).addEventListener(`click`, this.eventClickRivescript, true)
-	}
-
-	disconnectedCallback() {
-		this.shadowRoot.querySelector(`.menu-button`).removeEventListener(`click`, this.eventClickMenu, true)
-		this.shadowRoot.querySelector(`.button-rivescript`).removeEventListener(`click`, this.eventClickRivescript, true)
-	}
-
-	onClickMenu() {
-		const botSettingMenu = this.shadowRoot.querySelector(`bot-setting-menu`)
-		if(botSettingMenu.menuState === `hide`) {
-			botSettingMenu.show()
-		} else {
-			botSettingMenu.hide()
-		}
-	}
-
-	onClickRivescript() {
-		const body = document.querySelector(`bot-setting-window`).shadowRoot.querySelector(`bot-setting-body`)
-		const buttonRivescript = this.shadowRoot.querySelector(`.button-rivescript`)
-
-		this.emptyBody()
-		if (buttonRivescript.classList.contains(`on`)) {
-			buttonRivescript.classList.remove(`on`)
-		} else {
-			buttonRivescript.classList.add(`on`)
-			this.readRivescript().then(script => {			
-				body.textContent = script
-			}).catch(error => {
-				throw new Error(`No read Rivescript: ${error}`)
-			})
-		}				
-	}
-
-	emptyBody() {
-		document.querySelector(`bot-setting-window`).shadowRoot.querySelector(`bot-setting-body`).innerHTML = ``		
-	}
-
-	readRivescript() {
-		return new Promise((resolve, reject) => {
-			const xhr = new XMLHttpRequest()
-			const COMPLETE = 200
-
-			xhr.open(`GET`, `/assets/hy-lion.rive`)
-			xhr.send()
-			xhr.addEventListener(`readystatechange`, () => {
-				if (xhr.readyState === XMLHttpRequest.DONE) {
-					if (xhr.status === COMPLETE) {
-						resolve(xhr.response)
-					} else {
-						reject(xhr.statusText)
-					}
-				}
-			})
-		})
-	}
-
-	render() {
-		return _node_modules_lit_html_lit_html_js__WEBPACK_IMPORTED_MODULE_0__["html"]`
-			${style}
-			<main>
-				<div class='setting-img-wrap'>
-					<span class='setting-img'></span>
-				</div>
-				<div class='title-submenu'>
-					<div class='title'>${i18next.t(`BOT_SETTING_TITLE`)}</div>
-					<div class='submenu'>
-						<button class='button-rivescript' title='${i18next.t(`CONVERT_RIVESCRIPT`)}'>${i18next.t(`CONVERT_RIVESCRIPT`)}</button>
-					</div>
-				</div>
-				<div class='menu'>		
-					<button class='menu-button' title='메뉴'>
-						<svg height='20' width='32' aria-hidden="true" focusable="false" data-prefix="fas" data-icon="bars" class="svg-inline--fa fa-bars fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z"></path></svg>
-						<bot-setting-menu></bot-setting-menu>
-					</button>
-				</div>
-			</main>
-		`
-	}
+  return data;
 }
 
-const style = _node_modules_lit_html_lit_html_js__WEBPACK_IMPORTED_MODULE_0__["html"]`
-<style scoped>
-	* {
-		user-select: none;
-	}
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
-	main {
-		width: 100%;
-		height: 100%;
-		box-sizing: border-box;		
-		display: grid;
-		grid-template-columns: 80px 1fr 100px;
-		grid-template-rows: 1fr;
-	}
+function _templateObject() {
+  var data = _taggedTemplateLiteral(["\n\t\t\t", "\n\t\t\t<main>\n\t\t\t\t<div class='setting-img-wrap'>\n\t\t\t\t\t<span class='setting-img'></span>\n\t\t\t\t</div>\n\t\t\t\t<div class='title-submenu'>\n\t\t\t\t\t<div class='title'>", "</div>\n\t\t\t\t\t<div class='submenu'>\n\t\t\t\t\t\t<button class='button-rivescript' title='", "'>", "</button>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t\t<div class='menu'>\t\t\n\t\t\t\t\t<button class='menu-button' title='\uBA54\uB274'>\n\t\t\t\t\t\t<svg height='20' width='32' aria-hidden=\"true\" focusable=\"false\" data-prefix=\"fas\" data-icon=\"bars\" class=\"svg-inline--fa fa-bars fa-w-14\" role=\"img\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 448 512\"><path fill=\"currentColor\" d=\"M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z\"></path></svg>\n\t\t\t\t\t\t<bot-setting-menu></bot-setting-menu>\n\t\t\t\t\t</button>\n\t\t\t\t</div>\n\t\t\t</main>\n\t\t"]);
 
-	.setting-img-wrap {
-		position: relative;
-		padding: 15px;	
-	}
-	
-	.setting-img {
-		position: absolute;
-		width: 50px;
-		height: 50px;
-		border-radius: 25px;
-		background-image: url('/images/bot-setting.svg');
-		background-repeat: no-repeat;
-    	background-position: center;
-    	background-size: contain;
-	}
+  _templateObject = function _templateObject() {
+    return data;
+  };
 
-	.title-submenu {
-		display:grid;
-		grid-template-rows: 1fr 1fr;
-	}
+  return data;
+}
 
-	.title {
-		padding-top: 20px;
-		font-size: 12px;
-		font-weight: bold;
-		color: #4A4C4E;
-	}
+function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
-	.button-rivescript {
-		border: 0;
-		background-color: hsl(162, 100%, 0%);
-		color: white;
-		box-sizing: border-box;
-		height: 20px;
-		border-radius: 2px;
-	}
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-	.button-rivescript:not(.on):hover, .button-rivescript.on {
-		background-color: hsl(162, 100%, 43%);
-	}
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
-	.button-rivescript.on:hover {
-		background-color: hsl(162, 100%, 0%);
-	}
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
-	.menu svg:hover {
-		color: black;
-	}
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-	.menu {
-		text-align: right;
-    	padding-right: 15px;
-	}
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
-	.menu > svg {
-		vertical-align: middle;	
-		cursor: pointer;		
-		position:relative;
-		top: 50%;
-		transform: translateY(-50%);
-		color: #65717C;
-	}	
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
-	.menu-button {
-		vertical-align: middle;
-		position:relative;
-		top: 50%;
-		transform: translateY(-50%);
-		z-index: 20;
-		padding: 0;
-		border: 0;
-		background-color: transparent;
-	}
+function _wrapNativeSuper(Class) { var _cache = typeof Map === "function" ? new Map() : undefined; _wrapNativeSuper = function _wrapNativeSuper(Class) { if (Class === null || !_isNativeFunction(Class)) return Class; if (typeof Class !== "function") { throw new TypeError("Super expression must either be null or a function"); } if (typeof _cache !== "undefined") { if (_cache.has(Class)) return _cache.get(Class); _cache.set(Class, Wrapper); } function Wrapper() { return _construct(Class, arguments, _getPrototypeOf(this).constructor); } Wrapper.prototype = Object.create(Class.prototype, { constructor: { value: Wrapper, enumerable: false, writable: true, configurable: true } }); return _setPrototypeOf(Wrapper, Class); }; return _wrapNativeSuper(Class); }
 
-	.menu-button svg {
-		color: #65717C;
-		cursor: pointer;
-	}
+function isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
 
-	bot-setting-menu {
-		display: none;			
-		position: absolute;
-		top: 24px;
-		right: -10px;
-	}
-</style>
-`
+function _construct(Parent, args, Class) { if (isNativeReflectConstruct()) { _construct = Reflect.construct; } else { _construct = function _construct(Parent, args, Class) { var a = [null]; a.push.apply(a, args); var Constructor = Function.bind.apply(Parent, a); var instance = new Constructor(); if (Class) _setPrototypeOf(instance, Class.prototype); return instance; }; } return _construct.apply(null, arguments); }
 
-customElements.define(`bot-setting-header`, BotSettingHeader)
+function _isNativeFunction(fn) { return Function.toString.call(fn).indexOf("[native code]") !== -1; }
 
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+
+
+
+var BotSettingHeader =
+/*#__PURE__*/
+function (_HTMLElement) {
+  _inherits(BotSettingHeader, _HTMLElement);
+
+  function BotSettingHeader() {
+    var _this;
+
+    _classCallCheck(this, BotSettingHeader);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(BotSettingHeader).call(this));
+
+    _this.attachShadow({
+      mode: "open"
+    });
+
+    Object(_node_modules_lit_html_lit_html_js__WEBPACK_IMPORTED_MODULE_0__["render"])(_this.render(), _this.shadowRoot);
+    _this.eventClickMenu = _this.onClickMenu.bind(_assertThisInitialized(_this));
+    _this.eventClickRivescript = _this.onClickRivescript.bind(_assertThisInitialized(_this));
+    return _this;
+  }
+
+  _createClass(BotSettingHeader, [{
+    key: "connectedCallback",
+    value: function connectedCallback() {
+      this.shadowRoot.querySelector(".menu-button").addEventListener("click", this.eventClickMenu, true);
+      this.shadowRoot.querySelector(".button-rivescript").addEventListener("click", this.eventClickRivescript, true);
+    }
+  }, {
+    key: "disconnectedCallback",
+    value: function disconnectedCallback() {
+      this.shadowRoot.querySelector(".menu-button").removeEventListener("click", this.eventClickMenu, true);
+      this.shadowRoot.querySelector(".button-rivescript").removeEventListener("click", this.eventClickRivescript, true);
+    }
+  }, {
+    key: "onClickMenu",
+    value: function onClickMenu() {
+      var botSettingMenu = this.shadowRoot.querySelector("bot-setting-menu");
+
+      if (botSettingMenu.menuState === "hide") {
+        botSettingMenu.show();
+      } else {
+        botSettingMenu.hide();
+      }
+    }
+  }, {
+    key: "onClickRivescript",
+    value: function onClickRivescript() {
+      var body = document.querySelector("bot-setting-window").shadowRoot.querySelector("bot-setting-body");
+      var buttonRivescript = this.shadowRoot.querySelector(".button-rivescript");
+      this.emptyBody();
+
+      if (buttonRivescript.classList.contains("on")) {
+        buttonRivescript.classList.remove("on");
+      } else {
+        buttonRivescript.classList.add("on");
+        this.readRivescript().then(function (script) {
+          body.textContent = script;
+        }).catch(function (error) {
+          throw new Error("No read Rivescript: ".concat(error));
+        });
+      }
+    }
+  }, {
+    key: "emptyBody",
+    value: function emptyBody() {
+      document.querySelector("bot-setting-window").shadowRoot.querySelector("bot-setting-body").innerHTML = "";
+    }
+  }, {
+    key: "readRivescript",
+    value: function readRivescript() {
+      return new Promise(function (resolve, reject) {
+        var xhr = new XMLHttpRequest();
+        var COMPLETE = 200;
+        xhr.open("GET", "/assets/hy-lion.rive");
+        xhr.send();
+        xhr.addEventListener("readystatechange", function () {
+          if (xhr.readyState === XMLHttpRequest.DONE) {
+            if (xhr.status === COMPLETE) {
+              resolve(xhr.response);
+            } else {
+              reject(xhr.statusText);
+            }
+          }
+        });
+      });
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      return Object(_node_modules_lit_html_lit_html_js__WEBPACK_IMPORTED_MODULE_0__["html"])(_templateObject(), style, i18next.t("BOT_SETTING_TITLE"), i18next.t("CONVERT_RIVESCRIPT"), i18next.t("CONVERT_RIVESCRIPT"));
+    }
+  }]);
+
+  return BotSettingHeader;
+}(_wrapNativeSuper(HTMLElement));
+
+var style = Object(_node_modules_lit_html_lit_html_js__WEBPACK_IMPORTED_MODULE_0__["html"])(_templateObject2());
+customElements.define("bot-setting-header", BotSettingHeader);
 
 /***/ }),
 /* 21 */
@@ -2663,111 +2684,137 @@ customElements.define(`bot-setting-header`, BotSettingHeader)
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_lit_html_lit_html_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(2);
 /* harmony import */ var _main_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(0);
+function _templateObject2() {
+  var data = _taggedTemplateLiteral(["\n<style scoped>\n\t.menu::before {\n\t\tcontent: '';\n\t\tposition: absolute;\n\t\ttop: -57px;\n\t\tright: -5px;\n\t\twidth: 100vw;\n\t\theight: 100vh;\n\t\tz-index: -1;\n\t}\n\n\t.menu {\n\t\tbackground-color: white;\n\t\tpadding: 0;\n\t\tmargin: 0;\n\t\tdisplay: grid;\n\t\tgrid-template-columns: max-content;\n\t\tlist-style: none;\n\t\tborder-radius: 2px;\n\t}\n\n\t.menu li {\n\t\tpadding: 10px 15px 10px 15px;\n\t\tmargin: 0 1px 0 1px;\n\t\tbox-sizing: border-box;\n\t\tmax-width: 200px;\n\t\tfont-size: 12px;\n\t\ttext-align: left;\n\t\twhite-space: nowrap;\n\t\toverflow: hidden;\n\t\ttext-overflow: ellipsis;\n\t}\n\n\t.menu li:not(:last-child) {\n\t\tborder-bottom: 1px solid #F0F0F0;\n\t}\n\n\t.menu li:hover {\n\t\tbackground-color: #F0F0F0;\n\t}\n</style>\n"]);
 
+  _templateObject2 = function _templateObject2() {
+    return data;
+  };
 
-
-class BotSettingMenu extends HTMLElement {
-	constructor() {
-		super()
-
-		this.attachShadow({ mode: `open` })
-		Object(_node_modules_lit_html_lit_html_js__WEBPACK_IMPORTED_MODULE_0__["render"])(this.render(), this.shadowRoot)
-
-		this.menuState = `hide`
-		this.eventClickChatWindow = this.onClickChatWindow.bind(this)
-	}
-
-	connectedCallback() {
-		this.shadowRoot.querySelector(`.menu .chat-window`).addEventListener(`click`, this.eventClickChatWindow)
-		this.shadowRoot.querySelector(`.menu`).addEventListener(`click`, event => this.onClickOutOfMenu(event))
-	}
-
-	disconnectedCallback() {
-		this.shadowRoot.querySelector(`.menu .chat-window`).removeEventListener(`click`, this.eventClickChatWindow)
-	}	
-
-	onClickOutOfMenu(event) {
-		if(event.target.classList.contains(`menu`)) {
-			this.hide()
-		}
-	}
-
-	onClickChatWindow() {
-		this.hide()
-		this.openChatWindow()
-	}
-
-	openChatWindow() {
-		_main_js__WEBPACK_IMPORTED_MODULE_1__["default"].loadingDOM()
-		_main_js__WEBPACK_IMPORTED_MODULE_1__["default"].renderChatWindow()
-	}
-
-	show() {
-		this.style.display = `block`
-		this.menuState = `show`
-	}
-
-	hide() {
-		this.style.display = `none`
-		this.menuState = `hide`
-	}
-
-	render() {
-		return _node_modules_lit_html_lit_html_js__WEBPACK_IMPORTED_MODULE_0__["html"]`
-			${style}
-			<ul class='menu'>
-				<li class='chat-window' title='${i18next.t(`MENU_CHAT_WINDOW`)}'>${i18next.t(`MENU_CHAT_WINDOW`)}</li>
-			</ul>
-		`
-	}
+  return data;
 }
 
-const style = _node_modules_lit_html_lit_html_js__WEBPACK_IMPORTED_MODULE_0__["html"]`
-<style scoped>
-	.menu::before {
-		content: '';
-		position: absolute;
-		top: -57px;
-		right: -5px;
-		width: 100vw;
-		height: 100vh;
-		z-index: -1;
-	}
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
-	.menu {
-		background-color: white;
-		padding: 0;
-		margin: 0;
-		display: grid;
-		grid-template-columns: max-content;
-		list-style: none;
-		border-radius: 2px;
-	}
+function _templateObject() {
+  var data = _taggedTemplateLiteral(["\n\t\t\t", "\n\t\t\t<ul class='menu'>\n\t\t\t\t<li class='chat-window' title='", "'>", "</li>\n\t\t\t</ul>\n\t\t"]);
 
-	.menu li {
-		padding: 10px 15px 10px 15px;
-		margin: 0 1px 0 1px;
-		box-sizing: border-box;
-		max-width: 200px;
-		font-size: 12px;
-		text-align: left;
-		white-space: nowrap;
-		overflow: hidden;
-		text-overflow: ellipsis;
-	}
+  _templateObject = function _templateObject() {
+    return data;
+  };
 
-	.menu li:not(:last-child) {
-		border-bottom: 1px solid #F0F0F0;
-	}
+  return data;
+}
 
-	.menu li:hover {
-		background-color: #F0F0F0;
-	}
-</style>
-`
+function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
-customElements.define(`bot-setting-menu`, BotSettingMenu)
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _wrapNativeSuper(Class) { var _cache = typeof Map === "function" ? new Map() : undefined; _wrapNativeSuper = function _wrapNativeSuper(Class) { if (Class === null || !_isNativeFunction(Class)) return Class; if (typeof Class !== "function") { throw new TypeError("Super expression must either be null or a function"); } if (typeof _cache !== "undefined") { if (_cache.has(Class)) return _cache.get(Class); _cache.set(Class, Wrapper); } function Wrapper() { return _construct(Class, arguments, _getPrototypeOf(this).constructor); } Wrapper.prototype = Object.create(Class.prototype, { constructor: { value: Wrapper, enumerable: false, writable: true, configurable: true } }); return _setPrototypeOf(Wrapper, Class); }; return _wrapNativeSuper(Class); }
+
+function isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+function _construct(Parent, args, Class) { if (isNativeReflectConstruct()) { _construct = Reflect.construct; } else { _construct = function _construct(Parent, args, Class) { var a = [null]; a.push.apply(a, args); var Constructor = Function.bind.apply(Parent, a); var instance = new Constructor(); if (Class) _setPrototypeOf(instance, Class.prototype); return instance; }; } return _construct.apply(null, arguments); }
+
+function _isNativeFunction(fn) { return Function.toString.call(fn).indexOf("[native code]") !== -1; }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+
+
+
+var BotSettingMenu =
+/*#__PURE__*/
+function (_HTMLElement) {
+  _inherits(BotSettingMenu, _HTMLElement);
+
+  function BotSettingMenu() {
+    var _this;
+
+    _classCallCheck(this, BotSettingMenu);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(BotSettingMenu).call(this));
+
+    _this.attachShadow({
+      mode: "open"
+    });
+
+    Object(_node_modules_lit_html_lit_html_js__WEBPACK_IMPORTED_MODULE_0__["render"])(_this.render(), _this.shadowRoot);
+    _this.menuState = "hide";
+    _this.eventClickChatWindow = _this.onClickChatWindow.bind(_assertThisInitialized(_this));
+    return _this;
+  }
+
+  _createClass(BotSettingMenu, [{
+    key: "connectedCallback",
+    value: function connectedCallback() {
+      var _this2 = this;
+
+      this.shadowRoot.querySelector(".menu .chat-window").addEventListener("click", this.eventClickChatWindow);
+      this.shadowRoot.querySelector(".menu").addEventListener("click", function (event) {
+        return _this2.onClickOutOfMenu(event);
+      });
+    }
+  }, {
+    key: "disconnectedCallback",
+    value: function disconnectedCallback() {
+      this.shadowRoot.querySelector(".menu .chat-window").removeEventListener("click", this.eventClickChatWindow);
+    }
+  }, {
+    key: "onClickOutOfMenu",
+    value: function onClickOutOfMenu(event) {
+      if (event.target.classList.contains("menu")) {
+        this.hide();
+      }
+    }
+  }, {
+    key: "onClickChatWindow",
+    value: function onClickChatWindow() {
+      this.hide();
+      this.openChatWindow();
+    }
+  }, {
+    key: "openChatWindow",
+    value: function openChatWindow() {
+      _main_js__WEBPACK_IMPORTED_MODULE_1__["default"].loadingDOM();
+      _main_js__WEBPACK_IMPORTED_MODULE_1__["default"].renderChatWindow();
+    }
+  }, {
+    key: "show",
+    value: function show() {
+      this.style.display = "block";
+      this.menuState = "show";
+    }
+  }, {
+    key: "hide",
+    value: function hide() {
+      this.style.display = "none";
+      this.menuState = "hide";
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      return Object(_node_modules_lit_html_lit_html_js__WEBPACK_IMPORTED_MODULE_0__["html"])(_templateObject(), style, i18next.t("MENU_CHAT_WINDOW"), i18next.t("MENU_CHAT_WINDOW"));
+    }
+  }]);
+
+  return BotSettingMenu;
+}(_wrapNativeSuper(HTMLElement));
+
+var style = Object(_node_modules_lit_html_lit_html_js__WEBPACK_IMPORTED_MODULE_0__["html"])(_templateObject2());
+customElements.define("bot-setting-menu", BotSettingMenu);
 
 /***/ })
 /******/ ]);
