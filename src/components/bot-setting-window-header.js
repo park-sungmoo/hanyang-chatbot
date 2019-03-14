@@ -56,7 +56,7 @@ class BotSettingHeader extends HTMLElement {
 			const xhr = new XMLHttpRequest()
 			const COMPLETE = 200
 
-			xhr.open(`GET`, `/src/libs/hy-lion.rive`)
+			xhr.open(`GET`, `/assets/hy-lion.rive`)
 			xhr.send()
 			xhr.addEventListener(`readystatechange`, () => {
 				if (xhr.readyState === XMLHttpRequest.DONE) {

@@ -1,6 +1,6 @@
 const fs = require(`fs`)
 
-fs.readFile(`../libs/hy-lion.rive`, (error, data) => {
+fs.readFile(`../assets/hy-lion.rive`, (error, data) => {
 	if(error) {
 		throw error
 	}
