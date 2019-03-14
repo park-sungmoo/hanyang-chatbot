@@ -2650,7 +2650,7 @@ function (_HTMLElement) {
       return new Promise(function (resolve, reject) {
         var xhr = new XMLHttpRequest();
         var COMPLETE = 200;
-        xhr.open("GET", "/assets/hy-lion.rive");
+        xhr.open("GET", "localhsot:3000/read-rivescript");
         xhr.send();
         xhr.addEventListener("readystatechange", function () {
           if (xhr.readyState === XMLHttpRequest.DONE) {
