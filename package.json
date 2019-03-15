@@ -17,7 +17,11 @@
     "type": "git",
     "url": "git+https://github.com/taeuk-gang/hanyang-chatbot.git"
   },
-  "author": "taeuk.kang",
+  "author": {
+	"name" : "Taeuk Kang",
+    "email" : "taeuk_kang@naver.com",
+    "url" : "http://taeuk.ga"
+  },
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/taeuk-gang/hanyang-chatbot/issues"

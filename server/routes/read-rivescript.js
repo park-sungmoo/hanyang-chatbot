@@ -8,7 +8,7 @@ router.get(`/`, (req, res, next) => {
 		if(error) {
 			throw error
 		}
-		res.send({ data: data.toString() })
+		res.send(data.toString())
 	})
 })
 
