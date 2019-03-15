@@ -10,7 +10,8 @@
     "copy": "npm run copy:images && npm run copy:assets",
     "bundle": "webpack --hide-modules --colors --mode=none",
 	"build": "npm run copy && npm run bundle",
-	"server": "npm run build && cd server && npm start"
+	"server:bundle": "npm run build && cd server && npm start",
+	"server": "cd server && npm start"
   },
   "repository": {
     "type": "git",
