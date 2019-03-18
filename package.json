@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "npm test",
-    "copy:images": "cp -rf ./src/images ./server/public/",
-    "copy:assets": "cp -rf ./src/assets ./server/public/",
+    "copy:images": "cp -rf ./images ./server/public/",
+    "copy:assets": "cp -rf ./assets ./server/public/",
     "copy": "npm run copy:images && npm run copy:assets",
     "bundle": "webpack --hide-modules --colors --mode=none",
 	"build": "npm run copy && npm run bundle",

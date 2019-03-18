@@ -6,20 +6,31 @@
 
 const app = require(`../app`)
 const debug = require(`debug`)(`server:server`)
-const http = require(`http`)
+// const http = require(`http`)
+const cors_proxy = require(`../lib/cors-anywhere`)
 
 /**
  * Get port from environment and store in Express.
  */
 
-const port = normalizePort(process.env.PORT || `3000`)
+const host = process.env.HOST || `0.0.0.0`
+const port = process.env.PORT || 8080
+// const port = normalizePort(process.env.PORT || `3000`)
 app.set(`port`, port)
 
 /**
  * Create HTTP server.
  */
 
-const server = http.createServer(app)
+// const server = http.createServer(app)
+const server = cors_proxy.createServer({
+	originWhitelist: [],
+	requireHeader: [],
+	removeHeaders: [`cookie`, `cookie2`],
+	helpFile: `./views/index.html`,
+}).listen(port, host, () => {
+	console.info(`Running CORS Anywhere on ${host}:8080`)
+})
 
 /**
  * Listen on provided port, on all network interfaces.

@@ -29,7 +29,8 @@ class ChatWindowFooter extends HTMLElement {
 		if(isEnter) {
 			event.preventDefault()
 			chatBody.send(sendText.value)
-			this.replyByPingpongAPI(sendText.value)
+			this.analyzeText(sendText.value)
+			// this.replyByPingpongAPI(sendText.value)
 			sendText.value = ``			
 		}
 	}
@@ -39,8 +40,47 @@ class ChatWindowFooter extends HTMLElement {
 		const sendText = this.shadowRoot.querySelector(`.send_text`)
 
 		chatBody.send(sendText.value)
-		this.replyByPingpongAPI(sendText.value)
+		this.analyzeText(sendText.value)
+		// this.replyByPingpongAPI(sendText.value)
 		sendText.value = ``		
+	}
+
+	analyzeText(text) {
+		const xhr = new XMLHttpRequest()
+		const COMPLETED = 4, OK = 200
+		let subject, verb
+
+		if(!xhr) {
+			throw new Error(`XHR 호출 불가`)
+		}		
+		xhr.open(`POST`, `http://aiopen.etri.re.kr:8000/Demo/WiseNLU`)	
+		xhr.setRequestHeader(`x-requested-with`, `XMLHttpRequest`)
+		xhr.addEventListener(`readystatechange`, () => {
+			if(xhr.readyState === COMPLETED) {
+				if(xhr.status === OK) {
+					subject = JSON.parse(xhr.responseText)[`return_object`][`sentence`][0][`SRL`][0][`argument`][0][`text`]
+
+					if(JSON.parse(xhr.responseText)[`return_object`][`sentence`][0][`SRL`].length === 0) {
+						return
+					}					
+					verb = JSON.parse(xhr.responseText)[`return_object`][`sentence`][0][`SRL`][0][`verb`]
+					console.info(subject, verb)
+					
+					this.searchBook(subject, verb)
+				} else {
+					throw new Error(`No XHR`)
+				}
+			}
+		})		
+		xhr.send(`{"request_id": "reserved field","argument": {"text": "${text}","analysis_code": "srl"}}`)
+	}
+
+	searchBook(subject, verb) {
+		const chatBody = document.querySelector(`chat-window`).shadowRoot.querySelector(`chat-window-body`)
+		const NO_SEARCH = -1
+		if (verb.indexOf(`찾`) !== NO_SEARCH) {
+			chatBody.reply(`<iframe class='iframe_library' src='http://localhost:8080/https://information.hanyang.ac.kr/#/search/mon/si?all=1%7Ck%7Ca%7C%EB%8B%AC%EB%B9%9B%20%EC%95%84%EB%A6%AC%EB%9E%91&rq=BRANCH%3D9'></iframe`)			
+		}
 	}
 
 	replyByPingpongAPI(text) {
@@ -51,8 +91,8 @@ class ChatWindowFooter extends HTMLElement {
 		if(!xhr) {
 			throw new Error(`XHR 호출 불가`)
 		}		
-		xhr.open(`GET`, `https://cors-anywhere.herokuapp.com/https://pingpong.us/api/reaction.php?custom=basic&query=${encodeURIComponent(text)}`)	
-
+		xhr.open(`GET`, `http://localhost:8080/https://pingpong.us/api/reaction.php?custom=basic&query=${encodeURIComponent(text)}`)	
+		xhr.setRequestHeader(`x-requested-with`, `XMLHttpRequest`)
 		xhr.addEventListener(`readystatechange`, () => {
 			if(xhr.readyState === COMPLETED) {
 				if(xhr.status === OK) {

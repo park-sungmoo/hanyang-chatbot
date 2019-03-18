@@ -14,7 +14,6 @@ class MyChatBalloon extends HTMLElement {
 
 		if(isNoChat) {
 			this.newChat(text)
-			this.shadowRoot.querySelector(`.chat-content`).textContent = text
 			return
 		}
 
@@ -24,14 +23,14 @@ class MyChatBalloon extends HTMLElement {
 	newChat(text) {
 		const div = document.createElement(`div`)
 		div.classList.add(`chat-content`)
-		div.textContent = text
+		div.innerHTML = text
 		this.shadowRoot.querySelector(`.chat-wrap`).appendChild(div)
 	}
 
 	continueChat(text) {
 		const div = document.createElement(`div`)
 		div.classList.add(`chat-content-continue`)
-		div.textContent = text
+		div.innerHTML = text
 		this.shadowRoot.querySelector(`.chat-wrap`).appendChild(div)
 	}
 

@@ -2115,7 +2115,6 @@ function (_HTMLElement) {
 
       if (isNoChat) {
         this.newChat(text);
-        this.shadowRoot.querySelector(".chat-content").textContent = text;
         return;
       }
 
@@ -2126,7 +2125,7 @@ function (_HTMLElement) {
     value: function newChat(text) {
       var div = document.createElement("div");
       div.classList.add("chat-content");
-      div.textContent = text;
+      div.innerHTML = text;
       this.shadowRoot.querySelector(".chat-wrap").appendChild(div);
     }
   }, {
@@ -2134,7 +2133,7 @@ function (_HTMLElement) {
     value: function continueChat(text) {
       var div = document.createElement("div");
       div.classList.add("chat-content-continue");
-      div.textContent = text;
+      div.innerHTML = text;
       this.shadowRoot.querySelector(".chat-wrap").appendChild(div);
     }
   }, {
@@ -2235,7 +2234,6 @@ function (_HTMLElement) {
 
       if (isNoChat) {
         this.newChat(text);
-        this.shadowRoot.querySelector(".chat-content").textContent = text;
         return;
       }
 
@@ -2246,7 +2244,7 @@ function (_HTMLElement) {
     value: function newChat(text) {
       var div = document.createElement("div");
       div.classList.add("chat-content");
-      div.textContent = text;
+      div.innerHTML = text;
       this.shadowRoot.querySelector(".chat-wrap").appendChild(div);
     }
   }, {
@@ -2254,7 +2252,7 @@ function (_HTMLElement) {
     value: function continueChat(text) {
       var div = document.createElement("div");
       div.classList.add("chat-content-continue");
-      div.textContent = text;
+      div.innerHTML = text;
       this.shadowRoot.querySelector(".chat-wrap").appendChild(div);
     }
   }, {
@@ -2371,7 +2369,8 @@ function (_HTMLElement) {
       if (isEnter) {
         event.preventDefault();
         chatBody.send(sendText.value);
-        this.replyByPingpongAPI(sendText.value);
+        this.analyzeText(sendText.value); // this.replyByPingpongAPI(sendText.value)
+
         sendText.value = "";
       }
     }
@@ -2381,8 +2380,55 @@ function (_HTMLElement) {
       var chatBody = document.querySelector("chat-window").shadowRoot.querySelector("chat-window-body");
       var sendText = this.shadowRoot.querySelector(".send_text");
       chatBody.send(sendText.value);
-      this.replyByPingpongAPI(sendText.value);
+      this.analyzeText(sendText.value); // this.replyByPingpongAPI(sendText.value)
+
       sendText.value = "";
+    }
+  }, {
+    key: "analyzeText",
+    value: function analyzeText(text) {
+      var _this2 = this;
+
+      var xhr = new XMLHttpRequest();
+      var COMPLETED = 4,
+          OK = 200;
+      var subject, verb;
+
+      if (!xhr) {
+        throw new Error("XHR \uD638\uCD9C \uBD88\uAC00");
+      }
+
+      xhr.open("POST", "http://aiopen.etri.re.kr:8000/Demo/WiseNLU");
+      xhr.setRequestHeader("x-requested-with", "XMLHttpRequest");
+      xhr.addEventListener("readystatechange", function () {
+        if (xhr.readyState === COMPLETED) {
+          if (xhr.status === OK) {
+            subject = JSON.parse(xhr.responseText)["return_object"]["sentence"][0]["SRL"][0]["argument"][0]["text"];
+
+            if (JSON.parse(xhr.responseText)["return_object"]["sentence"][0]["SRL"].length === 0) {
+              return;
+            }
+
+            verb = JSON.parse(xhr.responseText)["return_object"]["sentence"][0]["SRL"][0]["verb"];
+            console.info(subject, verb);
+
+            _this2.searchBook(subject, verb);
+          } else {
+            throw new Error("No XHR");
+          }
+        }
+      });
+      xhr.send("{\"request_id\": \"reserved field\",\"argument\": {\"text\": \"".concat(text, "\",\"analysis_code\": \"srl\"}}"));
+    }
+  }, {
+    key: "searchBook",
+    value: function searchBook(subject, verb) {
+      var chatBody = document.querySelector("chat-window").shadowRoot.querySelector("chat-window-body");
+      var NO_SEARCH = -1;
+
+      if (verb.indexOf("\uCC3E") !== NO_SEARCH) {
+        chatBody.reply("<iframe class='iframe_library' src='http://localhost:8080/https://information.hanyang.ac.kr/#/search/mon/si?all=1%7Ck%7Ca%7C%EB%8B%AC%EB%B9%9B%20%EC%95%84%EB%A6%AC%EB%9E%91&rq=BRANCH%3D9'></iframe");
+      }
     }
   }, {
     key: "replyByPingpongAPI",
@@ -2397,7 +2443,8 @@ function (_HTMLElement) {
         throw new Error("XHR \uD638\uCD9C \uBD88\uAC00");
       }
 
-      xhr.open("GET", "https://cors-anywhere.herokuapp.com/https://pingpong.us/api/reaction.php?custom=basic&query=".concat(encodeURIComponent(text)));
+      xhr.open("GET", "http://localhost:8080/https://pingpong.us/api/reaction.php?custom=basic&query=".concat(encodeURIComponent(text)));
+      xhr.setRequestHeader("x-requested-with", "XMLHttpRequest");
       xhr.addEventListener("readystatechange", function () {
         if (xhr.readyState === COMPLETED) {
           if (xhr.status === OK) {
@@ -2650,7 +2697,7 @@ function (_HTMLElement) {
       return new Promise(function (resolve, reject) {
         var xhr = new XMLHttpRequest();
         var COMPLETE = 200;
-        xhr.open("GET", "localhsot:3000/read-rivescript");
+        xhr.open("GET", "https://hangyang-chatbot.run.goorm.io/read-rivescript");
         xhr.send();
         xhr.addEventListener("readystatechange", function () {
           if (xhr.readyState === XMLHttpRequest.DONE) {
