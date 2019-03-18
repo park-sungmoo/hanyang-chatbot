@@ -4,26 +4,51 @@
   "description": "hanyang university chatbot",
   "main": "index.js",
   "scripts": {
-    "test": "npm test"
+    "test": "npm test",
+    "copy:images": "cp -rf ./images ./server/public/",
+    "copy:assets": "cp -rf ./assets ./server/public/",
+    "copy": "npm run copy:images && npm run copy:assets",
+    "bundle": "webpack --hide-modules --colors --mode=none",
+	"build": "npm run copy && npm run bundle",
+	"server:bundle": "npm run build && cd server && npm start",
+	"server": "cd server && npm start"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/taeuk-gang/hanyang-chatbot.git"
   },
-  "author": "taeuk.kang",
+  "author": {
+	"name" : "Taeuk Kang",
+    "email" : "taeuk_kang@naver.com",
+    "url" : "http://taeuk.ga"
+  },
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/taeuk-gang/hanyang-chatbot/issues"
   },
   "homepage": "https://github.com/taeuk-gang/hanyang-chatbot#readme",
   "devDependencies": {
-    "eslint": "^5.3.0",
+    "@babel/core": "^7.3.4",
+    "@babel/preset-env": "^7.3.4",
+    "babel": "^6.23.0",
+    "babel-loader": "^8.0.5",
+    "css-loader": "^2.1.1",
+    "eslint": "^5.15.1",
     "eslint-config-airbnb": "^17.1.0",
+    "eslint-loader": "^2.1.2",
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-jsx-a11y": "^6.1.1",
-    "eslint-plugin-react": "^7.11.0"
+    "eslint-plugin-react": "^7.11.0",
+    "file-loader": "^3.0.1",
+    "style-loader": "^0.23.1",
+    "uglifyjs-webpack-plugin": "^2.1.2",
+    "url-loader": "^1.1.2",
+    "webpack": "^4.29.6",
+    "webpack-cli": "^3.2.3"
   },
   "dependencies": {
+    "express": "^4.16.4",
+    "fs": "0.0.1-security",
     "i18next": "^15.0.6",
     "lit-html": "^1.0.0"
   }
