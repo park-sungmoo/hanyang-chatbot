@@ -1,6 +1,7 @@
 import {html, render} from '../../node_modules/lit-html/lit-html.js'
 import './bot-chat-balloon.js'
 import './my-chat-balloon.js'
+import './book-list.js'
 
 class ChatWindowBody extends HTMLElement {
 	constructor() {
@@ -18,7 +19,7 @@ class ChatWindowBody extends HTMLElement {
 		// 라이브 스크립트 테스트 코드
 		// this.bot.loadFile(`/assets/hy-lion.rive`).then(this.loading_done.bind(this)).catch(this.loading_error)
 	}
-
+	
 	loading_done() {
 		const username = `hy-lion`
 		const sendText = `hello`

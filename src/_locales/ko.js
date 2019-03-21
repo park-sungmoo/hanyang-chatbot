@@ -13,4 +13,6 @@ export default {
 	NO_IMPLEMENT: `현재는 지원하지 않는 기능입니다.`,
 
 	SEND_MESSAGE: `전송`,
+
+	INPUT_BOOK_NAME: `학술정보관에서 검색해줄게. <br/><strong>책 이름</strong>을 입력해줘`,
 }
