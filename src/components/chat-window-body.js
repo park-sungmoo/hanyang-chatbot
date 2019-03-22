@@ -71,6 +71,23 @@ class ChatWindowBody extends HTMLElement {
 		this.chatWindow.scrollToLast()
 	}
 
+	waitSend(callback) {
+		const observer = new MutationObserver(mutations => {
+			mutations.forEach(mutation => {
+				if (mutation[`addedNodes`][0][`localName`] === `my-chat-balloon`) {
+					callback(mutation[`addedNodes`][0].shadowRoot.querySelector(`.chat-content`).textContent)
+				}
+				observer.disconnect()
+			})
+		})
+
+		const config = {
+			childList: true,
+			subtree: true || null,
+		}
+		observer.observe(this.shadowRoot, config)
+	}
+
 	render() {
 		return html`
 			${style}

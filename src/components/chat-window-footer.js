@@ -66,7 +66,9 @@ class ChatWindowFooter extends HTMLElement {
 			if (xhr.status === OK) {
 				if (isTopicBook()) {
 					chatBody.reply(i18next.t(`INPUT_BOOK_NAME`))
-					this.observerChatBody()
+					chatBody.waitSend(data => {
+						this.searchBook(data)
+					})
 				}
 			} else {
 				throw new Error(`No XHR`)
@@ -80,25 +82,6 @@ class ChatWindowFooter extends HTMLElement {
 			}
 			return false
 		}
-	}
-
-	observerChatBody() {
-		const chatBody = document.querySelector(`chat-window`).shadowRoot.querySelector(`chat-window-body`).shadowRoot
-
-		const observer = new MutationObserver(mutations => {
-			mutations.forEach(mutation => {
-				if (mutation[`addedNodes`][0][`localName`] === `my-chat-balloon`) {
-					this.searchBook(mutation[`addedNodes`][0].shadowRoot.querySelector(`.chat-content`).textContent)
-				}
-				observer.disconnect()
-			})
-		})
-
-		const config = {
-			childList: true,
-			subtree: true || null,
-		}
-		observer.observe(chatBody, config)
 	}
 
 	// 책 이름 그대로 검색 받으면, 검색 해줌
