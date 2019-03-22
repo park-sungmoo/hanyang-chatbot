@@ -21,7 +21,7 @@ class BookList extends HTMLElement {
 		this.shadowRoot.querySelector(`.publication`).textContent = this.publication
 		if (this.isCheckout === `대출가능`) {
 			this.shadowRoot.querySelector(`.isCheckout`).style.color = `green`
-		} else if (this.isCheckout === `대출불가`) {
+		} else if (this.isCheckout === `대출중`) {
 			this.shadowRoot.querySelector(`.isCheckout`).style.color = `red`
 		}
 		this.shadowRoot.querySelector(`.isCheckout`).textContent = this.isCheckout
