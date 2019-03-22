@@ -29,7 +29,8 @@ class ChatWindowFooter extends HTMLElement {
 		if(isEnter) {
 			event.preventDefault()
 			chatBody.send(sendText.value)
-			this.analyzeText(sendText.value)
+			this.replyAboutLibrary(sendText.value)
+			this.replyAboutCategory(sendText.value)
 			// this.replyByPingpongAPI(sendText.value)
 			sendText.value = ``			
 		}
@@ -40,12 +41,13 @@ class ChatWindowFooter extends HTMLElement {
 		const sendText = this.shadowRoot.querySelector(`.send_text`)
 
 		chatBody.send(sendText.value)
-		this.analyzeText(sendText.value)
+		this.replyAboutLibrary(sendText.value)
+		this.replyAboutCategory(sendText.value)
 		// this.replyByPingpongAPI(sendText.value)
 		sendText.value = ``		
 	}
 
-	analyzeText(text) {
+	replyAboutLibrary(text) {
 		const xhr = new XMLHttpRequest()		
 
 		if(!xhr) {
@@ -69,7 +71,7 @@ class ChatWindowFooter extends HTMLElement {
 			} else {
 				throw new Error(`No XHR`)
 			}
-		} 
+		}
 		
 		function isTopicBook() {
 			const condition = JSON.parse(xhr.responseText)[`return_object`][`orgQInfo`][`orgQUnit`][`vSATs`][0][`strSAT`]
@@ -105,7 +107,7 @@ class ChatWindowFooter extends HTMLElement {
 		if(!xhr) {
 			throw new Error(`XHR 호출 불가`)
 		}
-		xhr.open(`GET`, `https://lib.hanyang.ac.kr/pyxis-api/2/collections/6/search?all=k%7Ca%7C${text}&rq=BRANCH%3D9&abc=&order=asc&rq=&sort=title`)	
+		xhr.open(`GET`, `https://lib.hanyang.ac.kr/pyxis-api/2/collections/6/search?all=k%7Ca%7C${text}&rq=BRANCH%3D9`)	
 		xhr.setRequestHeader(`x-requested-with`, `XMLHttpRequest`)
 		xhr.addEventListener(`readystatechange`, () => this.onReadyBookSearch(xhr))		
 		xhr.send()
@@ -148,6 +150,26 @@ class ChatWindowFooter extends HTMLElement {
 			author='${bookInfo.author}' 
 			publication='${bookInfo.publication}' 
 			isCheckout='${bookInfo.isCheckout}' ></book-list>`)
+	}
+
+	replyAboutCategory(text) {
+		const chatBody = document.querySelector(`chat-window`).shadowRoot.querySelector(`chat-window-body`)
+		const xhr = new XMLHttpRequest()		
+		const COMPLETED = 4, OK = 200
+
+		if(!xhr) {
+			throw new Error(`XHR 호출 불가`)
+		}		
+		xhr.open(`GET`, `http://localhost:8080/http://34.80.42.161:8000/api/?chat=${encodeURIComponent(text)}`)	
+		xhr.setRequestHeader(`x-requested-with`, `XMLHttpRequest`)
+		xhr.addEventListener(`readystatechange`, () => {
+			if(xhr.readyState === COMPLETED) {
+				if(xhr.status === OK) {
+					chatBody.reply(`카테고리: ${xhr.responseText}`)
+				}
+			}
+		})		
+		xhr.send()
 	}
 
 	replyByPingpongAPI(text) {
