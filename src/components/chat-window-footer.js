@@ -23,26 +23,24 @@ class ChatWindowFooter extends HTMLElement {
 
 	onkeydownTextarea(event) {
 		const isEnter = event.code === `Enter`
-		const chatBody = document.querySelector(`chat-window`).shadowRoot.querySelector(`chat-window-body`)
-		const sendText = this.shadowRoot.querySelector(`.send_text`)
 
 		if(isEnter) {
 			event.preventDefault()
-			chatBody.send(sendText.value)
-			this.replyAboutLibrary(sendText.value)
-			this.replyAboutCategory(sendText.value)
-			// this.replyByPingpongAPI(sendText.value)
-			sendText.value = ``			
+			this.sendAndReply()
 		}
 	}
 
-	onClickSendButton() {
+	onClickSendButton() {		
+		this.sendAndReply()
+	}
+
+	sendAndReply() {
 		const chatBody = document.querySelector(`chat-window`).shadowRoot.querySelector(`chat-window-body`)
 		const sendText = this.shadowRoot.querySelector(`.send_text`)
 
 		chatBody.send(sendText.value)
 		this.replyAboutLibrary(sendText.value)
-		this.replyAboutCategory(sendText.value)
+			.replyAboutCategory(sendText.value)
 		// this.replyByPingpongAPI(sendText.value)
 		sendText.value = ``		
 	}
@@ -57,6 +55,8 @@ class ChatWindowFooter extends HTMLElement {
 		xhr.setRequestHeader(`x-requested-with`, `XMLHttpRequest`)
 		xhr.addEventListener(`readystatechange`, () => this.onCompletedSearchBook(xhr))		
 		xhr.send(`{"request_id": "reserved field","argument": {"text": "${text}"}}`)
+
+		return this
 	}
 
 	onCompletedSearchBook(xhr) {
@@ -153,6 +153,7 @@ class ChatWindowFooter extends HTMLElement {
 			}
 		})		
 		xhr.send()
+		return this
 	}
 
 	replyByPingpongAPI(text) {
