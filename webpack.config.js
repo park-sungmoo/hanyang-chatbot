@@ -4,7 +4,7 @@ const UglifyJsPlugin = require(`uglifyjs-webpack-plugin`)
 module.exports = {
 	entry: {
 		"main-bundle": `./src/main.js`,
-		"i18n-contents": `./src/common/i18n-contents.js`,
+		"i18n-contents": `./src/modules/i18n-contents.js`,
 	},
 	output: {
 		path: path.resolve(__dirname, `server/public/javascripts`),

@@ -29,7 +29,7 @@
 ```
 ㄴ src (프론트 개발용 소스)
 ㄴ ㅡ _locales (언어 소스)
-ㄴ ㅡ common (공통 소스)
+ㄴ ㅡ modules (공용 소스)
 ㄴ ㅡ components (각 엘리먼트별 모듈 파일)
 ㄴ ㅡ *.js (라우팅될 페이지 파일)
 ㄴ server (서버 개발용 소스)

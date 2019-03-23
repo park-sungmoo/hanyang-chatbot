@@ -1,4 +1,5 @@
 import {html, render} from '../../node_modules/lit-html/lit-html.js'
+import searchLibrary from '../modules/search-library.js'
 
 class ChatWindowFooter extends HTMLElement {	
 	constructor() {
@@ -39,8 +40,8 @@ class ChatWindowFooter extends HTMLElement {
 		const sendText = this.shadowRoot.querySelector(`.send_text`)
 
 		chatBody.send(sendText.value)
-		this.replyAboutLibrary(sendText.value)
-			.replyAboutCategory(sendText.value)
+		this.replyAboutCategory(sendText.value)
+		searchLibrary.replyAboutLibrary(sendText.value)
 		// this.replyByPingpongAPI(sendText.value)
 		sendText.value = ``		
 	}
