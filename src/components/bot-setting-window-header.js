@@ -56,7 +56,7 @@ class BotSettingHeader extends HTMLElement {
 			const xhr = new XMLHttpRequest()
 			const COMPLETE = 200
 
-			xhr.open(`GET`, `https://hangyang-chatbot.run.goorm.io/read-rivescript`)
+			xhr.open(`GET`, `http://localhost:8080/assets/hy-lion.rive`)
 			xhr.send()
 			xhr.addEventListener(`readystatechange`, () => {
 				if (xhr.readyState === XMLHttpRequest.DONE) {
