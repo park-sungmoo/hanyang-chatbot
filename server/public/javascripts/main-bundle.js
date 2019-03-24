@@ -92,7 +92,7 @@
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Main; });
 /* harmony import */ var _chat_window_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
-/* harmony import */ var _bot_setting_window_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(19);
+/* harmony import */ var _bot_setting_window_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(22);
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
@@ -166,7 +166,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_lit_html_lit_html_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(2);
 /* harmony import */ var _components_chat_window_header_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(13);
 /* harmony import */ var _components_chat_window_body_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(15);
-/* harmony import */ var _components_chat_window_footer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(18);
+/* harmony import */ var _components_chat_window_footer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(19);
 function _templateObject2() {
   var data = _taggedTemplateLiteral(["\n<style scoped>\n\tmain {\n\t\tposition: absolute;\t\t\n\t\ttop: 0;\n\t\tleft: 0;\t\t\n\t\twidth: 100vw;\n\t\theight: 100vh;\n\t\tdisplay: grid;\n\t\tgrid-template-columns: 1fr;\n\t\tgrid-template-rows: 80px 1fr 100px;\n\t}\n\n\tchat-window-header {\n\t\tbackground-color: #A9BDCE;\n\t}\n\n\tchat-window-footer {\n\t\tbackground-color: white;\t\t\n\t}\n\n\tchat-window-body {\n\t\tbackground-color: #B2C7D9;\n\t\toverflow: scroll;\n\t}\n</style>\n"]);
 
@@ -1879,6 +1879,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_lit_html_lit_html_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(2);
 /* harmony import */ var _bot_chat_balloon_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(16);
 /* harmony import */ var _my_chat_balloon_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(17);
+/* harmony import */ var _book_list_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(18);
 function _templateObject2() {
   var data = _taggedTemplateLiteral(["\n<style scoped>\n\tmain {\n\t\tdisplay: grid;\n\t\tgrid-template-columns: 1fr;\n\t\tgrid-auto-rows: min-content;\n\t\twidth: 100%;\n\t\theight: 100%;\t\t\n\t}\n\n\tbot-chat-balloon, my-chat-balloon {\n\t\twidth: 100%;\n\t\tmin-height: min-content;\n\t}\n</style>\n"]);
 
@@ -1926,6 +1927,7 @@ function _isNativeFunction(fn) { return Function.toString.call(fn).indexOf("[nat
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
 
 
 
@@ -2015,6 +2017,24 @@ function (_HTMLElement) {
 
       lastChat.chat(text);
       this.chatWindow.scrollToLast();
+    }
+  }, {
+    key: "waitSend",
+    value: function waitSend(callback) {
+      var observer = new MutationObserver(function (mutations) {
+        mutations.forEach(function (mutation) {
+          if (mutation["addedNodes"][0]["localName"] === "my-chat-balloon") {
+            callback(mutation["addedNodes"][0].shadowRoot.querySelector(".chat-content").textContent);
+          }
+
+          observer.disconnect();
+        });
+      });
+      var config = {
+        childList: true,
+        subtree:  true || false
+      };
+      observer.observe(this.shadowRoot, config);
     }
   }, {
     key: "render",
@@ -2276,6 +2296,120 @@ customElements.define("my-chat-balloon", MyChatBalloon);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_lit_html_lit_html_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(2);
 function _templateObject2() {
+  var data = _taggedTemplateLiteral(["\n<style scoped>\n\tmain {\n\t\tdisplay: grid;\n\t\tgrid-template-columns: repeat(2, auto);\n\t\tmax-width: 80vw;\n\t\theight: 120px;\n\t\toverflow: hidden;\n\t}\n\n\t.book-image {\n\t\twidth: 80px;\n\t\theight: 120px;\n\t}\n\n\t.info {\n\t\tdisplay: grid;\n\t\tgrid-template-rows: repeat(4, auto);\n\t\theight: 120px;\n\t\tpadding-left: 5px;\n\t}\n\n\t.title {\n\t\tcolor: #0072bc;\n\t\tfont-weight: bold;\n\t\ttext-overflow: ellipsis;\t\t\n\t}\n\n\t.isCheckout {\n\t\tfont-weight: bold;\n\t}\n</style>\n"]);
+
+  _templateObject2 = function _templateObject2() {
+    return data;
+  };
+
+  return data;
+}
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _templateObject() {
+  var data = _taggedTemplateLiteral(["\n\t\t\t", "\n\t\t\t<main>\n\t\t\t\t<div class='image-wrap'><img class='book-image' src='' /></div>\n\t\t\t\t<div class='info'>\n\t\t\t\t\t<div class='title'></div>\n\t\t\t\t\t<div class='author'></div>\n\t\t\t\t\t<div class='publication'></div>\n\t\t\t\t\t<div class='isCheckout'></div>\n\t\t\t\t</div>\n\t\t\t</main>\n\t\t"]);
+
+  _templateObject = function _templateObject() {
+    return data;
+  };
+
+  return data;
+}
+
+function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _wrapNativeSuper(Class) { var _cache = typeof Map === "function" ? new Map() : undefined; _wrapNativeSuper = function _wrapNativeSuper(Class) { if (Class === null || !_isNativeFunction(Class)) return Class; if (typeof Class !== "function") { throw new TypeError("Super expression must either be null or a function"); } if (typeof _cache !== "undefined") { if (_cache.has(Class)) return _cache.get(Class); _cache.set(Class, Wrapper); } function Wrapper() { return _construct(Class, arguments, _getPrototypeOf(this).constructor); } Wrapper.prototype = Object.create(Class.prototype, { constructor: { value: Wrapper, enumerable: false, writable: true, configurable: true } }); return _setPrototypeOf(Wrapper, Class); }; return _wrapNativeSuper(Class); }
+
+function isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+function _construct(Parent, args, Class) { if (isNativeReflectConstruct()) { _construct = Reflect.construct; } else { _construct = function _construct(Parent, args, Class) { var a = [null]; a.push.apply(a, args); var Constructor = Function.bind.apply(Parent, a); var instance = new Constructor(); if (Class) _setPrototypeOf(instance, Class.prototype); return instance; }; } return _construct.apply(null, arguments); }
+
+function _isNativeFunction(fn) { return Function.toString.call(fn).indexOf("[native code]") !== -1; }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+
+
+var BookList =
+/*#__PURE__*/
+function (_HTMLElement) {
+  _inherits(BookList, _HTMLElement);
+
+  function BookList() {
+    var _this;
+
+    _classCallCheck(this, BookList);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(BookList).call(this));
+    _this.imageSrc = _this.getAttribute("imageSrc");
+    _this.title = _this.getAttribute("title");
+    _this.author = _this.getAttribute("author");
+    _this.publication = _this.getAttribute("publication");
+    _this.isCheckout = _this.getAttribute("isCheckout");
+
+    _this.attachShadow({
+      mode: "open"
+    });
+
+    Object(_node_modules_lit_html_lit_html_js__WEBPACK_IMPORTED_MODULE_0__["render"])(_this.render(), _this.shadowRoot);
+    _this.chatWindow = document.querySelector("chat-window");
+    return _this;
+  }
+
+  _createClass(BookList, [{
+    key: "connectedCallback",
+    value: function connectedCallback() {
+      this.shadowRoot.querySelector(".book-image").src = this.imageSrc;
+      this.shadowRoot.querySelector(".title").textContent = this.title;
+      this.shadowRoot.querySelector(".author").textContent = this.author;
+      this.shadowRoot.querySelector(".publication").textContent = this.publication;
+
+      if (this.isCheckout === "\uB300\uCD9C\uAC00\uB2A5") {
+        this.shadowRoot.querySelector(".isCheckout").style.color = "green";
+      } else if (this.isCheckout === "\uB300\uCD9C\uC911") {
+        this.shadowRoot.querySelector(".isCheckout").style.color = "red";
+      }
+
+      this.shadowRoot.querySelector(".isCheckout").textContent = this.isCheckout;
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      return Object(_node_modules_lit_html_lit_html_js__WEBPACK_IMPORTED_MODULE_0__["html"])(_templateObject(), style);
+    }
+  }]);
+
+  return BookList;
+}(_wrapNativeSuper(HTMLElement));
+
+var style = Object(_node_modules_lit_html_lit_html_js__WEBPACK_IMPORTED_MODULE_0__["html"])(_templateObject2());
+customElements.define("book-list", BookList);
+
+/***/ }),
+/* 19 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_lit_html_lit_html_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(2);
+/* harmony import */ var _modules_search_library_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(20);
+/* harmony import */ var _modules_search_food_menu_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(21);
+function _templateObject2() {
   var data = _taggedTemplateLiteral(["\n<style scoped>\n\tmain {\n\t\tdisplay: grid;\n\t\tgrid-template-columns: 1fr 70px;\n\t\tgrid-template-rows: 1fr;\n\t\twidth: 100%;\n\t\theight: 100%;\n\t}\n\n\t.send_text {\n\t\tborder: 0;\n\t\tresize: none;\n\t\tmargin: 10px;\n\t\tfont-size: 14px;\n\t}\n\n\t.send_text:focus {\n\t\toutline: none;\n\t}\n\n\t.send_button {\n\t\tbackground-color: #FFEC42;\n\t\tborder: 0.5px solid #DFCE3D;\n\t\tbox-sizing: border-box;\n\t\tpadding-top: 5px;\n\t\tpadding-bottom: 5px;\n\t\twidth: 50px;\n\t\tmargin-left: auto;\n\t\tmargin-right: auto;\n\t\tborder-radius: 2px;\n\t\tfont-size: 12px;\n\t\tposition: relative;\n\t\ttop: 10%;\n\t\tleft: 50%;\n\t\ttransform: translateX(-50%);\n\t\tcolor: rgba(0, 0, 0, 0.4);\n\t}\n\n\t.send_button:hover {\n\t\tbackground-color: #F5E340;\n\t\tcolor: rgba(0, 0, 0, 0.8);\n\t}\n</style>\n"]);
 
   _templateObject2 = function _templateObject2() {
@@ -2325,6 +2459,8 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 
 
+
+
 var ChatWindowFooter =
 /*#__PURE__*/
 function (_HTMLElement) {
@@ -2363,72 +2499,160 @@ function (_HTMLElement) {
     key: "onkeydownTextarea",
     value: function onkeydownTextarea(event) {
       var isEnter = event.code === "Enter";
-      var chatBody = document.querySelector("chat-window").shadowRoot.querySelector("chat-window-body");
-      var sendText = this.shadowRoot.querySelector(".send_text");
 
       if (isEnter) {
         event.preventDefault();
-        chatBody.send(sendText.value);
-        this.analyzeText(sendText.value); // this.replyByPingpongAPI(sendText.value)
-
-        sendText.value = "";
+        this.sendAndReply();
       }
     }
   }, {
     key: "onClickSendButton",
     value: function onClickSendButton() {
+      this.sendAndReply();
+    }
+  }, {
+    key: "sendAndReply",
+    value: function sendAndReply() {
       var chatBody = document.querySelector("chat-window").shadowRoot.querySelector("chat-window-body");
       var sendText = this.shadowRoot.querySelector(".send_text");
       chatBody.send(sendText.value);
-      this.analyzeText(sendText.value); // this.replyByPingpongAPI(sendText.value)
+      this.replyAboutCategory(sendText.value);
+      _modules_search_library_js__WEBPACK_IMPORTED_MODULE_1__["default"].replyAboutLibrary(sendText.value);
+      _modules_search_food_menu_js__WEBPACK_IMPORTED_MODULE_2__["default"].openHanyangSite(); // this.replyByPingpongAPI(sendText.value)
 
       sendText.value = "";
     }
   }, {
-    key: "analyzeText",
-    value: function analyzeText(text) {
+    key: "replyAboutLibrary",
+    value: function replyAboutLibrary(text) {
       var _this2 = this;
 
       var xhr = new XMLHttpRequest();
-      var COMPLETED = 4,
-          OK = 200;
-      var subject, verb;
 
       if (!xhr) {
         throw new Error("XHR \uD638\uCD9C \uBD88\uAC00");
       }
 
-      xhr.open("POST", "http://aiopen.etri.re.kr:8000/Demo/WiseNLU");
+      xhr.open("POST", "http://aiopen.etri.re.kr:8000/Demo/WiseQAnal");
+      xhr.setRequestHeader("x-requested-with", "XMLHttpRequest");
+      xhr.addEventListener("readystatechange", function () {
+        return _this2.onCompletedSearchBook(xhr);
+      });
+      xhr.send("{\"request_id\": \"reserved field\",\"argument\": {\"text\": \"".concat(text, "\"}}"));
+      return this;
+    }
+  }, {
+    key: "onCompletedSearchBook",
+    value: function onCompletedSearchBook(xhr) {
+      var _this3 = this;
+
+      var chatBody = document.querySelector("chat-window").shadowRoot.querySelector("chat-window-body");
+      var COMPLETED = 4,
+          OK = 200;
+
+      if (xhr.readyState === COMPLETED) {
+        if (xhr.status === OK) {
+          if (isTopicBook()) {
+            chatBody.reply(i18next.t("INPUT_BOOK_NAME"));
+            chatBody.waitSend(function (data) {
+              _this3.searchBook(data);
+            });
+          }
+        } else {
+          throw new Error("No XHR");
+        }
+      }
+
+      function isTopicBook() {
+        var condition = JSON.parse(xhr.responseText)["return_object"]["orgQInfo"]["orgQUnit"]["vSATs"][0]["strSAT"];
+
+        if (JSON.parse(xhr.responseText)["return_object"]["orgQInfo"]["orgQUnit"]["vSATs"][0]) {
+          return condition === "AFW_DOCUMENT" || condition === "OGG_LIBRARY";
+        }
+
+        return false;
+      }
+    } // 책 이름 그대로 검색 받으면, 검색 해줌
+
+  }, {
+    key: "searchBook",
+    value: function searchBook(text) {
+      var _this4 = this;
+
+      var xhr = new XMLHttpRequest();
+
+      if (!xhr) {
+        throw new Error("XHR \uD638\uCD9C \uBD88\uAC00");
+      }
+
+      xhr.open("GET", "https://lib.hanyang.ac.kr/pyxis-api/2/collections/6/search?all=k%7Ca%7C".concat(text, "&rq=BRANCH%3D9"));
+      xhr.setRequestHeader("x-requested-with", "XMLHttpRequest");
+      xhr.addEventListener("readystatechange", function () {
+        return _this4.onReadyBookSearch(xhr);
+      });
+      xhr.send();
+    }
+  }, {
+    key: "onReadyBookSearch",
+    value: function onReadyBookSearch(xhr) {
+      var COMPLETED = 4,
+          OK = 200;
+      var title, author, publication, imageSrc, isCheckout;
+
+      if (xhr.readyState === COMPLETED) {
+        if (xhr.status === OK) {
+          // console.log(JSON.parse(xhr.responseText)[`data`][`list`])
+          for (var i = 0; i < 3; i++) {
+            title = JSON.parse(xhr.responseText)["data"]["list"][i]["titleStatement"];
+            author = JSON.parse(xhr.responseText)["data"]["list"][i]["author"];
+            publication = JSON.parse(xhr.responseText)["data"]["list"][i]["publication"];
+            imageSrc = JSON.parse(xhr.responseText)["data"]["list"][i]["thumbnailUrl"];
+            isCheckout = JSON.parse(xhr.responseText)["data"]["list"][i]["branchVolumes"].find(function (each) {
+              return each.name === "ERICA\uD559\uC220\uC815\uBCF4\uAD00";
+            })["cState"]; // console.log(title, author, publication, imageSrc, isCheckout)							
+
+            this.createBookList({
+              title: title,
+              author: author,
+              publication: publication,
+              imageSrc: imageSrc,
+              isCheckout: isCheckout
+            });
+          }
+        } else {
+          throw new Error("No XHR");
+        }
+      }
+    }
+  }, {
+    key: "createBookList",
+    value: function createBookList(bookInfo) {
+      var chatBody = document.querySelector("chat-window").shadowRoot.querySelector("chat-window-body");
+      chatBody.reply("<book-list \n\t\t\timageSrc='".concat(bookInfo.imageSrc, "' \n\t\t\ttitle='").concat(bookInfo.title, "' \n\t\t\tauthor='").concat(bookInfo.author, "' \n\t\t\tpublication='").concat(bookInfo.publication, "' \n\t\t\tisCheckout='").concat(bookInfo.isCheckout, "' ></book-list>"));
+    }
+  }, {
+    key: "replyAboutCategory",
+    value: function replyAboutCategory(text) {
+      var chatBody = document.querySelector("chat-window").shadowRoot.querySelector("chat-window-body");
+      var xhr = new XMLHttpRequest();
+      var COMPLETED = 4,
+          OK = 200;
+
+      if (!xhr) {
+        throw new Error("XHR \uD638\uCD9C \uBD88\uAC00");
+      }
+
+      xhr.open("GET", "http://localhost:8080/http://34.80.42.161:8000/api/?chat=".concat(encodeURIComponent(text)));
       xhr.setRequestHeader("x-requested-with", "XMLHttpRequest");
       xhr.addEventListener("readystatechange", function () {
         if (xhr.readyState === COMPLETED) {
           if (xhr.status === OK) {
-            subject = JSON.parse(xhr.responseText)["return_object"]["sentence"][0]["SRL"][0]["argument"][0]["text"];
-
-            if (JSON.parse(xhr.responseText)["return_object"]["sentence"][0]["SRL"].length === 0) {
-              return;
-            }
-
-            verb = JSON.parse(xhr.responseText)["return_object"]["sentence"][0]["SRL"][0]["verb"];
-            console.info(subject, verb);
-
-            _this2.searchBook(subject, verb);
-          } else {
-            throw new Error("No XHR");
+            chatBody.reply("\uCE74\uD14C\uACE0\uB9AC: ".concat(xhr.responseText));
           }
         }
       });
-      xhr.send("{\"request_id\": \"reserved field\",\"argument\": {\"text\": \"".concat(text, "\",\"analysis_code\": \"srl\"}}"));
-    }
-  }, {
-    key: "searchBook",
-    value: function searchBook(subject, verb) {
-      var chatBody = document.querySelector("chat-window").shadowRoot.querySelector("chat-window-body");
-      var NO_SEARCH = -1;
-
-      if (verb.indexOf("\uCC3E") !== NO_SEARCH) {
-        chatBody.reply("<iframe class='iframe_library' src='http://localhost:8080/https://information.hanyang.ac.kr/#/search/mon/si?all=1%7Ck%7Ca%7C%EB%8B%AC%EB%B9%9B%20%EC%95%84%EB%A6%AC%EB%9E%91&rq=BRANCH%3D9'></iframe");
-      }
+      xhr.send();
+      return this;
     }
   }, {
     key: "replyByPingpongAPI",
@@ -2473,13 +2697,205 @@ var style = Object(_node_modules_lit_html_lit_html_js__WEBPACK_IMPORTED_MODULE_0
 customElements.define("chat-window-footer", ChatWindowFooter);
 
 /***/ }),
-/* 19 */
+/* 20 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+var SearchLibrary =
+/*#__PURE__*/
+function () {
+  function SearchLibrary() {
+    _classCallCheck(this, SearchLibrary);
+  }
+
+  _createClass(SearchLibrary, [{
+    key: "replyAboutLibrary",
+    value: function replyAboutLibrary(text) {
+      var _this = this;
+
+      var xhr = new XMLHttpRequest();
+
+      if (!xhr) {
+        throw new Error("XHR \uD638\uCD9C \uBD88\uAC00");
+      }
+
+      xhr.open("POST", "http://aiopen.etri.re.kr:8000/Demo/WiseQAnal");
+      xhr.setRequestHeader("x-requested-with", "XMLHttpRequest");
+      xhr.addEventListener("readystatechange", function () {
+        return _this.onCompletedSearchBook(xhr);
+      });
+      xhr.send("{\"request_id\": \"reserved field\",\"argument\": {\"text\": \"".concat(text, "\"}}"));
+      return this;
+    }
+  }, {
+    key: "onCompletedSearchBook",
+    value: function onCompletedSearchBook(xhr) {
+      var _this2 = this;
+
+      var chatBody = document.querySelector("chat-window").shadowRoot.querySelector("chat-window-body");
+      var COMPLETED = 4,
+          OK = 200;
+
+      if (xhr.readyState === COMPLETED) {
+        if (xhr.status === OK) {
+          if (isTopicBook()) {
+            chatBody.reply(i18next.t("INPUT_BOOK_NAME"));
+            chatBody.waitSend(function (data) {
+              _this2.searchBook(data);
+            });
+          }
+        } else {
+          throw new Error("No XHR");
+        }
+      }
+
+      function isTopicBook() {
+        var condition = JSON.parse(xhr.responseText)["return_object"]["orgQInfo"]["orgQUnit"]["vSATs"][0]["strSAT"];
+
+        if (JSON.parse(xhr.responseText)["return_object"]["orgQInfo"]["orgQUnit"]["vSATs"][0]) {
+          return condition === "AFW_DOCUMENT" || condition === "OGG_LIBRARY";
+        }
+
+        return false;
+      }
+    } // 책 이름 그대로 검색 받으면, 검색 해줌
+
+  }, {
+    key: "searchBook",
+    value: function searchBook(text) {
+      var _this3 = this;
+
+      var xhr = new XMLHttpRequest();
+
+      if (!xhr) {
+        throw new Error("XHR \uD638\uCD9C \uBD88\uAC00");
+      }
+
+      xhr.open("GET", "https://lib.hanyang.ac.kr/pyxis-api/2/collections/6/search?all=k%7Ca%7C".concat(text, "&rq=BRANCH%3D9"));
+      xhr.setRequestHeader("x-requested-with", "XMLHttpRequest");
+      xhr.addEventListener("readystatechange", function () {
+        return _this3.onReadyBookSearch(xhr);
+      });
+      xhr.send();
+    }
+  }, {
+    key: "onReadyBookSearch",
+    value: function onReadyBookSearch(xhr) {
+      var COMPLETED = 4,
+          OK = 200;
+      var title, author, publication, imageSrc, isCheckout;
+
+      if (xhr.readyState === COMPLETED) {
+        if (xhr.status === OK) {
+          // console.log(JSON.parse(xhr.responseText)[`data`][`list`])
+          for (var i = 0; i < 3; i++) {
+            title = JSON.parse(xhr.responseText)["data"]["list"][i]["titleStatement"];
+            author = JSON.parse(xhr.responseText)["data"]["list"][i]["author"];
+            publication = JSON.parse(xhr.responseText)["data"]["list"][i]["publication"];
+            imageSrc = JSON.parse(xhr.responseText)["data"]["list"][i]["thumbnailUrl"];
+            isCheckout = JSON.parse(xhr.responseText)["data"]["list"][i]["branchVolumes"].find(function (each) {
+              return each.name === "ERICA\uD559\uC220\uC815\uBCF4\uAD00";
+            })["cState"]; // console.log(title, author, publication, imageSrc, isCheckout)							
+
+            this.createBookList({
+              title: title,
+              author: author,
+              publication: publication,
+              imageSrc: imageSrc,
+              isCheckout: isCheckout
+            });
+          }
+        } else {
+          throw new Error("No XHR");
+        }
+      }
+    }
+  }, {
+    key: "createBookList",
+    value: function createBookList(bookInfo) {
+      var chatBody = document.querySelector("chat-window").shadowRoot.querySelector("chat-window-body");
+      chatBody.reply("<book-list \n\t\t\timageSrc='".concat(bookInfo.imageSrc, "' \n\t\t\ttitle='").concat(bookInfo.title, "' \n\t\t\tauthor='").concat(bookInfo.author, "' \n\t\t\tpublication='").concat(bookInfo.publication, "' \n\t\t\tisCheckout='").concat(bookInfo.isCheckout, "' ></book-list>"));
+    }
+  }]);
+
+  return SearchLibrary;
+}();
+
+var searchLibrary = new SearchLibrary();
+/* harmony default export */ __webpack_exports__["default"] = (searchLibrary);
+
+/***/ }),
+/* 21 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+var SearchFoodMenu =
+/*#__PURE__*/
+function () {
+  function SearchFoodMenu() {
+    _classCallCheck(this, SearchFoodMenu);
+  }
+
+  _createClass(SearchFoodMenu, [{
+    key: "openHanyangSite",
+    value: function openHanyangSite() {
+      var xhr = new XMLHttpRequest();
+
+      if (!xhr) {
+        throw new Error("Err. XHR");
+      }
+
+      xhr.open("GET", "http://localhost:8080/hanyangfood");
+      xhr.setRequestHeader("x-requested-with", "XMLHttpRequest");
+      xhr.addEventListener("readystatechange", function () {
+        if (xhr.readyState === 4) {
+          if (xhr.status === 200) {
+            var chatBody = document.querySelector("chat-window").shadowRoot.querySelector("chat-window-body");
+
+            if (typeof JSON.parse(xhr.responseText) === "string") {
+              return;
+            }
+
+            JSON.parse(xhr.responseText).forEach(function (each) {
+              chatBody.reply(each);
+            });
+          } else {
+            throw new Error("No XHR");
+          }
+        }
+      });
+      xhr.send();
+    }
+  }]);
+
+  return SearchFoodMenu;
+}();
+
+var searchFoodMenu = new SearchFoodMenu();
+/* harmony default export */ __webpack_exports__["default"] = (searchFoodMenu);
+
+/***/ }),
+/* 22 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_lit_html_lit_html_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(2);
-/* harmony import */ var _components_bot_setting_window_header_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(20);
+/* harmony import */ var _components_bot_setting_window_header_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(23);
 function _templateObject2() {
   var data = _taggedTemplateLiteral(["\n<style scoped>\n\tmain {\n\t\tposition: absolute;\t\t\n\t\ttop: 0;\n\t\tleft: 0;\t\t\n\t\twidth: 100vw;\n\t\theight: 100vh;\n\t\tdisplay: grid;\n\t\tgrid-template-columns: 1fr;\n\t\tgrid-template-rows: 80px 1fr 100px;\n\t}\n\n\tbot-setting-header {\n\t\tbackground-color: #A9BDCE;\n\t}\n\n\tbot-setting-body {\t\t\n\t\twhite-space: pre;\n\t\tpadding-left: 10px;\n\t}\n</style>\n"]);
 
@@ -2565,13 +2981,13 @@ var style = Object(_node_modules_lit_html_lit_html_js__WEBPACK_IMPORTED_MODULE_0
 customElements.define("bot-setting-window", BotSettingWindow);
 
 /***/ }),
-/* 20 */
+/* 23 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_lit_html_lit_html_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(2);
-/* harmony import */ var _bot_setting_menu_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(21);
+/* harmony import */ var _bot_setting_menu_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(24);
 function _templateObject2() {
   var data = _taggedTemplateLiteral(["\n<style scoped>\n\t* {\n\t\tuser-select: none;\n\t}\n\n\tmain {\n\t\twidth: 100%;\n\t\theight: 100%;\n\t\tbox-sizing: border-box;\t\t\n\t\tdisplay: grid;\n\t\tgrid-template-columns: 80px 1fr 100px;\n\t\tgrid-template-rows: 1fr;\n\t}\n\n\t.setting-img-wrap {\n\t\tposition: relative;\n\t\tpadding: 15px;\t\n\t}\n\t\n\t.setting-img {\n\t\tposition: absolute;\n\t\twidth: 50px;\n\t\theight: 50px;\n\t\tborder-radius: 25px;\n\t\tbackground-image: url('/images/bot-setting.svg');\n\t\tbackground-repeat: no-repeat;\n    \tbackground-position: center;\n    \tbackground-size: contain;\n\t}\n\n\t.title-submenu {\n\t\tdisplay:grid;\n\t\tgrid-template-rows: 1fr 1fr;\n\t}\n\n\t.title {\n\t\tpadding-top: 20px;\n\t\tfont-size: 12px;\n\t\tfont-weight: bold;\n\t\tcolor: #4A4C4E;\n\t}\n\n\t.button-rivescript {\n\t\tborder: 0;\n\t\tbackground-color: hsl(162, 100%, 0%);\n\t\tcolor: white;\n\t\tbox-sizing: border-box;\n\t\theight: 20px;\n\t\tborder-radius: 2px;\n\t}\n\n\t.button-rivescript:not(.on):hover, .button-rivescript.on {\n\t\tbackground-color: hsl(162, 100%, 43%);\n\t}\n\n\t.button-rivescript.on:hover {\n\t\tbackground-color: hsl(162, 100%, 0%);\n\t}\n\n\t.menu svg:hover {\n\t\tcolor: black;\n\t}\n\n\t.menu {\n\t\ttext-align: right;\n    \tpadding-right: 15px;\n\t}\n\n\t.menu > svg {\n\t\tvertical-align: middle;\t\n\t\tcursor: pointer;\t\t\n\t\tposition:relative;\n\t\ttop: 50%;\n\t\ttransform: translateY(-50%);\n\t\tcolor: #65717C;\n\t}\t\n\n\t.menu-button {\n\t\tvertical-align: middle;\n\t\tposition:relative;\n\t\ttop: 50%;\n\t\ttransform: translateY(-50%);\n\t\tz-index: 20;\n\t\tpadding: 0;\n\t\tborder: 0;\n\t\tbackground-color: transparent;\n\t}\n\n\t.menu-button svg {\n\t\tcolor: #65717C;\n\t\tcursor: pointer;\n\t}\n\n\tbot-setting-menu {\n\t\tdisplay: none;\t\t\t\n\t\tposition: absolute;\n\t\ttop: 24px;\n\t\tright: -10px;\n\t}\n</style>\n"]);
 
@@ -2697,7 +3113,7 @@ function (_HTMLElement) {
       return new Promise(function (resolve, reject) {
         var xhr = new XMLHttpRequest();
         var COMPLETE = 200;
-        xhr.open("GET", "https://hangyang-chatbot.run.goorm.io/read-rivescript");
+        xhr.open("GET", "http://localhost:8080/assets/hy-lion.rive");
         xhr.send();
         xhr.addEventListener("readystatechange", function () {
           if (xhr.readyState === XMLHttpRequest.DONE) {
@@ -2724,7 +3140,7 @@ var style = Object(_node_modules_lit_html_lit_html_js__WEBPACK_IMPORTED_MODULE_0
 customElements.define("bot-setting-header", BotSettingHeader);
 
 /***/ }),
-/* 21 */
+/* 24 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
