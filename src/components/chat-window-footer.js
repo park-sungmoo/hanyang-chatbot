@@ -1,5 +1,6 @@
 import {html, render} from '../../node_modules/lit-html/lit-html.js'
 import searchLibrary from '../modules/search-library.js'
+import searchFoodMenu from '../modules/search-food-menu.js'
 
 class ChatWindowFooter extends HTMLElement {	
 	constructor() {
@@ -42,6 +43,7 @@ class ChatWindowFooter extends HTMLElement {
 		chatBody.send(sendText.value)
 		this.replyAboutCategory(sendText.value)
 		searchLibrary.replyAboutLibrary(sendText.value)
+		searchFoodMenu.openHanyangSite()
 		// this.replyByPingpongAPI(sendText.value)
 		sendText.value = ``		
 	}
