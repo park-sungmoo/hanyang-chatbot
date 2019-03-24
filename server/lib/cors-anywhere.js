@@ -329,6 +329,67 @@ function getHandler(options, proxy) {
 			return
 		}
 
+		if (location.host === `hanyangfood`) {
+			const puppeteer = require('puppeteer')
+			res.writeHead(200, {'Content-Type': `text/plain; charset=UTF-8`})			
+
+			crawl(13)
+			async function crawl(place) {
+				const browser = await puppeteer.launch()
+				const page = await browser.newPage()
+				const date = new Date()
+				const year = date.getFullYear()
+				const month = date.getMonth()
+				const day = date.getDate()
+				await page.goto(`https://www.hanyang.ac.kr/web/www/re${place}?p_p_id=foodView_WAR_foodportlet&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&p_p_col_id=column-1&p_p_col_pos=1&p_p_col_count=2&_foodView_WAR_foodportlet_sFoodDateDay=${day}&_foodView_WAR_foodportlet_sFoodDateYear=${year}&_foodView_WAR_foodportlet_action=view&_foodView_WAR_foodportlet_sFoodDateMonth=${month}`, {waitUntil: 'networkidle2'})
+				// await page.waitForSelector('h3')
+				const links = await page.evaluate(() => {
+					const result = []
+
+					let breakfast = Array.from(document.querySelectorAll(`h4`))
+					breakfast = breakfast.find(each => each.textContent === `조식`)
+					if (breakfast !== undefined) {
+						breakfast = breakfast.parentNode.querySelectorAll(`h3`)
+					
+						for(const menu of breakfast) {
+							result.push({breakfast: menu.textContent.trim()})
+						}
+					} else {
+						result.push({breakfast: null})
+					}
+
+					let lunch = Array.from(document.querySelectorAll(`h4`))
+					lunch = lunch.find(each => each.textContent === `중식`)
+					if (lunch !== undefined) {
+						lunch = lunch.parentNode.querySelectorAll(`h3`)
+					
+						for(const menu of lunch) {
+							result.push({lunch: menu.textContent.trim()})
+						}
+					} else {
+						result.push({lunch: null})
+					}
+
+					let dinner = Array.from(document.querySelectorAll(`h4`))
+					dinner = dinner.find(each => each.textContent === `석식`)
+					if (dinner !== undefined) {
+						dinner = dinner.parentNode.querySelectorAll(`h3`)
+					
+						for(const menu of dinner) {
+							result.push({dinner: menu.textContent.trim()})
+						}
+					} else {
+						result.push({dinner: null})
+					}
+					
+				  	return result
+				})
+				browser.close()
+				res.end(JSON.stringify(links))
+			}						
+			return
+		}
+
 		if (location.port > 65535) {
 			// Port is higher than 65535
 			res.writeHead(400, `Invalid port`, cors_headers)
