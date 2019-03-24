@@ -333,7 +333,7 @@ function getHandler(options, proxy) {
 			const puppeteer = require('puppeteer')
 			res.writeHead(200, {'Content-Type': `text/plain; charset=UTF-8`})			
 
-			crawl(12)
+			crawl(13)
 			async function crawl(place) {
 				const browser = await puppeteer.launch()
 				const page = await browser.newPage()
@@ -347,7 +347,7 @@ function getHandler(options, proxy) {
 					const result = []
 
 					let breakfast = Array.from(document.querySelectorAll(`h4`))
-					breakfast = breakfast.find(each => each.textContent === `중식`)
+					breakfast = breakfast.find(each => each.textContent === `조식`)
 					if (breakfast !== undefined) {
 						breakfast = breakfast.parentNode.querySelectorAll(`h3`)
 					
@@ -371,7 +371,7 @@ function getHandler(options, proxy) {
 					}
 
 					let dinner = Array.from(document.querySelectorAll(`h4`))
-					dinner = dinner.find(each => each.textContent === `중식`)
+					dinner = dinner.find(each => each.textContent === `석식`)
 					if (dinner !== undefined) {
 						dinner = dinner.parentNode.querySelectorAll(`h3`)
 					
